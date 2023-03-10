@@ -8,6 +8,8 @@ public class ChessboardManager : MonoBehaviour
 {
     [SerializeField] private Tile _tilePrefab;
     
+    private Dictionary<Vector2, Tile> _tiles;
+
     private void Start()
     {
         GenerateChessboard();
@@ -15,6 +17,8 @@ public class ChessboardManager : MonoBehaviour
 
     void GenerateChessboard()
     {
+        _tiles = new Dictionary<Vector2, Tile>();
+        
         int constraintCount = GetComponent<GridLayoutGroup>().constraintCount;
         
         for (int row = 0; row < constraintCount; row++) 
@@ -26,7 +30,14 @@ public class ChessboardManager : MonoBehaviour
 
                 bool isOffset = (row % 2 == 0 && column % 2 != 0) || (row % 2 != 0 && column % 2 == 0);
                 spawnedTile.SetSprite(isOffset);
+
+                _tiles.Add(new Vector2(row, column), spawnedTile);
             }
         }
+    }
+
+    public Tile GetTileAtPosition(Vector2 pos)
+    {
+        return _tiles.TryGetValue(pos, out var tile) ? tile : null;
     }
 }
