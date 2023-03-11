@@ -29,15 +29,18 @@ public class ChessboardManager : MonoBehaviour
                 spawnedTile.name = $"Tile {row} {column}";
 
                 bool isOffset = (row % 2 == 0 && column % 2 != 0) || (row % 2 != 0 && column % 2 == 0);
-                spawnedTile.SetSprite(isOffset);
+                spawnedTile.GetComponent<TileAppearance>().SetSprite(isOffset);
 
-                _tiles.Add(new Vector2(row, column), spawnedTile);
+                Vector2 coordinates = new Vector2(row, column);
+                spawnedTile.SetCoordinates(coordinates);
+
+                _tiles.Add(coordinates, spawnedTile);
             }
         }
     }
 
-    public Tile GetTileAtPosition(Vector2 pos)
+    public Tile GetTileAtPosition(Vector2 coordinates)
     {
-        return _tiles.TryGetValue(pos, out var tile) ? tile : null;
+        return _tiles.TryGetValue(coordinates, out var tile) ? tile : null;
     }
 }

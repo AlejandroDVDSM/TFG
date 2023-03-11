@@ -21,7 +21,7 @@ public class ChessPieceSpawner : MonoBehaviour
                 case TouchPhase.Began:
                     Collider2D hitCollider2D = Physics2D.OverlapPoint(touchPosition);
                     
-                    if (hitCollider2D.CompareTag("Tile"))
+                    if (hitCollider2D != null && hitCollider2D.CompareTag("Tile"))
                     {
                         var tileWhereToSpawn = hitCollider2D.gameObject.GetComponent<Tile>();
                         SpawnChessPiece(tileWhereToSpawn);
@@ -39,8 +39,9 @@ public class ChessPieceSpawner : MonoBehaviour
         if (tileWhereToSpawn.IsFree)
         {
             var _spawnedChessPiece = Instantiate(_chessPiece, tileWhereToSpawn.transform);
-            Debug.Log($"Spawn successful in <{tileWhereToSpawn.name}>");
             tileWhereToSpawn.IsFree = false;
+            
+            Debug.Log($"Spawn successful in <{tileWhereToSpawn.name}>");
         }
         else
         {

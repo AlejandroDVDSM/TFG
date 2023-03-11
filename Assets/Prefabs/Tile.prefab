@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6829261470472019245}
   - component: {fileID: 6829261470472019246}
   - component: {fileID: 6829261470472019232}
+  - component: {fileID: 9109682662738865686}
   - component: {fileID: 6829261470472019247}
   m_Layer: 0
   m_Name: Tile
@@ -101,6 +102,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8fb1555e639f42458a3b346d94cfe3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9109682662738865686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6829261470472019244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502b5b64048b4a44f95eaf2e48b67789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _whiteTileSprite: {fileID: 21300000, guid: 05329922724e0254f8c096bc0f912d7d, type: 3}
