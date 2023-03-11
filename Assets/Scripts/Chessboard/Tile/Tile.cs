@@ -38,8 +38,10 @@ public class Tile : MonoBehaviour
         Vector2 tileAboveCoordinates = new Vector2(_coordinates.x - 1, _coordinates.y);
         Tile tileAboveMe = _chessboardManager.GetTileAtPosition(tileAboveCoordinates);
 
-        if (tileAboveMe.GetComponentInChildren<ChessPieceMerger>() != null)
+        ChessPiece chessPieceAboveMe = tileAboveMe.GetComponentInChildren<ChessPiece>();
+        if (chessPieceAboveMe != null)
         {
+            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAboveMe);
             Debug.Log("ABOVE: true");
             return true;
         }
@@ -55,8 +57,10 @@ public class Tile : MonoBehaviour
         Vector2 tileBelowCoordinates = new Vector2(_coordinates.x + 1, _coordinates.y);
         Tile tileBelowMe = _chessboardManager.GetTileAtPosition(tileBelowCoordinates);
 
-        if (tileBelowMe.GetComponentInChildren<ChessPieceMerger>() != null)
+        ChessPiece chessPieceBelowMe = tileBelowMe.GetComponentInChildren<ChessPiece>();
+        if (chessPieceBelowMe != null)
         {
+            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceBelowMe);
             Debug.Log("BELOW: true");
             return true;
         }
@@ -72,8 +76,10 @@ public class Tile : MonoBehaviour
         Vector2 tileAtMyLeftCoordinates = new Vector2(_coordinates.x, _coordinates.y - 1);
         Tile tileAtMyLeft = _chessboardManager.GetTileAtPosition(tileAtMyLeftCoordinates);
 
-        if (tileAtMyLeft.GetComponentInChildren<ChessPieceMerger>() != null)
+        ChessPiece chessPieceAtMyLeft = tileAtMyLeft.GetComponentInChildren<ChessPiece>();
+        if (chessPieceAtMyLeft != null)
         {
+            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAtMyLeft);
             Debug.Log("LEFT: true");
             return true;
         }
@@ -89,8 +95,10 @@ public class Tile : MonoBehaviour
         Vector2 tileAtMyRightCoordinates = new Vector2(_coordinates.x, _coordinates.y + 1);
         Tile tileAtMyRight = _chessboardManager.GetTileAtPosition(tileAtMyRightCoordinates);
 
-        if (tileAtMyRight.GetComponentInChildren<ChessPieceMerger>() != null)
+        ChessPiece chessPieceAtMyRight = tileAtMyRight.GetComponentInChildren<ChessPiece>();
+        if (chessPieceAtMyRight != null)
         {
+            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAtMyRight);
             Debug.Log("RIGHT: true");
             return true;
         }
