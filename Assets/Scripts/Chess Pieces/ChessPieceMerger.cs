@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ChessPieceMerger : MonoBehaviour
 {
     [SerializeField] private GameObject _chessPieceUpgraded;
-
     private bool isMergeAvailable = false;
     
     // Called from the event "OnChessPieceConnected" in the editor
@@ -27,6 +27,5 @@ public class ChessPieceMerger : MonoBehaviour
         if (!isMergeAvailable) return;
         ChessPiece thisChessPiece = GetComponent<ChessPiece>();
         Instantiate(_chessPieceUpgraded, thisChessPiece.GetInWhichTileIAm().transform);
-
     }
 }

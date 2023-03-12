@@ -20,12 +20,7 @@ public class ChessPiece : MonoBehaviour
     
     public void ConnectPieces(ChessPiece chessPiece)
     {
-        Debug.Log("TYPE: " + type + " || other: " + chessPiece.type);
-        if (!SameTypes(chessPiece.type))
-        {
-            Debug.Log("DISTINTO");
-            return;
-        }
+        if (!SameTypes(chessPiece.type)) return;
         
         connections.Add(chessPiece);
         if (chessPiece.IsConnected()) connections.Add(chessPiece.GetConnection());
@@ -36,8 +31,7 @@ public class ChessPiece : MonoBehaviour
     
     private bool IsConnected()
     {
-        if (connections.Count > 0) return true;
-        return false;
+        return connections.Count > 0;
     }
     
     private ChessPiece GetConnection()

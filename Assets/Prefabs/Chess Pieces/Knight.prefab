@@ -131,9 +131,9 @@ MonoBehaviour:
   onMergeComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1816573976842855216}
-        m_TargetAssemblyTypeName: ChessPieceMerger, Assembly-CSharp
-        m_MethodName: Test
+      - m_Target: {fileID: 5438346467877556762}
+        m_TargetAssemblyTypeName: ChessPiece, Assembly-CSharp
+        m_MethodName: RemoveNullConnectionsAfterMerge
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
