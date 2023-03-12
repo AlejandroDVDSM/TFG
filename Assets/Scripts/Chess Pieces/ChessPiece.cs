@@ -8,18 +8,30 @@ public class ChessPiece : MonoBehaviour
     public Type type;
     public List<ChessPiece> connections;
 
-    public UnityEvent OnChessPieceConnected = new UnityEvent();
+    public UnityEvent onChessPieceConnected = new UnityEvent();
 
+    private void Start()
+    {
+        Debug.Log("Type: " + type);
+        Tile myTile = GetInWhichTileIAm();
+        myTile.CheckNearbyTiles();
+    }
+    
     public void ConnectPieces(ChessPiece chessPiece)
     {
-        if (!SameTypes(chessPiece.type)) return;
+        Debug.Log("TYPE: " + type + " || other: " + chessPiece.type);
+        if (!SameTypes(chessPiece.type))
+        {
+            Debug.Log("DISTINTO");
+            return;
+        }
         
         connections.Add(chessPiece);
         if (chessPiece.IsConnected()) connections.Add(chessPiece.GetConnection());
         chessPiece.connections.Add(this);
         
-        if (connections.Count >= 2) OnChessPieceConnected.Invoke(); // == 2 (?)
-    }
+        if (connections.Count == 2) onChessPieceConnected.Invoke();
+    }    
     
     private bool IsConnected()
     {
@@ -36,7 +48,19 @@ public class ChessPiece : MonoBehaviour
     {
         return type == chessPieceType;
     }
+
+    public void RemoveNullConnectionsAfterMerge()
+    {
+        foreach (var connection in connections)
+        {
+            if (connection == null) connections.Remove(connection);
+        }
+    }
     
+    public Tile GetInWhichTileIAm()
+    {
+        return GetComponentInParent<Tile>();
+    }    
 }
 
 public enum Type

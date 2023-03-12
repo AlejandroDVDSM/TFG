@@ -22,23 +22,33 @@ public class Tile : MonoBehaviour
     {
         Debug.Log($"Tile where I am: {name}" );
 
-        IsThereAPieceAboveMe();
-        IsThereAPieceBelowMe();
-        IsThereAPieceAtMyLeft();
-        IsThereAPieceAtMyRight();
+        if (IsThereAPieceAboveMe()) {
+            var chessPieceAboveMe = GetTileAboveMe().GetComponentInChildren<ChessPiece>();
+            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAboveMe);
+        }
+        if (IsThereAPieceBelowMe()) {
+            var chessPieceBelowMe = GetTileBelowMe().GetComponentInChildren<ChessPiece>();
+            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceBelowMe);
+        }
+        if (IsThereAPieceAtMyLeft()) {
+            var chessPieceAtMyLeft = GetTileAtMyLeft().GetComponentInChildren<ChessPiece>();
+            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAtMyLeft);
+        }
+        if (IsThereAPieceAtMyRight()) {
+            var chessPieceAtMyRight = GetTileAtMyRight().GetComponentInChildren<ChessPiece>();
+            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAtMyRight);
+        }
     }
     
     private bool IsThereAPieceAboveMe()
     {
         if (_coordinates.x == 0) return false; // Off the chessboard
         
-        Vector2 tileAboveCoordinates = new Vector2(_coordinates.x - 1, _coordinates.y);
-        Tile tileAboveMe = _chessboardManager.GetTileAtPosition(tileAboveCoordinates);
-
+        Tile tileAboveMe = GetTileAboveMe();
         ChessPiece chessPieceAboveMe = tileAboveMe.GetComponentInChildren<ChessPiece>();
+        
         if (chessPieceAboveMe != null)
         {
-            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAboveMe);
             Debug.Log("ABOVE: true");
             return true;
         }
@@ -47,17 +57,23 @@ public class Tile : MonoBehaviour
         return false;
     }
     
+    private Tile GetTileAboveMe()
+    {
+        if (_coordinates.x == 0) return null; // Off the chessboard
+        Vector2 tileAboveCoordinates = new Vector2(_coordinates.x - 1, _coordinates.y);
+        Tile tileAboveMe = _chessboardManager.GetTileAtPosition(tileAboveCoordinates);
+        return tileAboveMe;
+    }
+
     private bool IsThereAPieceBelowMe()
     {
         if (_coordinates.x == 5) return false; // Off the chessboard
         
-        Vector2 tileBelowCoordinates = new Vector2(_coordinates.x + 1, _coordinates.y);
-        Tile tileBelowMe = _chessboardManager.GetTileAtPosition(tileBelowCoordinates);
 
+        Tile tileBelowMe = GetTileBelowMe();
         ChessPiece chessPieceBelowMe = tileBelowMe.GetComponentInChildren<ChessPiece>();
         if (chessPieceBelowMe != null)
         {
-            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceBelowMe);
             Debug.Log("BELOW: true");
             return true;
         }
@@ -66,17 +82,23 @@ public class Tile : MonoBehaviour
         return false;
     }
 
+    private Tile GetTileBelowMe()
+    {
+        if (_coordinates.x == 5) return null; // Off the chessboard
+        Vector2 tileBelowCoordinates = new Vector2(_coordinates.x + 1, _coordinates.y);
+        Tile tileBelowMe = _chessboardManager.GetTileAtPosition(tileBelowCoordinates);
+        return tileBelowMe;
+    }
+
     private bool IsThereAPieceAtMyLeft()
     {
         if (_coordinates.y == 0) return false; // Off the chessboard
         
-        Vector2 tileAtMyLeftCoordinates = new Vector2(_coordinates.x, _coordinates.y - 1);
-        Tile tileAtMyLeft = _chessboardManager.GetTileAtPosition(tileAtMyLeftCoordinates);
 
+        Tile tileAtMyLeft = GetTileAtMyLeft();
         ChessPiece chessPieceAtMyLeft = tileAtMyLeft.GetComponentInChildren<ChessPiece>();
         if (chessPieceAtMyLeft != null)
         {
-            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAtMyLeft);
             Debug.Log("LEFT: true");
             return true;
         }
@@ -84,23 +106,39 @@ public class Tile : MonoBehaviour
         Debug.Log("LEFT: false");
         return false;
     }
+
+    private Tile GetTileAtMyLeft()
+    {
+        if (_coordinates.y == 0) return null; // Off the chessboard
+        
+        Vector2 tileAtMyLeftCoordinates = new Vector2(_coordinates.x, _coordinates.y - 1);
+        Tile tileAtMyLeft = _chessboardManager.GetTileAtPosition(tileAtMyLeftCoordinates);
+        return tileAtMyLeft;
+    }
     
     private bool IsThereAPieceAtMyRight()
     {
         if (_coordinates.y == 5) return false; // Off the chessboard
         
-        Vector2 tileAtMyRightCoordinates = new Vector2(_coordinates.x, _coordinates.y + 1);
-        Tile tileAtMyRight = _chessboardManager.GetTileAtPosition(tileAtMyRightCoordinates);
 
+        Tile tileAtMyRight = GetTileAtMyRight();
         ChessPiece chessPieceAtMyRight = tileAtMyRight.GetComponentInChildren<ChessPiece>();
         if (chessPieceAtMyRight != null)
         {
-            GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAtMyRight);
             Debug.Log("RIGHT: true");
             return true;
         }
     
         Debug.Log("RIGHT: false");
         return false;
+    }
+
+    private Tile GetTileAtMyRight()
+    {
+        if (_coordinates.y == 5) return null; // Off the chessboard
+        
+        Vector2 tileAtMyRightCoordinates = new Vector2(_coordinates.x, _coordinates.y + 1);
+        Tile tileAtMyRight = _chessboardManager.GetTileAtPosition(tileAtMyRightCoordinates);
+        return tileAtMyRight;
     }
 }

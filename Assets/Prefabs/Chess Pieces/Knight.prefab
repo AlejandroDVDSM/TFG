@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   connections: []
-  OnChessPieceConnected:
+  onChessPieceConnected:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1816573976842855216}
@@ -128,3 +128,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chessPieceUpgraded: {fileID: 6035542843560367903, guid: d740d61d3e1f9c74da469c5b46613785, type: 3}
+  onMergeComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1816573976842855216}
+        m_TargetAssemblyTypeName: ChessPieceMerger, Assembly-CSharp
+        m_MethodName: Test
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

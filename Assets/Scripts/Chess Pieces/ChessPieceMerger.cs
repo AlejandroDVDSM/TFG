@@ -4,17 +4,6 @@ public class ChessPieceMerger : MonoBehaviour
 {
     [SerializeField] private GameObject _chessPieceUpgraded;
     
-    private void Start()
-    {
-        Tile myTile = GetInWhichTileIAm();
-        myTile.CheckNearbyTiles();
-    }
-    
-    private Tile GetInWhichTileIAm()
-    {
-        return GetComponentInParent<Tile>();
-    }
-    
     // Called from the event "OnChessPieceConnected" in the editor
     public void MergePieces()
     {
@@ -22,11 +11,11 @@ public class ChessPieceMerger : MonoBehaviour
 
         foreach (var chessPiece in thisChessPiece.connections)
         {
-            Destroy(chessPiece.gameObject);
             chessPiece.GetComponentInParent<Tile>().IsFree = true;
+            Destroy(chessPiece.gameObject);
         }
         
-        Instantiate(_chessPieceUpgraded, GetInWhichTileIAm().transform);
+        GameObject spawnedChessPiece = Instantiate(_chessPieceUpgraded, thisChessPiece.GetInWhichTileIAm().transform);
         Destroy(gameObject);
     }
 }
