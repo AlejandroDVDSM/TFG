@@ -8,6 +8,8 @@ public class Tile : MonoBehaviour
     
     public bool IsFree { get; set; } = true;
 
+    public Vector2 Coordinates => _coordinates;
+
     private void Start()
     {
         _chessboardManager = FindObjectOfType<ChessboardManager>();

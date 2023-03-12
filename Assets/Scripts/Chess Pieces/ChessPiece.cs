@@ -12,7 +12,8 @@ public class ChessPiece : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Type: " + type);
+        name = $"{type} {GetComponentInParent<Tile>().Coordinates.x} {GetComponentInParent<Tile>().Coordinates.y}";
+        
         Tile myTile = GetInWhichTileIAm();
         myTile.CheckNearbyTiles();
     }
