@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class ChessPieceMerger : MonoBehaviour
 {
-    [SerializeField] private GameObject _newChessPiecePrefab; // In a future this will have to be removed
+    [SerializeField] private GameObject _chessPieceUpgraded;
     
     private void Start()
     {
@@ -26,12 +22,11 @@ public class ChessPieceMerger : MonoBehaviour
 
         foreach (var chessPiece in thisChessPiece.connections)
         {
-            chessPiece.GetComponentInParent<Tile>().IsFree = true;
             Destroy(chessPiece.gameObject);
+            chessPiece.GetComponentInParent<Tile>().IsFree = true;
         }
         
-        Instantiate(_newChessPiecePrefab, GetInWhichTileIAm().transform);
+        Instantiate(_chessPieceUpgraded, GetInWhichTileIAm().transform);
         Destroy(gameObject);
-    }    
-    
+    }
 }

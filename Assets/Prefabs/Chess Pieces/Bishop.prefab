@@ -127,3 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499674d2f94f9d14a85cc24243ecd808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _chessPieceUpgraded: {fileID: 8521189955470955296, guid: f458e91f0df3888419059d5e8d862577, type: 3}

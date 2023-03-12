@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,24 +12,29 @@ public class ChessPiece : MonoBehaviour
 
     public void ConnectPieces(ChessPiece chessPiece)
     {
-        if (chessPiece.type != type) return;
+        if (!SameTypes(chessPiece.type)) return;
         
         connections.Add(chessPiece);
         if (chessPiece.IsConnected()) connections.Add(chessPiece.GetConnection());
         chessPiece.connections.Add(this);
         
-        if (connections.Count == 2) OnChessPieceConnected.Invoke();
+        if (connections.Count >= 2) OnChessPieceConnected.Invoke(); // == 2 (?)
     }
     
-    public bool IsConnected()
+    private bool IsConnected()
     {
         if (connections.Count > 0) return true;
         return false;
     }
     
-    public ChessPiece GetConnection()
+    private ChessPiece GetConnection()
     {
         return connections.FirstOrDefault(piece => piece != this);
+    }
+
+    private bool SameTypes(Type chessPieceType)
+    {
+        return type == chessPieceType;
     }
     
 }
