@@ -12,44 +12,37 @@ public class ChessPiece : MonoBehaviour
 
     private void Start()
     {
-        name = $"{type} {GetComponentInParent<Tile>().Coordinates.x} {GetComponentInParent<Tile>().Coordinates.y}";
-        
         Tile myTile = GetInWhichTileIAm();
+        
+        name = $"{type} {myTile.Coordinates.x} {myTile.Coordinates.y}";
+        
         myTile.CheckNearbyTiles();
     }
     
-    public void ConnectPieces(ChessPiece chessPiece)
+    public void ConnectPieces(ChessPiece chessPieceToConnect)
     {
-        if (!SameTypes(chessPiece.type)) return;
+        if (!SameTypes(chessPieceToConnect.type)) return;
         
-        connections.Add(chessPiece);
-        if (chessPiece.IsConnected()) connections.Add(chessPiece.GetConnection());
-        chessPiece.connections.Add(this);
+        AddConnections(chessPieceToConnect);
+        chessPieceToConnect.AddConnections(this);
         
-        if (connections.Count == 2) onChessPieceConnected.Invoke();
-    }    
-    
-    private bool IsConnected()
-    {
-        return connections.Count > 0;
+        foreach (var piece in chessPieceToConnect.connections.Where(piece => piece != this))
+        {
+            piece.AddConnections(this);
+        }
+        
+        if (connections.Count >= 2) onChessPieceConnected.Invoke();
     }
-    
-    private ChessPiece GetConnection()
+
+    private void AddConnections(ChessPiece chessPiece)
     {
-        return connections.FirstOrDefault(piece => piece != this);
+        if (!connections.Contains(chessPiece)) connections.Add(chessPiece);
+        connections = connections.Union(chessPiece.connections.Where(piece => piece != this)).ToList(); // Union() excludes duplicated elements.
     }
 
     private bool SameTypes(Type chessPieceType)
     {
         return type == chessPieceType;
-    }
-
-    public void RemoveNullConnectionsAfterMerge()
-    {
-        foreach (var connection in connections)
-        {
-            if (connection == null) connections.Remove(connection);
-        }
     }
     
     public Tile GetInWhichTileIAm()

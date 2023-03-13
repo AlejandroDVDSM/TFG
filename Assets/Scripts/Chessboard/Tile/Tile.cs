@@ -4,20 +4,13 @@ public class Tile : MonoBehaviour
 {
     private ChessboardManager _chessboardManager;
 
-    private Vector2 _coordinates;
-    
     public bool IsFree { get; set; } = true;
 
-    public Vector2 Coordinates => _coordinates;
+    public Vector2 Coordinates { get; set; }
 
     private void Start()
     {
         _chessboardManager = FindObjectOfType<ChessboardManager>();
-    }
-    
-    public void SetCoordinates(Vector2 coordinates)
-    {
-        _coordinates = coordinates;
     }
     
     public void CheckNearbyTiles()
@@ -44,7 +37,7 @@ public class Tile : MonoBehaviour
     
     private bool IsThereAPieceAboveMe()
     {
-        if (_coordinates.x == 0) return false; // Off the chessboard
+        if (Coordinates.x == 0) return false; // Off the chessboard
         
         Tile tileAboveMe = GetTileAboveMe();
         ChessPiece chessPieceAboveMe = tileAboveMe.GetComponentInChildren<ChessPiece>();
@@ -61,15 +54,15 @@ public class Tile : MonoBehaviour
     
     private Tile GetTileAboveMe()
     {
-        if (_coordinates.x == 0) return null; // Off the chessboard
-        Vector2 tileAboveCoordinates = new Vector2(_coordinates.x - 1, _coordinates.y);
+        if (Coordinates.x == 0) return null; // Off the chessboard
+        Vector2 tileAboveCoordinates = new Vector2(Coordinates.x - 1, Coordinates.y);
         Tile tileAboveMe = _chessboardManager.GetTileAtPosition(tileAboveCoordinates);
         return tileAboveMe;
     }
 
     private bool IsThereAPieceBelowMe()
     {
-        if (_coordinates.x == 5) return false; // Off the chessboard
+        if (Coordinates.x == 5) return false; // Off the chessboard
         
 
         Tile tileBelowMe = GetTileBelowMe();
@@ -86,15 +79,15 @@ public class Tile : MonoBehaviour
 
     private Tile GetTileBelowMe()
     {
-        if (_coordinates.x == 5) return null; // Off the chessboard
-        Vector2 tileBelowCoordinates = new Vector2(_coordinates.x + 1, _coordinates.y);
+        if (Coordinates.x == 5) return null; // Off the chessboard
+        Vector2 tileBelowCoordinates = new Vector2(Coordinates.x + 1, Coordinates.y);
         Tile tileBelowMe = _chessboardManager.GetTileAtPosition(tileBelowCoordinates);
         return tileBelowMe;
     }
 
     private bool IsThereAPieceAtMyLeft()
     {
-        if (_coordinates.y == 0) return false; // Off the chessboard
+        if (Coordinates.y == 0) return false; // Off the chessboard
         
 
         Tile tileAtMyLeft = GetTileAtMyLeft();
@@ -111,16 +104,16 @@ public class Tile : MonoBehaviour
 
     private Tile GetTileAtMyLeft()
     {
-        if (_coordinates.y == 0) return null; // Off the chessboard
+        if (Coordinates.y == 0) return null; // Off the chessboard
         
-        Vector2 tileAtMyLeftCoordinates = new Vector2(_coordinates.x, _coordinates.y - 1);
+        Vector2 tileAtMyLeftCoordinates = new Vector2(Coordinates.x, Coordinates.y - 1);
         Tile tileAtMyLeft = _chessboardManager.GetTileAtPosition(tileAtMyLeftCoordinates);
         return tileAtMyLeft;
     }
     
     private bool IsThereAPieceAtMyRight()
     {
-        if (_coordinates.y == 5) return false; // Off the chessboard
+        if (Coordinates.y == 5) return false; // Off the chessboard
         
 
         Tile tileAtMyRight = GetTileAtMyRight();
@@ -137,9 +130,9 @@ public class Tile : MonoBehaviour
 
     private Tile GetTileAtMyRight()
     {
-        if (_coordinates.y == 5) return null; // Off the chessboard
+        if (Coordinates.y == 5) return null; // Off the chessboard
         
-        Vector2 tileAtMyRightCoordinates = new Vector2(_coordinates.x, _coordinates.y + 1);
+        Vector2 tileAtMyRightCoordinates = new Vector2(Coordinates.x, Coordinates.y + 1);
         Tile tileAtMyRight = _chessboardManager.GetTileAtPosition(tileAtMyRightCoordinates);
         return tileAtMyRight;
     }

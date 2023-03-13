@@ -32,7 +32,7 @@ public class ChessboardManager : MonoBehaviour
                 spawnedTile.GetComponent<TileAppearance>().SetSprite(isOffset);
 
                 Vector2 coordinates = new Vector2(row, column);
-                spawnedTile.SetCoordinates(coordinates);
+                spawnedTile.Coordinates = coordinates;
 
                 _tiles.Add(coordinates, spawnedTile);
             }
