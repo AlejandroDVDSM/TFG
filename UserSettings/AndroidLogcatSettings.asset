@@ -18,7 +18,7 @@
             "deviceId": "2b55da55",
             "name": "com.android.settings",
             "processId": 20249,
-            "exited": false
+            "exited": true
         }
     ],
     "m_Tags": {
