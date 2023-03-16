@@ -104,9 +104,9 @@ MonoBehaviour:
   onChessPieceConnected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7764331152036975737}
-        m_TargetAssemblyTypeName: ChessPieceMerger, Assembly-CSharp
-        m_MethodName: MergePieces
+      - m_Target: {fileID: 4147064493992682835}
+        m_TargetAssemblyTypeName: ChessPiece, Assembly-CSharp
+        m_MethodName: CheckIfMergeIsPossible
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

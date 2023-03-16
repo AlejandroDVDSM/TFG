@@ -31,7 +31,7 @@ public class ChessPiece : MonoBehaviour
             piece.AddConnections(this);
         }
         
-        if (connections.Count >= 2) onChessPieceConnected.Invoke();
+        /*if (connections.Count >= 2) */onChessPieceConnected.Invoke();
     }
 
     private void AddConnections(ChessPiece chessPiece)
@@ -44,11 +44,16 @@ public class ChessPiece : MonoBehaviour
     {
         return type == chessPieceType;
     }
+
+    public void CheckIfMergeIsPossible()
+    {
+        if (connections.Count >= 2) GetComponent<ChessPieceMerger>().MergePieces();
+    } 
     
     public Tile GetInWhichTileIAm()
     {
         return GetComponentInParent<Tile>();
-    }    
+    }
 }
 
 public enum Type

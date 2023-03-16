@@ -40,14 +40,19 @@ public class GameStateManager : MonoBehaviour
         switch (newGameState)
         {
             case GameState.Start:
+                // PENDING TO DO
                 break;
             case GameState.PlayerTurn:
+                // PENDING TO DO
                 break;
             case GameState.EnemyTurn:
+                // PENDING TO DO
                 break;
             case GameState.Won:
+                // PENDING TO DO
                 break;
             case GameState.Lost:
+                // PENDING TO DO
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);
