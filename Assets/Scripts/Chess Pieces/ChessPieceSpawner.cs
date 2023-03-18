@@ -40,7 +40,7 @@ public class ChessPieceSpawner : MonoBehaviour
         if (ignoreEnemySpawn) // TEST PURPOSES
         {
             Debug.Log("Flag <ignoreEnemySpawn> is TRUE...");
-            GameStateManager.instance.gameState = GameState.PlayerTurn;
+            GameStateManager.instance.UpdateGameState(GameState.PlayerTurn);
             return;
         }
         
@@ -52,6 +52,6 @@ public class ChessPieceSpawner : MonoBehaviour
         Instantiate(_chessPieceGenerator.GetRandomEnemy(), randomTile.transform);
         randomTile.IsFree = false;
         
-        GameStateManager.instance.gameState = GameState.PlayerTurn;
+        GameStateManager.instance.UpdateGameState(GameState.PlayerTurn);
     }
 }

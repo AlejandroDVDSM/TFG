@@ -1,10 +1,9 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PawnMovement : MonoBehaviour, IMovement
 {
-    public bool isAboutToMove = false;
-    
     public List<Vector2Int> GetAllAvailableMoves()
     {
         List<Vector2Int> availableMoves = new List<Vector2Int>();
@@ -19,37 +18,23 @@ public class PawnMovement : MonoBehaviour, IMovement
         }
         
         // Diagonal Right - Kill
+        ChessboardManager chessboardManager = FindObjectOfType<ChessboardManager>();
         Vector2Int coordinatesDiagonalRight = new Vector2Int(myTile.Coordinates.x - 1, myTile.Coordinates.y + 1);
         if (myTile.IsThereAPieceAt(coordinatesDiagonalRight)) {
-            // SHOULD CHECK IF IT IS AN ENEMY PIECE
-            
-            availableMoves.Add(coordinatesDiagonalRight);
+            // If is an enemy piece
+            if (chessboardManager.GetTileAtPosition(coordinatesDiagonalRight).GetComponentInChildren<Transform>().CompareTag("EnemyPiece"))
+                availableMoves.Add(coordinatesDiagonalRight);
         }
 
         // Diagonal Left - Kill
         Vector2Int coordinatesDiagonalLeft = new Vector2Int(myTile.Coordinates.x - 1, myTile.Coordinates.y - 1);
         if (myTile.IsThereAPieceAt(coordinatesDiagonalLeft)) {
-            // SHOULD CHECK IF IT IS AN ENEMY PIECE
-            
-            availableMoves.Add(coordinatesDiagonalLeft);
+            // If is an enemy piece
+            if (chessboardManager.GetTileAtPosition(coordinatesDiagonalLeft).GetComponentInChildren<Transform>().CompareTag("EnemyPiece"))
+                availableMoves.Add(coordinatesDiagonalLeft);
         }
 
-        HighlightAvailableTiles(availableMoves);
+        GetComponent<ChessPieceMovement>().HighlightAvailableTiles(availableMoves);
         return availableMoves;
-    }
-
-    private void HighlightAvailableTiles(List<Vector2Int> availableMoves)
-    {
-        var chessboardManager = FindObjectOfType<ChessboardManager>();
-        foreach (var availableMove in availableMoves)
-        {
-            Tile tileAt = chessboardManager.GetTileAtPosition(availableMove);
-            tileAt.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0.78f);
-        }
-    }
-
-    private void GetBackToNormal()
-    {
-        GetComponentInParent<SpriteRenderer>().color = Color.white;
-    }
+    }    
 }

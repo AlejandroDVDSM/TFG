@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 339159196022809704}
   - component: {fileID: 4147064493992682835}
   - component: {fileID: 7764331152036975737}
-  - component: {fileID: 1166872702374742043}
+  - component: {fileID: 3199578220815522867}
   - component: {fileID: 2254208730508169896}
+  - component: {fileID: 1166872702374742043}
   m_Layer: 0
   m_Name: Bishop
   m_TagString: PlayerPiece
@@ -130,6 +131,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chessPieceUpgraded: {fileID: 8521189955470955296, guid: f458e91f0df3888419059d5e8d862577, type: 3}
+--- !u!114 &3199578220815522867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339159196022809705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1819611c5e47e89ce37a7c001b2762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsMoving: 0
+--- !u!114 &2254208730508169896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339159196022809705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7426e98fc12ede47bd6a484ff8d4f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &1166872702374742043
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -156,15 +182,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2254208730508169896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339159196022809705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7426e98fc12ede47bd6a484ff8d4f87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

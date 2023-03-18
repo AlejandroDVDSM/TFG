@@ -40,6 +40,16 @@ public class ChessPiece : MonoBehaviour
         connections = connections.Union(chessPiece.connections.Where(piece => piece != this)).ToList(); // Union() excludes duplicated elements.
     }
 
+    public void RemoveConnections()
+    {
+        foreach (var connection in connections)
+        {
+            connection.connections.Remove(this);
+        }
+        
+        connections.Clear();
+    }
+
     private bool SameTypes(Type chessPieceType)
     {
         return type == chessPieceType;

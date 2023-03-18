@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TouchController : MonoBehaviour
 {
     private Touch _touch;
     
-    [SerializeField] private ChessPieceSpawner _spawer;
+    [SerializeField] private ChessPieceSpawner _spawner;
+
+    private GameObject _selectedChessPiece;
     
     private void Update()
     {
-        if (!GameStateManager.instance.IsPlayerTurn()) return; // Cambiar a --> IsPlayerTurn() <--
+        if (!GameStateManager.instance.IsPlayerTurn()) return;
         
         if (Input.touchCount > 0)
         {
@@ -30,22 +33,38 @@ public class TouchController : MonoBehaviour
         switch (GetHitColliderTag(hitCollider))
         {
             case "Tile":
+                if (_selectedChessPiece != null && _selectedChessPiece.GetComponent<ChessPieceMovement>().IsMoving)
+                {
+                    Debug.Log("Player is moving a piece...");
+                    return;
+                }
+                
                 Tile tileWhereToSpawn = hitCollider.gameObject.GetComponent<Tile>();
-                _spawer.SpawnChessPiece(tileWhereToSpawn);                
+                _spawner.SpawnChessPiece(tileWhereToSpawn);                
                 break;
             case "PlayerPiece":
-                hitCollider.gameObject.GetComponent<IMovement>().GetAllAvailableMoves();
+                if (_selectedChessPiece != null && _selectedChessPiece.GetComponent<ChessPieceMovement>().IsMoving)
+                {
+                    Debug.Log("Player is already moving one piece...");
+                    return;
+                }
+                
+                _selectedChessPiece = hitCollider.gameObject;
+                _selectedChessPiece.GetComponent<ChessPieceMovement>().IsMoving = true;
+                _selectedChessPiece.GetComponent<IMovement>().GetAllAvailableMoves();
+                break;
+            case "TileToMove":
+                Tile targetTile = hitCollider.gameObject.GetComponent<Tile>();
+                _selectedChessPiece.GetComponent<ChessPieceMovement>().Move(targetTile);
                 break;
             default:
                 Debug.Log("Type mismatch");
                 break;
         }
-
     }
     
     private string GetHitColliderTag(Collider2D hitCollider)
     {
         return hitCollider.tag;
     }
-
 }

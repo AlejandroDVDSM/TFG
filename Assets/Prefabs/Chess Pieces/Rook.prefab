@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 6035542843560367902}
   - component: {fileID: 7997043217109325349}
   - component: {fileID: 4374705302281905935}
-  - component: {fileID: 5638519949383651189}
+  - component: {fileID: -7916035343360682056}
   - component: {fileID: 7628799830814111882}
+  - component: {fileID: 5638519949383651189}
   m_Layer: 0
   m_Name: Rook
   m_TagString: PlayerPiece
@@ -130,6 +131,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chessPieceUpgraded: {fileID: 2907872820868137885, guid: 3e643f34b08a3ed4dbb5bf2904c0dbaf, type: 3}
+--- !u!114 &-7916035343360682056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035542843560367903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1819611c5e47e89ce37a7c001b2762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsMoving: 0
+--- !u!114 &7628799830814111882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035542843560367903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb460c4e2d8ed6d44916545553e6a71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5638519949383651189
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -156,15 +182,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7628799830814111882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6035542843560367903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb460c4e2d8ed6d44916545553e6a71a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
