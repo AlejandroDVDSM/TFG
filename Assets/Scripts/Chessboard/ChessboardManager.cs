@@ -8,7 +8,7 @@ public class ChessboardManager : MonoBehaviour
 {
     [SerializeField] private Tile _tilePrefab;
     
-    private Dictionary<Vector2, Tile> _tiles;
+    private Dictionary<Vector2Int, Tile> _tiles;
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class ChessboardManager : MonoBehaviour
 
     void GenerateChessboard()
     {
-        _tiles = new Dictionary<Vector2, Tile>();
+        _tiles = new Dictionary<Vector2Int, Tile>();
         
         int constraintCount = GetComponent<GridLayoutGroup>().constraintCount;
         
@@ -26,12 +26,12 @@ public class ChessboardManager : MonoBehaviour
             for (int column = 0; column < constraintCount; column++)
             {
                 var spawnedTile = Instantiate(_tilePrefab, new Vector3(row, column), Quaternion.identity, transform);
-                spawnedTile.name = $"Tile {row} {column}";
+                spawnedTile.name = $"Tile - R:{row} C:{column}";
 
                 bool isOffset = (row % 2 == 0 && column % 2 != 0) || (row % 2 != 0 && column % 2 == 0);
                 spawnedTile.GetComponent<TileAppearance>().SetSprite(isOffset);
 
-                Vector2 coordinates = new Vector2(row, column);
+                Vector2Int coordinates = new Vector2Int(row, column);
                 spawnedTile.Coordinates = coordinates;
 
                 _tiles.Add(coordinates, spawnedTile);
@@ -39,7 +39,7 @@ public class ChessboardManager : MonoBehaviour
         }
     }
 
-    public Tile GetTileAtPosition(Vector2 coordinates)
+    public Tile GetTileAtPosition(Vector2Int coordinates)
     {
         return _tiles.TryGetValue(coordinates, out var tile) ? tile : null;
     }

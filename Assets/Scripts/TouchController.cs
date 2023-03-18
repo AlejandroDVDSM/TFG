@@ -34,7 +34,7 @@ public class TouchController : MonoBehaviour
                 _spawer.SpawnChessPiece(tileWhereToSpawn);                
                 break;
             case "PlayerPiece":
-                Debug.Log("PlayerPiece");
+                hitCollider.gameObject.GetComponent<IMovement>().GetAllAvailableMoves();
                 break;
             default:
                 Debug.Log("Type mismatch");

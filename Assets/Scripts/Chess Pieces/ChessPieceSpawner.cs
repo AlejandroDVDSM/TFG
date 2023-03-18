@@ -8,6 +8,8 @@ public class ChessPieceSpawner : MonoBehaviour
 
     private ChessPieceGenerator _chessPieceGenerator;
 
+    [SerializeField] private bool ignoreEnemySpawn = false; // FLAG
+
     private void Start()
     {
         _chessPieceGenerator = GetComponent<ChessPieceGenerator>();
@@ -35,6 +37,13 @@ public class ChessPieceSpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
+        if (ignoreEnemySpawn) // TEST PURPOSES
+        {
+            Debug.Log("Flag <ignoreEnemySpawn> is TRUE...");
+            GameStateManager.instance.gameState = GameState.PlayerTurn;
+            return;
+        }
+        
         Tile[] freeTiles = FindObjectsOfType<Tile>().Where(tile => tile.IsFree).ToArray();
         
         int randomIndex = new Random().Next(0, freeTiles.Length); // First parameter: included --- Second parameter: excluded
@@ -42,8 +51,7 @@ public class ChessPieceSpawner : MonoBehaviour
 
         Instantiate(_chessPieceGenerator.GetRandomEnemy(), randomTile.transform);
         randomTile.IsFree = false;
-
+        
         GameStateManager.instance.gameState = GameState.PlayerTurn;
-
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4147064493992682835}
   - component: {fileID: 7764331152036975737}
   - component: {fileID: 1166872702374742043}
+  - component: {fileID: 2254208730508169896}
   m_Layer: 0
   m_Name: Bishop
   m_TagString: PlayerPiece
@@ -155,3 +156,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2254208730508169896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339159196022809705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7426e98fc12ede47bd6a484ff8d4f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
