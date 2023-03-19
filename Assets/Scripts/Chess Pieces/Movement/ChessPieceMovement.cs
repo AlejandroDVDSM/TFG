@@ -32,10 +32,8 @@ public class ChessPieceMovement: MonoBehaviour
         GameStateManager.instance.UpdateGameState(GameState.EnemyTurn);
     }
     
-    public void HighlightAvailableTiles(List<Vector2Int> availableMoves)
+    private void HighlightAvailableTiles()
     {
-        this.availableMoves = availableMoves;
-        
         foreach (var availableMove in availableMoves)
         {
             Tile tileAt = _chessboardManager.GetTileAtPosition(availableMove);
@@ -54,5 +52,10 @@ public class ChessPieceMovement: MonoBehaviour
 
         }
     }
-    
+
+    public void SetAllAvailableMoves()
+    {
+        availableMoves = GetComponent<IMovement>().GetAllAvailableMoves();
+        HighlightAvailableTiles();
+    }
 }

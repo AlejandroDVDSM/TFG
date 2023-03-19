@@ -55,11 +55,11 @@ public class Tile : MonoBehaviour
         
         if (!tileAboveMe.IsFree)
         {
-            Debug.Log("ABOVE: true");
+            // Debug.Log("ABOVE: true");
             return true;
         }
 
-        Debug.Log("ABOVE: false");
+        // Debug.Log("ABOVE: false");
         return false;
     }
     
@@ -79,11 +79,11 @@ public class Tile : MonoBehaviour
         Tile tileBelowMe = GetTileBelowMe();
         if (!tileBelowMe.IsFree)
         {
-            Debug.Log("BELOW: true");
+            // Debug.Log("BELOW: true");
             return true;
         }
 
-        Debug.Log("BELOW: false");
+        // Debug.Log("BELOW: false");
         return false;
     }
 
@@ -103,11 +103,11 @@ public class Tile : MonoBehaviour
         Tile tileAtMyLeft = GetTileAtMyLeft();
         if (!tileAtMyLeft.IsFree)
         {
-            Debug.Log("LEFT: true");
+            // Debug.Log("LEFT: true");
             return true;
         }
     
-        Debug.Log("LEFT: false");
+        // Debug.Log("LEFT: false");
         return false;
     }
 
@@ -128,11 +128,11 @@ public class Tile : MonoBehaviour
         Tile tileAtMyRight = GetTileAtMyRight();
         if (!tileAtMyRight.IsFree)
         {
-            Debug.Log("RIGHT: true");
+            // Debug.Log("RIGHT: true");
             return true;
         }
     
-        Debug.Log("RIGHT: false");
+        // Debug.Log("RIGHT: false");
         return false;
     }
 

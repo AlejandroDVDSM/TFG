@@ -969,6 +969,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447e01acab365bb418db2757ef282ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nextChessPieceType: {fileID: 432484934}
+  _nextChessPieceImage: {fileID: 222044469}
   _chessPieces:
   - {fileID: 2002372659035174584, guid: 82907fbef3f78b843b78b483935581b4, type: 3}
   - {fileID: 339159196022809705, guid: b25e7ef4a4697a249b244f42b1223059, type: 3}
@@ -976,8 +978,6 @@ MonoBehaviour:
   - {fileID: 6035542843560367903, guid: d740d61d3e1f9c74da469c5b46613785, type: 3}
   - {fileID: 2907872820868137885, guid: 3e643f34b08a3ed4dbb5bf2904c0dbaf, type: 3}
   - {fileID: 963699816148645439, guid: 1e6e74ac712cda446a5eaa3eb271b7ef, type: 3}
-  _nextChessPieceType: {fileID: 432484934}
-  _nextChessPieceImage: {fileID: 222044469}
   _enemyPieces:
   - {fileID: 1195334709842036198, guid: 7faf1f050d52c4541b3f0d5582ce3a7f, type: 3}
   - {fileID: 7648248836935225991, guid: 3c05c2a4bc5f4d2429790787c9cf72a9, type: 3}
@@ -987,3 +987,13 @@ MonoBehaviour:
   - {fileID: 2272231029355101359, guid: 5985c9bafc0cf1947895a2e97de56c89, type: 3}
   _onlyGeneratePlayerPawn: 0
   _onlyGenerateEnemyPawn: 0
+  _onlyGeneratePlayerBishop: 0
+  _onlyGenerateEnemyBishop: 0
+  _onlyGeneratePlayerKnight: 0
+  _onlyGenerateEnemyKnight: 0
+  _onlyGeneratePlayerRook: 1
+  _onlyGenerateEnemyRook: 0
+  _onlyGeneratePlayerQueen: 0
+  _onlyGenerateEnemyQueen: 0
+  _onlyGeneratePlayerKing: 0
+  _onlyGenerateEnemyKing: 0

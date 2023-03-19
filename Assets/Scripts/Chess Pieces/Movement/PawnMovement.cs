@@ -22,6 +22,7 @@ public class PawnMovement : MonoBehaviour, IMovement
         Vector2Int coordinatesDiagonalRight = new Vector2Int(myTile.Coordinates.x - 1, myTile.Coordinates.y + 1);
         if (myTile.IsThereAPieceAt(coordinatesDiagonalRight)) {
             // If is an enemy piece
+            Debug.Log("PIECE TAG: " + chessboardManager.GetTileAtPosition(coordinatesDiagonalRight).GetComponentInChildren<Transform>().tag);
             if (chessboardManager.GetTileAtPosition(coordinatesDiagonalRight).GetComponentInChildren<Transform>().CompareTag("EnemyPiece"))
                 availableMoves.Add(coordinatesDiagonalRight);
         }
@@ -30,11 +31,11 @@ public class PawnMovement : MonoBehaviour, IMovement
         Vector2Int coordinatesDiagonalLeft = new Vector2Int(myTile.Coordinates.x - 1, myTile.Coordinates.y - 1);
         if (myTile.IsThereAPieceAt(coordinatesDiagonalLeft)) {
             // If is an enemy piece
+            Debug.Log("PIECE TAG: " + chessboardManager.GetTileAtPosition(coordinatesDiagonalRight).GetComponentInChildren<Transform>().tag);
             if (chessboardManager.GetTileAtPosition(coordinatesDiagonalLeft).GetComponentInChildren<Transform>().CompareTag("EnemyPiece"))
                 availableMoves.Add(coordinatesDiagonalLeft);
         }
 
-        GetComponent<ChessPieceMovement>().HighlightAvailableTiles(availableMoves);
         return availableMoves;
     }    
 }

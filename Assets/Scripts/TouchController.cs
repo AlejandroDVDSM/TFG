@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TouchController : MonoBehaviour
 {
@@ -42,6 +41,7 @@ public class TouchController : MonoBehaviour
                 Tile tileWhereToSpawn = hitCollider.gameObject.GetComponent<Tile>();
                 _spawner.SpawnChessPiece(tileWhereToSpawn);                
                 break;
+            
             case "PlayerPiece":
                 if (_selectedChessPiece != null && _selectedChessPiece.GetComponent<ChessPieceMovement>().IsMoving)
                 {
@@ -50,13 +50,17 @@ public class TouchController : MonoBehaviour
                 }
                 
                 _selectedChessPiece = hitCollider.gameObject;
-                _selectedChessPiece.GetComponent<ChessPieceMovement>().IsMoving = true;
-                _selectedChessPiece.GetComponent<IMovement>().GetAllAvailableMoves();
+                ChessPieceMovement chessPieceMovement = _selectedChessPiece.GetComponent<ChessPieceMovement>(); 
+                chessPieceMovement.IsMoving = true;
+                chessPieceMovement.SetAllAvailableMoves();
                 break;
+            
             case "TileToMove":
                 Tile targetTile = hitCollider.gameObject.GetComponent<Tile>();
                 _selectedChessPiece.GetComponent<ChessPieceMovement>().Move(targetTile);
+                _selectedChessPiece = null;
                 break;
+            
             default:
                 Debug.Log("Type mismatch");
                 break;
