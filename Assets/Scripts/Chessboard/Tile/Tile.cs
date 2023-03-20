@@ -148,11 +148,8 @@ public class Tile : MonoBehaviour
     public bool IsThereAPieceAt(Vector2Int coordinates)
     {
         Tile tileAt = _chessboardManager.GetTileAtPosition(coordinates);
-        if (tileAt == null) return false;
         if (!tileAt.IsFree) return true;
         
         return false;
     }
-    
-    
 }

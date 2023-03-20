@@ -19,6 +19,7 @@ public class ChessPieceMovement: MonoBehaviour
     {
         GetComponent<ChessPiece>().RemoveConnections();
         GetComponentInParent<Tile>().IsFree = true; // Old parent
+        // Need to kill children if it has a piece in it
         
         transform.SetParent(targetTile.transform);
         transform.localPosition = _defaultLocalPosition;
@@ -36,6 +37,7 @@ public class ChessPieceMovement: MonoBehaviour
     {
         foreach (var availableMove in availableMoves)
         {
+            Debug.Log("ROW: " + availableMove.x + "COLUMN: " + availableMove.y);
             Tile tileAt = _chessboardManager.GetTileAtPosition(availableMove);
             tileAt.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0.78f);
             tileAt.tag = "TileToMove";

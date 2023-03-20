@@ -4,38 +4,68 @@ using UnityEngine;
 
 public class PawnMovement : MonoBehaviour, IMovement
 {
+    private ChessboardManager _chessboardManager;
+    private Tile _myTile;
+    private int _currentRow, _currentColumn;
+    
+    private void Start()
+    {
+        _chessboardManager = FindObjectOfType<ChessboardManager>();
+    }
+
     public List<Vector2Int> GetAllAvailableMoves()
     {
         List<Vector2Int> availableMoves = new List<Vector2Int>();
 
-        Tile myTile = GetComponentInParent<Tile>();    
+        _myTile = GetComponentInParent<Tile>();
+        _currentRow = _myTile.Coordinates.x;
+        _currentColumn = _myTile.Coordinates.y;
         
-        // One in front
-        if (!myTile.IsThereAPieceAboveMe())
+        availableMoves = CheckOneInFront(availableMoves);
+        availableMoves = CheckDiagonalRight(availableMoves);
+        availableMoves = CheckDiagonalLeft(availableMoves);
+        
+        return availableMoves;
+    }
+
+    private List<Vector2Int> CheckOneInFront(List<Vector2Int> availableMoves)
+    {
+        if (_currentRow == 0) return availableMoves;
+        
+        if (!_myTile.IsThereAPieceAboveMe())
         {
-            Vector2Int coordinatesAbove = new Vector2Int(myTile.Coordinates.x - 1, myTile.Coordinates.y); 
+            Vector2Int coordinatesAbove = new Vector2Int(_currentRow - 1, _currentColumn); 
             availableMoves.Add(coordinatesAbove);
         }
         
-        // Diagonal Right - Kill
-        ChessboardManager chessboardManager = FindObjectOfType<ChessboardManager>();
-        Vector2Int coordinatesDiagonalRight = new Vector2Int(myTile.Coordinates.x - 1, myTile.Coordinates.y + 1);
-        if (myTile.IsThereAPieceAt(coordinatesDiagonalRight)) {
+        return availableMoves;
+    }
+
+    private List<Vector2Int> CheckDiagonalRight(List<Vector2Int> availableMoves)
+    {
+        if (_currentRow == 0 || _currentColumn == 5) return availableMoves;
+        
+        Vector2Int coordinatesDiagonalRight = new Vector2Int(_currentRow - 1, _currentColumn + 1);
+        if (_myTile.IsThereAPieceAt(coordinatesDiagonalRight)) {
             // If is an enemy piece
-            Debug.Log("PIECE TAG: " + chessboardManager.GetTileAtPosition(coordinatesDiagonalRight).GetComponentInChildren<Transform>().tag);
-            if (chessboardManager.GetTileAtPosition(coordinatesDiagonalRight).GetComponentInChildren<Transform>().CompareTag("EnemyPiece"))
+            if (!_chessboardManager.GetTileAtPosition(coordinatesDiagonalRight).TryGetComponent(out ChessPiece _))
                 availableMoves.Add(coordinatesDiagonalRight);
         }
+        
+        return availableMoves;
+    }
 
-        // Diagonal Left - Kill
-        Vector2Int coordinatesDiagonalLeft = new Vector2Int(myTile.Coordinates.x - 1, myTile.Coordinates.y - 1);
-        if (myTile.IsThereAPieceAt(coordinatesDiagonalLeft)) {
+    private List<Vector2Int> CheckDiagonalLeft(List<Vector2Int> availableMoves)
+    {
+        if (_currentRow == 0 || _currentColumn == 0) return availableMoves;
+
+        Vector2Int coordinatesDiagonalLeft = new Vector2Int(_currentRow - 1, _currentColumn - 1);
+        if (_myTile.IsThereAPieceAt(coordinatesDiagonalLeft)) {
             // If is an enemy piece
-            Debug.Log("PIECE TAG: " + chessboardManager.GetTileAtPosition(coordinatesDiagonalRight).GetComponentInChildren<Transform>().tag);
-            if (chessboardManager.GetTileAtPosition(coordinatesDiagonalLeft).GetComponentInChildren<Transform>().CompareTag("EnemyPiece"))
+            if (!_chessboardManager.GetTileAtPosition(coordinatesDiagonalLeft).TryGetComponent(out ChessPiece _))
                 availableMoves.Add(coordinatesDiagonalLeft);
         }
 
         return availableMoves;
-    }    
+    }
 }

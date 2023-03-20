@@ -41,8 +41,7 @@ public class RookMovement : MonoBehaviour, IMovement
             if (!_myTile.IsThereAPieceAt(coordinates))
             {
                 availableMoves.Add(coordinates);
-            } else if (_chessboardManager.GetTileAtPosition(coordinates).
-                       GetComponentInChildren<Transform>().CompareTag("EnemyPiece")) // If is an enemy piece
+            } else if (_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) // If is an enemy piece
             {
                 availableMoves.Add(coordinates);
                 break;
@@ -64,8 +63,7 @@ public class RookMovement : MonoBehaviour, IMovement
             {
                 availableMoves.Add(coordinates);
             }
-            else if (_chessboardManager.GetTileAtPosition(coordinates)
-                     .GetComponentInChildren<Transform>().CompareTag("EnemyPiece")) // If is an enemy piece
+            else if (_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) // If is an enemy piece
             {
                 availableMoves.Add(coordinates);
                 break;
@@ -85,8 +83,7 @@ public class RookMovement : MonoBehaviour, IMovement
             if (!_myTile.IsThereAPieceAt(coordinates))
             {
                 availableMoves.Add(coordinates);
-            } else if (_chessboardManager.GetTileAtPosition(coordinates).
-                       GetComponentInChildren<Transform>().CompareTag("EnemyPiece")) // If is an enemy piece
+            } else if (_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) // If is an enemy piece
             {
                 availableMoves.Add(coordinates);
                 break;
@@ -106,8 +103,7 @@ public class RookMovement : MonoBehaviour, IMovement
             if (!_myTile.IsThereAPieceAt(coordinates))
             {
                 availableMoves.Add(coordinates);
-            } else if (_chessboardManager.GetTileAtPosition(coordinates).
-                       GetComponentInChildren<Transform>().CompareTag("EnemyPiece")) // If is an enemy piece
+            } else if (_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) // If is an enemy piece
             {
                 availableMoves.Add(coordinates);
                 break;

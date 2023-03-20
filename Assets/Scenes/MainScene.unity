@@ -989,9 +989,9 @@ MonoBehaviour:
   _onlyGenerateEnemyPawn: 0
   _onlyGeneratePlayerBishop: 0
   _onlyGenerateEnemyBishop: 0
-  _onlyGeneratePlayerKnight: 0
+  _onlyGeneratePlayerKnight: 1
   _onlyGenerateEnemyKnight: 0
-  _onlyGeneratePlayerRook: 1
+  _onlyGeneratePlayerRook: 0
   _onlyGenerateEnemyRook: 0
   _onlyGeneratePlayerQueen: 0
   _onlyGenerateEnemyQueen: 0
