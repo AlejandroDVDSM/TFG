@@ -5,7 +5,6 @@ using Random = System.Random;
 
 public class ChessPieceGenerator : MonoBehaviour
 {
-    
     [Header("Player's pieces")]
     [SerializeField] private TMP_Text _nextChessPieceType;
     [SerializeField] private Image _nextChessPieceImage;
@@ -14,26 +13,22 @@ public class ChessPieceGenerator : MonoBehaviour
     [Header("Enemy's pieces")] 
     [SerializeField] private GameObject[] _enemyPieces;
     
-    [Header("Flags")]
+    [Header("Player flags")]
     [SerializeField] private bool _onlyGeneratePlayerPawn = false;
-    [SerializeField] private bool _onlyGenerateEnemyPawn = false;
-    
     [SerializeField] private bool _onlyGeneratePlayerBishop = false;
-    [SerializeField] private bool _onlyGenerateEnemyBishop = false;
-    
     [SerializeField] private bool _onlyGeneratePlayerKnight = false;
-    [SerializeField] private bool _onlyGenerateEnemyKnight = false;
-    
     [SerializeField] private bool _onlyGeneratePlayerRook = false;
-    [SerializeField] private bool _onlyGenerateEnemyRook = false;
-    
     [SerializeField] private bool _onlyGeneratePlayerQueen = false;
-    [SerializeField] private bool _onlyGenerateEnemyQueen = false;
-    
     [SerializeField] private bool _onlyGeneratePlayerKing = false;
+    
+    [Header("Enemy flags")]
+    [SerializeField] private bool _onlyGenerateEnemyPawn = false;
+    [SerializeField] private bool _onlyGenerateEnemyBishop = false;
+    [SerializeField] private bool _onlyGenerateEnemyKnight = false;
+    [SerializeField] private bool _onlyGenerateEnemyRook = false;
+    [SerializeField] private bool _onlyGenerateEnemyQueen = false;
     [SerializeField] private bool _onlyGenerateEnemyKing = false;
     
-
     public GameObject GenerateNextChessPiece()
     {
         int randomIndex;
