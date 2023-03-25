@@ -51,7 +51,6 @@ public class TouchController : MonoBehaviour
                 {
                     if (_touch.tapCount == 2)
                     {
-                        Debug.Log("NORMAL");
                         _selectedChessPiece.GetBackToNormal();
                         _selectedChessPiece.IsMoving = false;
                         break;
@@ -65,7 +64,7 @@ public class TouchController : MonoBehaviour
             
             case "TileToMove":
                 Tile targetTile = hitCollider.gameObject.GetComponent<Tile>();
-                _selectedChessPiece.Move(targetTile, false);
+                _selectedChessPiece.Move(targetTile);
                 _selectedChessPiece = null;
                 break;
             
@@ -73,7 +72,7 @@ public class TouchController : MonoBehaviour
                 if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
                 {
                     Tile targetTileWithEnemyPiece = hitCollider.transform.GetComponentInParent<Tile>();
-                    _selectedChessPiece.Move(targetTileWithEnemyPiece, true);
+                    _selectedChessPiece.MoveAndEat(targetTileWithEnemyPiece);
                     _selectedChessPiece = null;
                 }
                 break;

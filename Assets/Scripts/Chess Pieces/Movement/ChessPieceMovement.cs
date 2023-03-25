@@ -24,14 +24,11 @@ public class ChessPieceMovement: MonoBehaviour
             IsMoving = false;
     }
     
-    public void Move(Tile targetTile, bool isEating)
+    public void Move(Tile targetTile)
     {
         GetComponent<ChessPiece>().RemoveConnections();
         GetComponentInParent<Tile>().IsFree = true; // Old parent
 
-        // If there is an enemy piece
-        if (isEating) Destroy(targetTile.transform.GetChild(0).gameObject);
-        
         transform.SetParent(targetTile.transform);
         transform.localPosition = new Vector2(.05f, .3f);;
         GetComponentInParent<Tile>().IsFree = false; // New parent
@@ -42,6 +39,12 @@ public class ChessPieceMovement: MonoBehaviour
         GetBackToNormal();
         availableMoves.Clear();
         GameStateManager.instance.UpdateGameState(GameState.EnemyTurn);
+    }
+
+    public void MoveAndEat(Tile targetTile)
+    {
+        Destroy(targetTile.transform.GetChild(0).gameObject);
+        Move(targetTile);
     }
     
     private void HighlightAvailableTiles()
