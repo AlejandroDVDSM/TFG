@@ -45,11 +45,12 @@ public class PawnMovement : MonoBehaviour, IMovement
     {
         if (_currentRow == 0 || _currentColumn == 5) return availableMoves;
         
-        Vector2Int coordinatesDiagonalRight = new Vector2Int(_currentRow - 1, _currentColumn + 1);
-        if (_myTile.IsThereAPieceAt(coordinatesDiagonalRight)) {
+        Vector2Int coordinates = new Vector2Int(_currentRow - 1, _currentColumn + 1);
+        if (_myTile.IsThereAPieceAt(coordinates))
+        {
             // If is an enemy piece
-            if (!_chessboardManager.GetTileAtPosition(coordinatesDiagonalRight).TryGetComponent(out ChessPiece _))
-                availableMoves.Add(coordinatesDiagonalRight);
+            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece"))
+                availableMoves.Add(coordinates);
         }
         
         return availableMoves;
@@ -59,11 +60,11 @@ public class PawnMovement : MonoBehaviour, IMovement
     {
         if (_currentRow == 0 || _currentColumn == 0) return availableMoves;
 
-        Vector2Int coordinatesDiagonalLeft = new Vector2Int(_currentRow - 1, _currentColumn - 1);
-        if (_myTile.IsThereAPieceAt(coordinatesDiagonalLeft)) {
+        Vector2Int coordinates = new Vector2Int(_currentRow - 1, _currentColumn - 1);
+        if (_myTile.IsThereAPieceAt(coordinates)) {
             // If is an enemy piece
-            if (!_chessboardManager.GetTileAtPosition(coordinatesDiagonalLeft).TryGetComponent(out ChessPiece _))
-                availableMoves.Add(coordinatesDiagonalLeft);
+            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece"))
+                availableMoves.Add(coordinates);
         }
 
         return availableMoves;

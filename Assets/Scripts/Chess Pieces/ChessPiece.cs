@@ -31,7 +31,7 @@ public class ChessPiece : MonoBehaviour
             piece.AddConnections(this);
         }
         
-        /*if (connections.Count >= 2) */onChessPieceConnected.Invoke();
+        onChessPieceConnected.Invoke();
     }
 
     private void AddConnections(ChessPiece chessPiece)

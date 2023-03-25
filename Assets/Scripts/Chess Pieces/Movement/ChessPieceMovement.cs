@@ -8,21 +8,32 @@ public class ChessPieceMovement: MonoBehaviour
     private ChessboardManager _chessboardManager;
     
     public bool IsMoving = false;
-    private Vector2 _defaultLocalPosition = new Vector2(.05f, .3f); // Position relative to the parent
 
     private void Start()
     {
         _chessboardManager = FindObjectOfType<ChessboardManager>();
     }
 
-    public void Move(Tile targetTile)
+    public void SetAllAvailableMoves()
+    {
+        availableMoves = GetComponent<IMovement>().GetAllAvailableMoves();
+
+        if (availableMoves.Count > 0)
+            HighlightAvailableTiles();
+        else
+            IsMoving = false;
+    }
+    
+    public void Move(Tile targetTile, bool isEating)
     {
         GetComponent<ChessPiece>().RemoveConnections();
         GetComponentInParent<Tile>().IsFree = true; // Old parent
-        // Need to kill children if it has a piece in it
+
+        // If there is an enemy piece
+        if (isEating) Destroy(targetTile.transform.GetChild(0).gameObject);
         
         transform.SetParent(targetTile.transform);
-        transform.localPosition = _defaultLocalPosition;
+        transform.localPosition = new Vector2(.05f, .3f);;
         GetComponentInParent<Tile>().IsFree = false; // New parent
         
         targetTile.CheckNearbyTiles(); // Check if this chess piece can make new connections after moving it
@@ -37,27 +48,19 @@ public class ChessPieceMovement: MonoBehaviour
     {
         foreach (var availableMove in availableMoves)
         {
-            Debug.Log("ROW: " + availableMove.x + "COLUMN: " + availableMove.y);
             Tile tileAt = _chessboardManager.GetTileAtPosition(availableMove);
             tileAt.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0.78f);
             tileAt.tag = "TileToMove";
         }
     }
 
-    private void GetBackToNormal()
+    public void GetBackToNormal()
     {
         foreach (var availableMove in availableMoves)
         {
             Tile tileAt = _chessboardManager.GetTileAtPosition(availableMove);
             tileAt.GetComponent<SpriteRenderer>().color = Color.white;
             tileAt.tag = "Tile";
-
         }
-    }
-
-    public void SetAllAvailableMoves()
-    {
-        availableMoves = GetComponent<IMovement>().GetAllAvailableMoves();
-        HighlightAvailableTiles();
     }
 }

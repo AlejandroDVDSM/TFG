@@ -46,7 +46,7 @@ public class KnightMovement : MonoBehaviour, IMovement
         {
             availableMoves.Add(coordinates);
         } else {
-            if (!_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) {
+            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
                 availableMoves.Add(coordinates);
             }
         }
@@ -64,7 +64,7 @@ public class KnightMovement : MonoBehaviour, IMovement
         {
             availableMoves.Add(coordinates);
         } else {
-            if (!_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) {
+            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
                 availableMoves.Add(coordinates);
             }
         }
@@ -81,7 +81,7 @@ public class KnightMovement : MonoBehaviour, IMovement
         if (!_myTile.IsThereAPieceAt(coordinates)) {
             availableMoves.Add(coordinates);
         } else {
-            if (!_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) {
+            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
                 availableMoves.Add(coordinates);
             }
         }
@@ -98,7 +98,7 @@ public class KnightMovement : MonoBehaviour, IMovement
         if (!_myTile.IsThereAPieceAt(coordinates)) {
             availableMoves.Add(coordinates);
         } else {
-            if (!_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) {
+            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
                 availableMoves.Add(coordinates);
             }
         }
@@ -115,7 +115,7 @@ public class KnightMovement : MonoBehaviour, IMovement
         if (!_myTile.IsThereAPieceAt(coordinates)) {
             availableMoves.Add(coordinates);
         } else {
-            if (!_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) {
+            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
                 availableMoves.Add(coordinates);
             }
         }
@@ -132,7 +132,7 @@ public class KnightMovement : MonoBehaviour, IMovement
         if (!_myTile.IsThereAPieceAt(coordinates)) {
             availableMoves.Add(coordinates);
         } else {
-            if (!_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) {
+            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
                 availableMoves.Add(coordinates);
             }
         }
@@ -149,7 +149,7 @@ public class KnightMovement : MonoBehaviour, IMovement
         if (!_myTile.IsThereAPieceAt(coordinates)) {
             availableMoves.Add(coordinates);
         } else {
-            if (!_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) {
+            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
                 availableMoves.Add(coordinates);
             }
         }
@@ -167,7 +167,7 @@ public class KnightMovement : MonoBehaviour, IMovement
         if (!_myTile.IsThereAPieceAt(coordinates)) {
             availableMoves.Add(coordinates);
         } else {
-            if (!_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) {
+            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
                 availableMoves.Add(coordinates);
             }
         }

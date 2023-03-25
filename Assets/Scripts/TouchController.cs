@@ -6,7 +6,7 @@ public class TouchController : MonoBehaviour
     
     [SerializeField] private ChessPieceSpawner _spawner;
 
-    private GameObject _selectedChessPiece;
+    private ChessPieceMovement _selectedChessPiece;
     
     private void Update()
     {
@@ -21,7 +21,11 @@ public class TouchController : MonoBehaviour
             {
                 case TouchPhase.Began:
                     Collider2D hitCollider2D = Physics2D.OverlapPoint(touchPosition);
-                    OnPlayerTouch(hitCollider2D);
+                    
+                    if (hitCollider2D != null)
+                        OnPlayerTouch(hitCollider2D);
+                    else
+                        Debug.LogError("OnPlayerTouch - Hit collider: null");
                     break;
             }
         }
@@ -29,13 +33,13 @@ public class TouchController : MonoBehaviour
     
     private void OnPlayerTouch(Collider2D hitCollider)
     {
-        switch (GetHitColliderTag(hitCollider))
+        switch (hitCollider.tag)
         {
             case "Tile":
-                if (_selectedChessPiece != null && _selectedChessPiece.GetComponent<ChessPieceMovement>().IsMoving)
+                if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
                 {
                     Debug.Log("Player is moving a piece...");
-                    return;
+                    break;
                 }
                 
                 Tile tileWhereToSpawn = hitCollider.gameObject.GetComponent<Tile>();
@@ -43,32 +47,40 @@ public class TouchController : MonoBehaviour
                 break;
             
             case "PlayerPiece":
-                if (_selectedChessPiece != null && _selectedChessPiece.GetComponent<ChessPieceMovement>().IsMoving)
+                if (_selectedChessPiece != null && _selectedChessPiece.IsMoving && hitCollider.gameObject == _selectedChessPiece.gameObject)
                 {
-                    Debug.Log("Player is already moving one piece...");
-                    return;
+                    if (_touch.tapCount == 2)
+                    {
+                        Debug.Log("NORMAL");
+                        _selectedChessPiece.GetBackToNormal();
+                        _selectedChessPiece.IsMoving = false;
+                        break;
+                    }
                 }
                 
-                _selectedChessPiece = hitCollider.gameObject;
-                ChessPieceMovement chessPieceMovement = _selectedChessPiece.GetComponent<ChessPieceMovement>(); 
-                chessPieceMovement.IsMoving = true;
-                chessPieceMovement.SetAllAvailableMoves();
+                _selectedChessPiece = hitCollider.GetComponent<ChessPieceMovement>();
+                _selectedChessPiece.IsMoving = true;
+                _selectedChessPiece.SetAllAvailableMoves();
                 break;
             
             case "TileToMove":
                 Tile targetTile = hitCollider.gameObject.GetComponent<Tile>();
-                _selectedChessPiece.GetComponent<ChessPieceMovement>().Move(targetTile);
+                _selectedChessPiece.Move(targetTile, false);
                 _selectedChessPiece = null;
+                break;
+            
+            case "EnemyPiece":
+                if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
+                {
+                    Tile targetTileWithEnemyPiece = hitCollider.transform.GetComponentInParent<Tile>();
+                    _selectedChessPiece.Move(targetTileWithEnemyPiece, true);
+                    _selectedChessPiece = null;
+                }
                 break;
             
             default:
                 Debug.Log("Type mismatch");
                 break;
         }
-    }
-    
-    private string GetHitColliderTag(Collider2D hitCollider)
-    {
-        return hitCollider.tag;
     }
 }

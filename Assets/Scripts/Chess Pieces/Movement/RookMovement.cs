@@ -41,10 +41,19 @@ public class RookMovement : MonoBehaviour, IMovement
             if (!_myTile.IsThereAPieceAt(coordinates))
             {
                 availableMoves.Add(coordinates);
-            } else if (_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) // If is an enemy piece
+            }
+            else
             {
-                availableMoves.Add(coordinates);
-                break;
+                var piece = _chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0);
+                
+                if (piece.CompareTag("EnemyPiece"))
+                {
+                    availableMoves.Add(coordinates);
+                    break;
+                    
+                }
+
+                if (piece.CompareTag("PlayerPiece")) break;
             }
         }
 
@@ -63,10 +72,18 @@ public class RookMovement : MonoBehaviour, IMovement
             {
                 availableMoves.Add(coordinates);
             }
-            else if (_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) // If is an enemy piece
+            else
             {
-                availableMoves.Add(coordinates);
-                break;
+                var piece = _chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0);
+                
+                if (piece.CompareTag("EnemyPiece"))
+                {
+                    availableMoves.Add(coordinates);
+                    break;
+                    
+                }
+
+                if (piece.CompareTag("PlayerPiece")) break;
             }
         }
 
@@ -83,10 +100,19 @@ public class RookMovement : MonoBehaviour, IMovement
             if (!_myTile.IsThereAPieceAt(coordinates))
             {
                 availableMoves.Add(coordinates);
-            } else if (_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) // If is an enemy piece
+            }
+            else
             {
-                availableMoves.Add(coordinates);
-                break;
+                var piece = _chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0);
+                
+                if (piece.CompareTag("EnemyPiece"))
+                {
+                    availableMoves.Add(coordinates);
+                    break;
+                    
+                }
+
+                if (piece.CompareTag("PlayerPiece")) break;
             }
         }
     
@@ -103,10 +129,19 @@ public class RookMovement : MonoBehaviour, IMovement
             if (!_myTile.IsThereAPieceAt(coordinates))
             {
                 availableMoves.Add(coordinates);
-            } else if (_chessboardManager.GetTileAtPosition(coordinates).TryGetComponent(out ChessPiece _)) // If is an enemy piece
+            }
+            else
             {
-                availableMoves.Add(coordinates);
-                break;
+                var piece = _chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0);
+                
+                if (piece.CompareTag("EnemyPiece"))
+                {
+                    availableMoves.Add(coordinates);
+                    break;
+                    
+                }
+
+                if (piece.CompareTag("PlayerPiece")) break;
             }
         }
         
