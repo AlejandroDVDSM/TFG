@@ -6,6 +6,7 @@ public enum GameState
     Start,
     PlayerTurn,
     EnemyTurn,
+    Pause,
     Won,
     Lost
 }
@@ -46,6 +47,9 @@ public class GameStateManager : MonoBehaviour
                 // PENDING TO DO
                 break;
             case GameState.EnemyTurn:
+                // PENDING TO DO
+                break;
+            case GameState.Pause:
                 // PENDING TO DO
                 break;
             case GameState.Won:
