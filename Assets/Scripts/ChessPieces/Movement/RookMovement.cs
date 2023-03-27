@@ -22,35 +22,48 @@ public class RookMovement : MonoBehaviour, IMovement
         _currentRow = _myTile.Coordinates.x;
         _currentColumn = _myTile.Coordinates.y;
 
-        // Check above
+        CheckAbove(availableMoves);
+        CheckRight(availableMoves);
+        CheckBelow(availableMoves);
+        CheckLeft(availableMoves);
+        
+        return availableMoves;
+    }
+
+    private void CheckAbove(List<Vector2Int> availableMoves)
+    {
         for (int row = _currentRow - 1; row >= 0; row--)
         {
             Vector2Int move = new Vector2Int(row, _currentColumn);
             if (AddMovesUntilBlocked(move, availableMoves)) break;
         }
-        
-        // Check right
+    }
+    
+    private void CheckRight(List<Vector2Int> availableMoves)
+    {
         for (int column = _currentColumn + 1; column <= 5; column++)
         {
             Vector2Int move = new Vector2Int(_currentRow, column);
             if (AddMovesUntilBlocked(move, availableMoves)) break;
         }
-        
-        // Check below
+    }
+    
+    private void CheckBelow(List<Vector2Int> availableMoves)
+    {
         for (int row = _currentRow + 1; row <= 5; row++)
         {
             Vector2Int move = new Vector2Int(row, _currentColumn);
             if (AddMovesUntilBlocked(move, availableMoves)) break;
         }
-        
-        // Check left
+    }
+    
+    private void CheckLeft(List<Vector2Int> availableMoves)
+    {
         for (int column = _currentColumn - 1; column >= 0; column--)
         {
             Vector2Int move = new Vector2Int(_currentRow, column);
             if (AddMovesUntilBlocked(move, availableMoves)) break;
         }
-        
-        return availableMoves;
     }
     
     // Returns true if its path is blocked by a piece.
