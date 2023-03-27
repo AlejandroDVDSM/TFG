@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PawnMovement : MonoBehaviour, IMovement
@@ -21,52 +20,53 @@ public class PawnMovement : MonoBehaviour, IMovement
         _currentRow = _myTile.Coordinates.x;
         _currentColumn = _myTile.Coordinates.y;
         
-        availableMoves = CheckOneInFront(availableMoves);
-        availableMoves = CheckDiagonalRight(availableMoves);
-        availableMoves = CheckDiagonalLeft(availableMoves);
+        CheckOneInFront(availableMoves);
+        CheckTopRight(availableMoves);
+        CheckTopLeft(availableMoves);
         
         return availableMoves;
     }
 
-    private List<Vector2Int> CheckOneInFront(List<Vector2Int> availableMoves)
+    private void CheckOneInFront(List<Vector2Int> availableMoves)
     {
-        if (_currentRow == 0) return availableMoves;
+        if (_currentRow == 0) return;
         
         if (!_myTile.IsThereAPieceAboveMe())
         {
             Vector2Int coordinates = new Vector2Int(_currentRow - 1, _currentColumn); 
             availableMoves.Add(coordinates);
         }
-        
-        return availableMoves;
     }
-
-    private List<Vector2Int> CheckDiagonalRight(List<Vector2Int> availableMoves)
+    
+    private void CheckTopRight(List<Vector2Int> availableMoves)
     {
-        if (_currentRow == 0 || _currentColumn == 5) return availableMoves;
+        if (_currentRow == 0 || _currentColumn == 5) return;
         
         Vector2Int coordinates = new Vector2Int(_currentRow - 1, _currentColumn + 1);
-        if (_myTile.IsThereAPieceAt(coordinates))
-        {
-            // If is an enemy piece
-            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece"))
-                availableMoves.Add(coordinates);
-        }
-        
-        return availableMoves;
+        AddMovesUntilBlocked(coordinates, availableMoves);
     }
 
-    private List<Vector2Int> CheckDiagonalLeft(List<Vector2Int> availableMoves)
+    private void CheckTopLeft(List<Vector2Int> availableMoves)
     {
-        if (_currentRow == 0 || _currentColumn == 0) return availableMoves;
+        if (_currentRow == 0 || _currentColumn == 0) return;
 
         Vector2Int coordinates = new Vector2Int(_currentRow - 1, _currentColumn - 1);
-        if (_myTile.IsThereAPieceAt(coordinates)) {
-            // If is an enemy piece
-            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece"))
-                availableMoves.Add(coordinates);
+        AddMovesUntilBlocked(coordinates, availableMoves);
+    }
+
+    // Returns true if its path is blocked by a piece.
+    private bool AddMovesUntilBlocked(Vector2Int move, List<Vector2Int> availableMoves)
+    {
+        if (_myTile.IsThereAPieceAt(move)) {
+            // If it is an enemy piece
+            var piece = _chessboardManager.GetTileAtPosition(move).transform.GetChild(0);
+            if (piece.CompareTag("EnemyPiece"))
+            {
+                availableMoves.Add(move);
+                return true;
+            }
         }
 
-        return availableMoves;
+        return false;
     }
 }
