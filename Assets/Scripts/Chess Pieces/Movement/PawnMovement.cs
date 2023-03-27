@@ -34,8 +34,8 @@ public class PawnMovement : MonoBehaviour, IMovement
         
         if (!_myTile.IsThereAPieceAboveMe())
         {
-            Vector2Int coordinatesAbove = new Vector2Int(_currentRow - 1, _currentColumn); 
-            availableMoves.Add(coordinatesAbove);
+            Vector2Int coordinates = new Vector2Int(_currentRow - 1, _currentColumn); 
+            availableMoves.Add(coordinates);
         }
         
         return availableMoves;
