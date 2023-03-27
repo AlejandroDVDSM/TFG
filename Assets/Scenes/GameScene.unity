@@ -1130,7 +1130,7 @@ MonoBehaviour:
   - {fileID: 3686897324570511168, guid: 50ce43317b4f7a8439df10ab14484a68, type: 3}
   - {fileID: 1468030793775451746, guid: f2d65eeb8cbc30d4cb4dcae327ff0a5b, type: 3}
   - {fileID: 2272231029355101359, guid: 5985c9bafc0cf1947895a2e97de56c89, type: 3}
-  _onlyGeneratePlayerPawn: 1
+  _onlyGeneratePlayerPawn: 0
   _onlyGeneratePlayerBishop: 0
   _onlyGeneratePlayerKnight: 0
   _onlyGeneratePlayerRook: 0

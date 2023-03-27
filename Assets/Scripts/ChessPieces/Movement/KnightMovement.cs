@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,158 +19,110 @@ public class KnightMovement : MonoBehaviour, IMovement
         _myTile = GetComponentInParent<Tile>();
         _currentRow = _myTile.Coordinates.x;
         _currentColumn = _myTile.Coordinates.y;
-
-        availableMoves = CheckFarRightTop(availableMoves);
-        availableMoves = CheckCloseRightTop(availableMoves);
         
-        availableMoves = CheckFarRightBottom(availableMoves);
-        availableMoves = CheckCloseRightBottom(availableMoves);
+        CheckFarTopRight(availableMoves);
+        CheckCloseTopRight(availableMoves);
         
-        availableMoves = CheckFarLeftTop(availableMoves);
-        availableMoves = CheckCloseLeftTop(availableMoves);
+        CheckCloseBottomRight(availableMoves);
+        CheckFarBottomRight(availableMoves);
         
-        availableMoves = CheckFarLeftBottom(availableMoves);
-        availableMoves = CheckCloseLeftBottom(availableMoves);
+        CheckFarBottomLeft(availableMoves);
+        CheckCloseBottomLeft(availableMoves);
+        
+        CheckCloseTopLeft(availableMoves);
+        CheckFarTopLeft(availableMoves);
         
         return availableMoves;
     }
 
-    private List<Vector2Int> CheckFarRightTop(List<Vector2Int> availableMoves)
+    private void CheckFarTopRight(List<Vector2Int> availableMoves)
     {
-        if (!(_currentRow - 2 >= 0 && _currentColumn + 1 <= 5)) return availableMoves;
+        // Off the chessboard
+        if (_currentRow - 2 < 0 || _currentColumn + 1 > 5) return;
         
-        Vector2Int coordinates = new Vector2Int(_currentRow - 2, _currentColumn + 1);
+        Vector2Int move = new Vector2Int(_currentRow - 2, _currentColumn + 1);
+        AddMoves(move, availableMoves);
+    }
 
-        if (!_myTile.IsThereAPieceAt(coordinates))
+    private void CheckCloseTopRight(List<Vector2Int> availableMoves)
+    {
+        // Off the chessboard
+        if (_currentRow - 1 < 0 || _currentColumn + 2 > 5) return;
+        
+        Vector2Int move = new Vector2Int(_currentRow - 1, _currentColumn + 2);
+        AddMoves(move, availableMoves);
+    }
+
+    private void CheckCloseBottomRight(List<Vector2Int> availableMoves)
+    {
+        // Off the chessboard
+        if (_currentRow + 1 > 5 || _currentColumn + 2 > 5) return;
+        
+        Vector2Int move = new Vector2Int(_currentRow + 1, _currentColumn + 2);
+        AddMoves(move, availableMoves);
+    }
+
+    private void CheckFarBottomRight(List<Vector2Int> availableMoves)
+    {
+        // Off the chessboard
+        if (_currentRow + 2 > 5 || _currentColumn + 1 > 5) return;
+        
+        Vector2Int move = new Vector2Int(_currentRow + 2, _currentColumn + 1);
+        AddMoves(move, availableMoves);
+    }
+
+    private void CheckFarBottomLeft(List<Vector2Int> availableMoves)
+    {
+        // Off the chessboard
+        if (_currentRow + 2 > 5 || _currentColumn - 1 < 0) return;
+        
+        Vector2Int move = new Vector2Int(_currentRow + 2, _currentColumn - 1);
+        AddMoves(move, availableMoves);
+    }
+
+    private void CheckCloseBottomLeft(List<Vector2Int> availableMoves)
+    {
+        // Off the chessboard
+        if (_currentRow + 1 > 5 || _currentColumn - 2 < 0) return;
+        
+        Vector2Int move = new Vector2Int(_currentRow + 1, _currentColumn - 2);
+        AddMoves(move, availableMoves);
+    }
+
+    private void CheckCloseTopLeft(List<Vector2Int> availableMoves)
+    {
+        // Off the chessboard
+        if (_currentRow - 1 < 0 || _currentColumn - 2 < 0) return;
+        
+        Vector2Int move = new Vector2Int(_currentRow - 1, _currentColumn - 2);
+        AddMoves(move, availableMoves);
+    }
+
+    private void CheckFarTopLeft(List<Vector2Int> availableMoves)
+    {
+        // Off the chessboard
+        if (_currentRow - 2 < 0 || _currentColumn - 1 < 0) return;
+        
+        Vector2Int move = new Vector2Int(_currentRow - 2, _currentColumn - 1);
+        AddMoves(move, availableMoves);
+    }
+    
+    private void AddMoves(Vector2Int move, List<Vector2Int> availableMoves)
+    {
+        if (_myTile.IsThereAPieceAt(move))
         {
-            availableMoves.Add(coordinates);
-        } else {
-            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
-                availableMoves.Add(coordinates);
+            // If there is an enemy piece
+            var piece = _chessboardManager.GetTileAtPosition(move).transform.GetChild(0);
+            if (piece.CompareTag("EnemyPiece"))
+            {
+                availableMoves.Add(move);
+                return;
             }
-        }
-        
-        return availableMoves;
-    }
 
-    private List<Vector2Int> CheckCloseRightTop(List<Vector2Int> availableMoves)
-    {
-        if (!(_currentRow - 1 >= 0 && _currentColumn + 2 <= 5)) return availableMoves;
-        
-        Vector2Int coordinates = new Vector2Int(_currentRow - 1, _currentColumn + 2);
-
-        if (!_myTile.IsThereAPieceAt(coordinates))
-        {
-            availableMoves.Add(coordinates);
-        } else {
-            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
-                availableMoves.Add(coordinates);
-            }
+            // There is a player piece
+            return;
         }
 
-        return availableMoves;
-    }
-    
-    private List<Vector2Int> CheckFarRightBottom(List<Vector2Int> availableMoves)
-    {
-        if (!(_currentRow + 2 <= 5 && _currentColumn + 1 <= 5)) return availableMoves;
-        
-        Vector2Int coordinates = new Vector2Int(_currentRow + 2, _currentColumn + 1);
-        
-        if (!_myTile.IsThereAPieceAt(coordinates)) {
-            availableMoves.Add(coordinates);
-        } else {
-            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
-                availableMoves.Add(coordinates);
-            }
-        }
-
-        return availableMoves;
-    }
-    
-    private List<Vector2Int> CheckCloseRightBottom(List<Vector2Int> availableMoves)
-    {
-        if (!(_currentRow + 1 <= 5 && _currentColumn + 2 <= 5)) return availableMoves;
-        
-        Vector2Int coordinates = new Vector2Int(_currentRow + 1, _currentColumn + 2);
-        
-        if (!_myTile.IsThereAPieceAt(coordinates)) {
-            availableMoves.Add(coordinates);
-        } else {
-            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
-                availableMoves.Add(coordinates);
-            }
-        }
-        
-        return availableMoves;
-    }
-    
-    private List<Vector2Int> CheckFarLeftTop(List<Vector2Int> availableMoves)
-    {
-        if (!(_currentRow - 2 >= 0 && _currentColumn - 1 >= 0)) return availableMoves;
-        
-        Vector2Int coordinates = new Vector2Int(_currentRow - 2, _currentColumn - 1);
-        
-        if (!_myTile.IsThereAPieceAt(coordinates)) {
-            availableMoves.Add(coordinates);
-        } else {
-            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
-                availableMoves.Add(coordinates);
-            }
-        }
-        
-        return availableMoves;
-    }
-    
-    private List<Vector2Int> CheckCloseLeftTop(List<Vector2Int> availableMoves)
-    {
-        if (!(_currentRow - 1 >= 0 && _currentColumn - 2 >= 0)) return availableMoves;
-        
-        Vector2Int coordinates = new Vector2Int(_currentRow - 1, _currentColumn - 2);
-        
-        if (!_myTile.IsThereAPieceAt(coordinates)) {
-            availableMoves.Add(coordinates);
-        } else {
-            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
-                availableMoves.Add(coordinates);
-            }
-        }
-        
-        return availableMoves;
-    }
-    
-    private List<Vector2Int> CheckFarLeftBottom(List<Vector2Int> availableMoves)
-    {
-        if (!(_currentRow + 2 <= 5 && _currentColumn - 1 >= 0)) return availableMoves;
-        
-        Vector2Int coordinates = new Vector2Int(_currentRow + 2, _currentColumn - 1);
-        
-        if (!_myTile.IsThereAPieceAt(coordinates)) {
-            availableMoves.Add(coordinates);
-        } else {
-            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
-                availableMoves.Add(coordinates);
-            }
-        }
-
-        
-        return availableMoves;
-    }
-    
-    private List<Vector2Int> CheckCloseLeftBottom(List<Vector2Int> availableMoves)
-    {
-        if (!(_currentRow + 1 <= 5 && _currentColumn - 2 >= 0)) return availableMoves;
-        
-        Vector2Int coordinates = new Vector2Int(_currentRow + 1, _currentColumn - 2);
-        
-        if (!_myTile.IsThereAPieceAt(coordinates)) {
-            availableMoves.Add(coordinates);
-        } else {
-            if (_chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0).CompareTag("EnemyPiece")) {
-                availableMoves.Add(coordinates);
-            }
-        }
-        
-        return availableMoves;
+        availableMoves.Add(move);
     }
 }

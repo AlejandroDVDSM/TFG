@@ -43,7 +43,7 @@ public class PawnMovement : MonoBehaviour, IMovement
         if (_currentRow == 0 || _currentColumn == 5) return;
         
         Vector2Int coordinates = new Vector2Int(_currentRow - 1, _currentColumn + 1);
-        AddMovesUntilBlocked(coordinates, availableMoves);
+        AddMoves(coordinates, availableMoves);
     }
 
     private void CheckTopLeft(List<Vector2Int> availableMoves)
@@ -51,11 +51,10 @@ public class PawnMovement : MonoBehaviour, IMovement
         if (_currentRow == 0 || _currentColumn == 0) return;
 
         Vector2Int coordinates = new Vector2Int(_currentRow - 1, _currentColumn - 1);
-        AddMovesUntilBlocked(coordinates, availableMoves);
+        AddMoves(coordinates, availableMoves);
     }
 
-    // Returns true if its path is blocked by a piece.
-    private bool AddMovesUntilBlocked(Vector2Int move, List<Vector2Int> availableMoves)
+    private void AddMoves(Vector2Int move, List<Vector2Int> availableMoves)
     {
         if (_myTile.IsThereAPieceAt(move)) {
             // If it is an enemy piece
@@ -63,10 +62,7 @@ public class PawnMovement : MonoBehaviour, IMovement
             if (piece.CompareTag("EnemyPiece"))
             {
                 availableMoves.Add(move);
-                return true;
             }
         }
-
-        return false;
     }
 }
