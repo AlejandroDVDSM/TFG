@@ -18,32 +18,32 @@ public class Tile : MonoBehaviour
         Debug.Log($"Tile where I am: {name}" );
 
         if (IsThereAPieceAboveMe()) {
-            var chessPieceAboveMe = GetTileAboveMe().GetComponentInChildren<ChessPiece>();
+            var chessPieceAboveMe = GetTileAboveMe().GetComponentInChildren<ChessPieceConnections>();
             
             // Check if is not an enemy piece
             if (chessPieceAboveMe != null) 
-                GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAboveMe);
+                GetComponentInChildren<ChessPieceConnections>().ConnectPieces(chessPieceAboveMe);
         }
         if (IsThereAPieceBelowMe()) {
-            var chessPieceBelowMe = GetTileBelowMe().GetComponentInChildren<ChessPiece>();
+            var chessPieceBelowMe = GetTileBelowMe().GetComponentInChildren<ChessPieceConnections>();
             
             // Check if is not an enemy piece
             if (chessPieceBelowMe != null)
-                GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceBelowMe);
+                GetComponentInChildren<ChessPieceConnections>().ConnectPieces(chessPieceBelowMe);
         }
         if (IsThereAPieceAtMyLeft()) {
-            var chessPieceAtMyLeft = GetTileAtMyLeft().GetComponentInChildren<ChessPiece>();
+            var chessPieceAtMyLeft = GetTileAtMyLeft().GetComponentInChildren<ChessPieceConnections>();
             
             // Check if is not an enemy piece
             if (chessPieceAtMyLeft != null)
-                GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAtMyLeft);
+                GetComponentInChildren<ChessPieceConnections>().ConnectPieces(chessPieceAtMyLeft);
         }
         if (IsThereAPieceAtMyRight()) {
-            var chessPieceAtMyRight = GetTileAtMyRight().GetComponentInChildren<ChessPiece>();
+            var chessPieceAtMyRight = GetTileAtMyRight().GetComponentInChildren<ChessPieceConnections>();
             
             // Check if is not an enemy piece
             if (chessPieceAtMyRight != null)
-                GetComponentInChildren<ChessPiece>().ConnectPieces(chessPieceAtMyRight);
+                GetComponentInChildren<ChessPieceConnections>().ConnectPieces(chessPieceAtMyRight);
         }
     }
     

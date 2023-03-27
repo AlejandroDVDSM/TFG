@@ -1133,7 +1133,7 @@ MonoBehaviour:
   _onlyGeneratePlayerPawn: 0
   _onlyGeneratePlayerBishop: 0
   _onlyGeneratePlayerKnight: 0
-  _onlyGeneratePlayerRook: 1
+  _onlyGeneratePlayerRook: 0
   _onlyGeneratePlayerQueen: 0
   _onlyGeneratePlayerKing: 0
   _onlyGenerateEnemyPawn: 0

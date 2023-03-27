@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 963699816148645433}
   - component: {fileID: 963699816148645438}
+  - component: {fileID: -5144506631587595418}
   - component: {fileID: 3487481227727386373}
   - component: {fileID: 7073785668315432495}
   - component: {fileID: 8180135890275294640}
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 729bf5a43608664438ed3671d552ebaa, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,9 +87,22 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5144506631587595418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963699816148645439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f43488cfccb3ef4c8e403ab66653574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chessPiece: {fileID: 11400000, guid: dd3a4abce4862eb4bbe4daf0ab7cd244, type: 2}
 --- !u!114 &3487481227727386373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379de0d840712bd47a1831101caf0067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 5
   connections: []
   onChessPieceConnected:
     m_PersistentCalls:

@@ -10,11 +10,11 @@ public class ChessPieceMerger : MonoBehaviour
     // Called from the event "OnChessPieceConnected()" in the editor
     public void MergePieces()
     {
-        ChessPiece thisChessPiece = GetComponent<ChessPiece>();
+        ChessPieceConnections thisChessPieceConnections = GetComponent<ChessPieceConnections>();
 
-        foreach (var chessPiece in thisChessPiece.connections)
+        foreach (var chessPiece in thisChessPieceConnections.connections)
         {
-            chessPiece.GetInWhichTileIAm().IsFree = true;
+            chessPiece.GetComponent<ChessPieceData>().GetInWhichTileIAm().IsFree = true;
             Destroy(chessPiece.gameObject);
         }
 
@@ -25,7 +25,7 @@ public class ChessPieceMerger : MonoBehaviour
     private void OnDestroy()
     {
         if (!isMergeAvailable) return;
-        ChessPiece thisChessPiece = GetComponent<ChessPiece>();
-        Instantiate(_chessPieceUpgraded, thisChessPiece.GetInWhichTileIAm().transform);
+        // transform.parent = tile where I am
+        Instantiate(_chessPieceUpgraded, transform.parent);
     }
 }

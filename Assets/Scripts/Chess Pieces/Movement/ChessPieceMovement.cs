@@ -26,7 +26,7 @@ public class ChessPieceMovement: MonoBehaviour
     
     public void Move(Tile targetTile)
     {
-        GetComponent<ChessPiece>().RemoveConnections();
+        GetComponent<ChessPieceConnections>().RemoveConnections();
         GetComponentInParent<Tile>().IsFree = true; // Old parent
 
         transform.SetParent(targetTile.transform);

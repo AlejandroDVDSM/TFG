@@ -18,7 +18,7 @@ public class BishopMovement : MonoBehaviour, IMovement
     {
         List<Vector2Int> availableMoves = new List<Vector2Int>();
 
-        _myTile = GetComponent<ChessPiece>().GetInWhichTileIAm();
+        _myTile = GetComponent<ChessPieceData>().GetInWhichTileIAm();
         _currentRow = _myTile.Coordinates.x;
         _currentColumn = _myTile.Coordinates.y;
 
