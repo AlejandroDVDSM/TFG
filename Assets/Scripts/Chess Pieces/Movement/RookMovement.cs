@@ -22,129 +22,55 @@ public class RookMovement : MonoBehaviour, IMovement
         _currentRow = _myTile.Coordinates.x;
         _currentColumn = _myTile.Coordinates.y;
 
-        availableMoves = CheckBelow(availableMoves);
-        availableMoves = CheckAbove(availableMoves);
-        availableMoves = CheckRight(availableMoves);
-        availableMoves = CheckLeft(availableMoves);
+        // Check above
+        for (int row = _currentRow - 1; row >= 0; row--)
+        {
+            Vector2Int move = new Vector2Int(row, _currentColumn);
+            if (AddMovesUntilBlocked(move, availableMoves)) break;
+        }
+        
+        // Check right
+        for (int column = _currentColumn + 1; column <= 5; column++)
+        {
+            Vector2Int move = new Vector2Int(_currentRow, column);
+            if (AddMovesUntilBlocked(move, availableMoves)) break;
+        }
+        
+        // Check below
+        for (int row = _currentRow + 1; row <= 5; row++)
+        {
+            Vector2Int move = new Vector2Int(row, _currentColumn);
+            if (AddMovesUntilBlocked(move, availableMoves)) break;
+        }
+        
+        // Check left
+        for (int column = _currentColumn - 1; column >= 0; column--)
+        {
+            Vector2Int move = new Vector2Int(_currentRow, column);
+            if (AddMovesUntilBlocked(move, availableMoves)) break;
+        }
         
         return availableMoves;
     }
-
-    private List<Vector2Int> CheckBelow(List<Vector2Int> availableMoves)
+    
+    // Returns true if its path is blocked by a piece.
+    private bool AddMovesUntilBlocked(Vector2Int move, List<Vector2Int> availableMoves)
     {
-        if (_currentRow == 5) return availableMoves;
-
-        for (int i = _currentRow + 1; i <= 5; i++)
+        if (_myTile.IsThereAPieceAt(move))
         {
-            Vector2Int coordinates = new Vector2Int(i, _currentColumn);
-            // If there is no piece
-            if (!_myTile.IsThereAPieceAt(coordinates))
+            // If there is an enemy piece
+            var piece = _chessboardManager.GetTileAtPosition(move).transform.GetChild(0);
+            if (piece.CompareTag("EnemyPiece"))
             {
-                availableMoves.Add(coordinates);
+                availableMoves.Add(move);
+                return true;
             }
-            else
-            {
-                var piece = _chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0);
-                
-                if (piece.CompareTag("EnemyPiece"))
-                {
-                    availableMoves.Add(coordinates);
-                    break;
-                    
-                }
 
-                if (piece.CompareTag("PlayerPiece")) break;
-            }
+            // There is a player piece
+            return true;
         }
 
-        return availableMoves;
-    }
-
-    private List<Vector2Int> CheckAbove(List<Vector2Int> availableMoves)
-    {
-        if (_currentRow == 0) return availableMoves;
-        
-        for (int i = _currentRow - 1; i >= 0; i--)
-        {
-            Vector2Int coordinates = new Vector2Int(i, _currentColumn);
-            // If there is no piece
-            if (!_myTile.IsThereAPieceAt(coordinates))
-            {
-                availableMoves.Add(coordinates);
-            }
-            else
-            {
-                var piece = _chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0);
-                
-                if (piece.CompareTag("EnemyPiece"))
-                {
-                    availableMoves.Add(coordinates);
-                    break;
-                    
-                }
-
-                if (piece.CompareTag("PlayerPiece")) break;
-            }
-        }
-
-        return availableMoves;
-    }
-    
-    private List<Vector2Int> CheckRight(List<Vector2Int> availableMoves) {
-        if (_currentColumn == 5) return availableMoves;
-        
-        for (int i = _currentColumn + 1; i <= 5; i++)
-        {
-            Vector2Int coordinates = new Vector2Int(_currentRow, i);
-            // If there is no piece
-            if (!_myTile.IsThereAPieceAt(coordinates))
-            {
-                availableMoves.Add(coordinates);
-            }
-            else
-            {
-                var piece = _chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0);
-                
-                if (piece.CompareTag("EnemyPiece"))
-                {
-                    availableMoves.Add(coordinates);
-                    break;
-                    
-                }
-
-                if (piece.CompareTag("PlayerPiece")) break;
-            }
-        }
-    
-        return availableMoves;
-    }
-    
-    private List<Vector2Int> CheckLeft(List<Vector2Int> availableMoves) {
-        if (_currentColumn == 0) return availableMoves;
-        
-        for (int i = _currentColumn - 1; i >= 0; i--)
-        {
-            Vector2Int coordinates = new Vector2Int(_currentRow, i);
-            // If there is no piece
-            if (!_myTile.IsThereAPieceAt(coordinates))
-            {
-                availableMoves.Add(coordinates);
-            }
-            else
-            {
-                var piece = _chessboardManager.GetTileAtPosition(coordinates).transform.GetChild(0);
-                
-                if (piece.CompareTag("EnemyPiece"))
-                {
-                    availableMoves.Add(coordinates);
-                    break;
-                    
-                }
-
-                if (piece.CompareTag("PlayerPiece")) break;
-            }
-        }
-        
-        return availableMoves;
+        availableMoves.Add(move);
+        return false;
     }
 }
