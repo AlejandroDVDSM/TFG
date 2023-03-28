@@ -5,9 +5,8 @@ public class PointsDisplay : MonoBehaviour
 {
     [SerializeField] private TMP_Text pointsText;
     
-    public void UpdateText(int _totalPoints)
+    public void UpdateText(int totalPoints)
     {
-        pointsText.text = _totalPoints.ToString();
+        pointsText.text = totalPoints.ToString();
     }
-    
 }
