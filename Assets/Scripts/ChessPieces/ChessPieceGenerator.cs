@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -5,9 +6,9 @@ using Random = System.Random;
 
 public class ChessPieceGenerator : MonoBehaviour
 {
-    [Header("UI")]
+    /*[Header("UI")]
     [SerializeField] private TMP_Text _nextChessPieceType;
-    [SerializeField] private Image _nextChessPieceImage;
+    [SerializeField] private Image _nextChessPieceImage;*/
     
     [Header("Player's pieces")]
     [SerializeField] private GameObject[] _chessPieces;
@@ -30,16 +31,20 @@ public class ChessPieceGenerator : MonoBehaviour
     [SerializeField] private bool _onlyGenerateEnemyRook = false;
     [SerializeField] private bool _onlyGenerateEnemyQueen = false;
     [SerializeField] private bool _onlyGenerateEnemyKing = false;
-    
+    [Space]
+    [SerializeField] private TopPanelDisplay _topPanelDisplay;
+
     public GameObject GenerateNextChessPiece()
     {
         int randomIndex = new Random().Next(0, _chessPieces.Length); // First parameter: included --- Second parameter: excluded*/
         
         GameObject nextChessPiece = _chessPieces[randomIndex];
-        ChessPieceData nextChessPieceData = nextChessPiece.GetComponent<ChessPieceData>();
         
-        _nextChessPieceType.text = nextChessPieceData.GetChessPieceType().ToString();
-        _nextChessPieceImage.sprite = nextChessPieceData.GetSprite();
+        ChessPieceData nextChessPieceData = nextChessPiece.GetComponent<ChessPieceData>();
+        Type nextChessPieceType = nextChessPieceData.GetChessPieceType();
+        Sprite nextChessPieceSprite = nextChessPieceData.GetSprite();
+        _topPanelDisplay.UpdateTopPanel(nextChessPieceType, nextChessPieceSprite);
+        
         return nextChessPiece;
     }
 

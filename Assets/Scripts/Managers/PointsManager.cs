@@ -1,32 +1,26 @@
-using TMPro;
 using UnityEngine;
 
 public class PointsManager : MonoBehaviour
 {
     private int _totalPoints;
-
-    [SerializeField] private TMP_Text pointsText;
+    private PointsDisplay _pointsDisplay;
 
     private void Start()
     {
-        UpdateText();
+        _pointsDisplay = GetComponent<PointsDisplay>();
+        _pointsDisplay.UpdateText(_totalPoints);
     }
 
     public void Add(int pointsToAdd)
     {
         _totalPoints += pointsToAdd;
-        UpdateText();
+        _pointsDisplay.UpdateText(_totalPoints);
     }
 
     public void Substract(int pointsToSubstract)
     {
         if (_totalPoints - pointsToSubstract < 0) return;
         _totalPoints -= pointsToSubstract;
-        UpdateText();
-    }
-
-    private void UpdateText()
-    {
-        pointsText.text = _totalPoints.ToString();
+        _pointsDisplay.UpdateText(_totalPoints);
     }
 }
