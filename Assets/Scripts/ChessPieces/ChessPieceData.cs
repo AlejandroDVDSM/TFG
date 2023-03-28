@@ -7,6 +7,8 @@ public class ChessPieceData : MonoBehaviour
     private void Start()
     {
         SetSprite();
+        
+        FindObjectOfType<PointsManager>().Add(GetPoints());
     }
 
     private void SetSprite()
@@ -22,6 +24,11 @@ public class ChessPieceData : MonoBehaviour
     public Type GetChessPieceType()
     {
         return _chessPiece.type;
+    }
+    
+    public int GetPoints()
+    {
+        return _chessPiece.points;
     }
     
     public Tile GetInWhichTileIAm()

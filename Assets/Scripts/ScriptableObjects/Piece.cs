@@ -6,6 +6,7 @@ public class Piece : ScriptableObject
     [Space]
     public Type type;
     public Sprite sprite;
+    public int points;
 }
 
 public enum Type

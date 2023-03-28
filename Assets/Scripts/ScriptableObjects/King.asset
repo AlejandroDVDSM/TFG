@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 5
   sprite: {fileID: 21300000, guid: 729bf5a43608664438ed3671d552ebaa, type: 3}
-  nDirections: 8
+  points: 1500
