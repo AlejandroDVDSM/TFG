@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "858195790606",
+    "project_id": "tfgunity-f1271",
+    "storage_bucket": "tfgunity-f1271.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858195790606:android:70b748637c4043a0ac255f",
+        "android_client_info": {
+          "package_name": "com.adsm.tfg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858195790606-2prlacrdf0eohp45bpuv16opeek1njel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_x10iS6w68G-zF5NlK0gvEBxHDjDFIXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858195790606-2prlacrdf0eohp45bpuv16opeek1njel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
