@@ -1,22 +1,21 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Firebase.Extensions;
 using UnityEngine;
 using Google;
-using TMPro;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GoogleSignInService : MonoBehaviour
 {
     private GoogleSignInConfiguration _configuration;
-    
-    [Header("UI")]
-    //test    
-    [SerializeField] private GameObject loginButton;
-    [SerializeField] private GameObject profileScreen;
-    [SerializeField] private GameObject play, logout;
 
+    [Space]
+    [Header("Events")]
+    [Space]
+    public UnityEvent onSignInSuccessful = new UnityEvent();
+    public UnityEvent onSignOutSuccessful = new UnityEvent();
+    
     private void Start()
     {
         SetGoogleSignInConfiguration();
@@ -34,43 +33,22 @@ public class GoogleSignInService : MonoBehaviour
             RequestIdToken = true,
             RequestAuthCode = true,
             AdditionalScopes = scopes,
-            UseGameSignIn = false // ???
+            UseGameSignIn = false
         };
         
         GoogleSignIn.Configuration = _configuration;
     }
     
-    //public void SignInWithGoogle() { OnSignIn(); }
-    //public void SignOutFromGoogle() { OnSignOut(); }
-
-    /*private void OnSignIn()
-    {
-        //GoogleSignIn.Configuration = _configuration;
-        /*GoogleSignIn.Configuration.UseGameSignIn = false;
-        GoogleSignIn.Configuration.RequestIdToken = true;
-        GoogleSignIn.Configuration.RequestAuthCode = true;
-        GoogleSignIn.Configuration.AdditionalScopes = scopes;
-        
-        GoogleSignIn.DefaultInstance.SignIn().ContinueWith(OnGoogleAuthenticationFinished);
-    }*/
-    
     public void SignInWithGoogle()
     {
-        GoogleSignIn.DefaultInstance.SignIn().ContinueWith(OnGoogleAuthenticationFinished);
+        GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnGoogleAuthenticationFinished);
     }
-
-    /*private void OnSignOut()
-    {
-        Debug.Log("Trying to signin out...");
-        GoogleSignIn.DefaultInstance.SignOut();
-        //DisableProfileScreen();
-    }*/
 
     public void SignOutWithGoogle()
     {
         Debug.Log("Trying to signin out...");
         GoogleSignIn.DefaultInstance.SignOut();
-        DisableProfileScreen();
+        onSignOutSuccessful.Invoke();
     }
 
     private void OnGoogleAuthenticationFinished(Task<GoogleSignInUser> task)
@@ -99,17 +77,9 @@ public class GoogleSignInService : MonoBehaviour
         {
             Debug.Log("Authentication succeeded");
             // string authCode = task.Result.AuthCode;
-            FirebaseAuthorization firebaseAuthorization = FindObjectOfType<FirebaseAuthorization>();
+            FirebaseAuthorization firebaseAuthorization = GetComponent<FirebaseAuthorization>();
             firebaseAuthorization.SignInWithGoogleOnFirebase(task.Result.IdToken);
+            onSignInSuccessful.Invoke();
         }
-    }
-    
-    private void DisableProfileScreen()
-    {
-        profileScreen.SetActive(false);
-        play.SetActive(false);
-        logout.SetActive(false);
-        loginButton.SetActive(true);
-        
     }
 }
