@@ -61,3 +61,7 @@ crashlytics-build.properties
 # Firebase
 /[Aa]ssets/Firebase/
 /[Aa]ssets/Plugins/
+
+# JSON
+/[Aa]ssets/Resources/*.json
+/[Aa]ssets/StreamingAssets/*.json

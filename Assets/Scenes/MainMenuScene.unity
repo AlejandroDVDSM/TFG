@@ -854,6 +854,7 @@ GameObject:
   - component: {fileID: 1539866242}
   - component: {fileID: 1539866240}
   - component: {fileID: 1539866241}
+  - component: {fileID: 1539866243}
   m_Layer: 0
   m_Name: Firebase
   m_TagString: Untagged
@@ -888,21 +889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70eb4a85352f1b240aebb949d7884968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSignInSuccessful:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 686047456}
-        m_TargetAssemblyTypeName: MainMenuDisplay, Assembly-CSharp
-        m_MethodName: EnableMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   onSignOutSuccessful:
     m_PersistentCalls:
       m_Calls:
@@ -930,6 +916,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581da2f7204ee044081e759fc0f32ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onAuthenticationSuccessful:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 686047456}
+        m_TargetAssemblyTypeName: MainMenuDisplay, Assembly-CSharp
+        m_MethodName: EnableMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1539866241}
+        m_TargetAssemblyTypeName: FirebaseAuthorization, Assembly-CSharp
+        m_MethodName: CreateUserInDB
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1539866242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,6 +953,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a84b0d1c4a509ae4398d19aadff330ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onFirebaseInitialize:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1539866243}
+        m_TargetAssemblyTypeName: FirebaseDatabase, Assembly-CSharp
+        m_MethodName: SetDatabaseReference
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1539866243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539866238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d34b187591a86e64e9f6b8707b5ffefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1671262135

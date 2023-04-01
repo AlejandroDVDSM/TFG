@@ -1,16 +1,25 @@
 using System;
 using Firebase;
 using Firebase.Auth;
+using Firebase.Extensions;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FirebaseAuthorization : MonoBehaviour
 {
     private FirebaseInitializer _firebaseInitializer;
     private FirebaseAuth _auth;
+    private FirebaseDatabase _firebaseDatabase;
+    
+    [Space]
+    [Header("Events")]
+    [Space]
+    public UnityEvent onAuthenticationSuccessful = new UnityEvent();    
 
     private void Start()
     {
         _firebaseInitializer = GetComponent<FirebaseInitializer>();
+        _firebaseDatabase = GetComponent<FirebaseDatabase>();
     }
 
     public void SignInWithGoogleOnFirebase(string idToken)
@@ -21,7 +30,7 @@ public class FirebaseAuthorization : MonoBehaviour
             _auth = FirebaseAuth.DefaultInstance;
             Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
             
-            _auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
+            _auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
             {
                 AggregateException ex = task.Exception;
                 if (ex != null)
@@ -32,6 +41,7 @@ public class FirebaseAuthorization : MonoBehaviour
                 else
                 {
                     Debug.Log("Sign in Successful");
+                    onAuthenticationSuccessful.Invoke();
                 }
             });
         }
@@ -39,5 +49,12 @@ public class FirebaseAuthorization : MonoBehaviour
         {
             Debug.Log("Couldn't signing in with Google on Firebase because Firebase is not ready to use");
         }
+    }
+
+    // Invoke from "onAuthenticationSuccessful"
+    public void CreateUserInDB()
+    {
+        FirebaseUser currentUser = _auth.CurrentUser;
+        _firebaseDatabase.CheckIfUserExists(currentUser.UserId, currentUser.DisplayName);
     }
 }

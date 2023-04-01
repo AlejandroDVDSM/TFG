@@ -13,7 +13,6 @@ public class GoogleSignInService : MonoBehaviour
     [Space]
     [Header("Events")]
     [Space]
-    public UnityEvent onSignInSuccessful = new UnityEvent();
     public UnityEvent onSignOutSuccessful = new UnityEvent();
     
     private void Start()
@@ -23,7 +22,7 @@ public class GoogleSignInService : MonoBehaviour
 
     private void SetGoogleSignInConfiguration()
     {
-        string webClientId = FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.client[0].oauth_client[0].client_id");
+        string webClientId = FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.client[0].oauth_client[1].client_id");
         string[] scopes = { "https://www.googleapis.com/auth/fitness.activity.read" };
         
         _configuration = new GoogleSignInConfiguration
@@ -79,7 +78,6 @@ public class GoogleSignInService : MonoBehaviour
             // string authCode = task.Result.AuthCode;
             FirebaseAuthorization firebaseAuthorization = GetComponent<FirebaseAuthorization>();
             firebaseAuthorization.SignInWithGoogleOnFirebase(task.Result.IdToken);
-            onSignInSuccessful.Invoke();
         }
     }
 }

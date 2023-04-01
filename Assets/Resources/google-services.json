@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "858195790606",
+    "firebase_url": "https://tfgunity-f1271-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "tfgunity-f1271",
     "storage_bucket": "tfgunity-f1271.appspot.com"
   },
@@ -14,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "858195790606-2prlacrdf0eohp45bpuv16opeek1njel.apps.googleusercontent.com",
+          "client_id": "858195790606-88dqvgtgo5kmvoe5bc43834j5n6ncrhd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.adsm.tfg",
+            "certificate_hash": "0f56ea3a227d94897d83fe48f79b461c2233dbad"
+          }
+        },
+        {
+          "client_id": "858195790606-quhl01rs1eoodhh7c3obg3eradmrl6ed.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

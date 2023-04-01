@@ -1,10 +1,16 @@
 using Firebase;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FirebaseInitializer : MonoBehaviour
 {
     private bool _firebaseIsReady;
     
+    [Space]
+    [Header("Events")]
+    [Space]
+    public UnityEvent onFirebaseInitialize = new UnityEvent();
+
     private void Awake()
     {
         CheckFirebaseDependencies();
@@ -23,6 +29,7 @@ public class FirebaseInitializer : MonoBehaviour
                     
                     // Set a flag here to indicate whether Firebase is ready to use by your app.
                     _firebaseIsReady = true;
+                    onFirebaseInitialize.Invoke();
                 }
                 else
                 {
