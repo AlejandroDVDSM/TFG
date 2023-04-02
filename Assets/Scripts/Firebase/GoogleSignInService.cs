@@ -9,11 +9,6 @@ using UnityEngine.Events;
 public class GoogleSignInService : MonoBehaviour
 {
     private GoogleSignInConfiguration _configuration;
-
-    [Space]
-    [Header("Events")]
-    [Space]
-    public UnityEvent onSignOutSuccessful = new UnityEvent();
     
     private void Start()
     {
@@ -45,14 +40,13 @@ public class GoogleSignInService : MonoBehaviour
 
     public void SignOutWithGoogle()
     {
-        Debug.Log("Trying to signin out...");
+        Debug.Log("Signing out...");
         GoogleSignIn.DefaultInstance.SignOut();
-        onSignOutSuccessful.Invoke();
     }
 
     private void OnGoogleAuthenticationFinished(Task<GoogleSignInUser> task)
     {
-        Debug.Log("Trying to authenticate player...");
+        Debug.Log("GoogleSignInService - Trying to authenticate player...");
         if (task.IsFaulted)
         {
             using (IEnumerator<Exception> enumerator = task.Exception.InnerExceptions.GetEnumerator())
@@ -60,21 +54,21 @@ public class GoogleSignInService : MonoBehaviour
                 if (enumerator.MoveNext())
                 {
                     GoogleSignIn.SignInException error = (GoogleSignIn.SignInException)enumerator.Current;
-                    Debug.LogError("Authentication got an error: " + error.Status + " " + error.Message);
+                    Debug.LogError("OnGoogleAuthenticationFinished got an error: " + error.Status + " " + error.Message);
                 }
                 else
                 {
-                    Debug.LogError("Authentication got an unexpected exception:" + task.Exception);
+                    Debug.LogError("OnGoogleAuthenticationFinished got an unexpected exception:" + task.Exception);
                 }
             }
         }
         else if (task.IsCanceled)
         {
-            Debug.Log("Authentication was canceled");
+            Debug.Log("GoogleSignInService - Authentication was canceled");
         }
         else
         {
-            Debug.Log("Authentication succeeded");
+            Debug.Log("GoogleSignInService - Authentication succeeded");
             // string authCode = task.Result.AuthCode;
             FirebaseAuthorization firebaseAuthorization = GetComponent<FirebaseAuthorization>();
             firebaseAuthorization.SignInWithGoogleOnFirebase(task.Result.IdToken);

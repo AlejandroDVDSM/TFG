@@ -547,9 +547,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 747949725}
-  - {fileID: 2117201429}
-  - {fileID: 1671262136}
+  - {fileID: 2077043217}
+  - {fileID: 1607996823}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -570,9 +569,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dad073f58bf81e41ac35721d3e95c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _signInButton: {fileID: 2117201428}
-  _playButton: {fileID: 747949724}
-  _signOutButton: {fileID: 1671262135}
+  _signedInMenu: {fileID: 2077043216}
+  _signedOutMenu: {fileID: 1607996822}
 --- !u!1 &747949724
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &747949725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -599,13 +597,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747949724}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1893699108}
-  m_Father: {fileID: 686047455}
+  m_Father: {fileID: 2077043217}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -889,21 +887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70eb4a85352f1b240aebb949d7884968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSignOutSuccessful:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 686047456}
-        m_TargetAssemblyTypeName: MainMenuDisplay, Assembly-CSharp
-        m_MethodName: DisableMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1539866241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,12 +899,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581da2f7204ee044081e759fc0f32ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAuthenticationSuccessful:
+  instance: {fileID: 0}
+  onSignInSuccessful:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 686047456}
         m_TargetAssemblyTypeName: MainMenuDisplay, Assembly-CSharp
-        m_MethodName: EnableMainMenu
+        m_MethodName: ChangeUIDisplayed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -933,7 +917,22 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1539866241}
         m_TargetAssemblyTypeName: FirebaseAuthorization, Assembly-CSharp
-        m_MethodName: CreateUserInDB
+        m_MethodName: CheckIfUserExistsInDB
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSignOutSuccessful:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 686047456}
+        m_TargetAssemblyTypeName: MainMenuDisplay, Assembly-CSharp
+        m_MethodName: ChangeUIDisplayed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -958,9 +957,33 @@ MonoBehaviour:
   onFirebaseInitialize:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1539866241}
+        m_TargetAssemblyTypeName: FirebaseAuthorization, Assembly-CSharp
+        m_MethodName: SetFirebaseAuthReference
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1539866243}
         m_TargetAssemblyTypeName: FirebaseDatabase, Assembly-CSharp
         m_MethodName: SetDatabaseReference
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 686047456}
+        m_TargetAssemblyTypeName: MainMenuDisplay, Assembly-CSharp
+        m_MethodName: ChooseUIToDisplay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -982,6 +1005,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34b187591a86e64e9f6b8707b5ffefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1607996822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1607996823}
+  m_Layer: 5
+  m_Name: SignedOutUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1607996823
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607996822}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2117201429}
+  m_Father: {fileID: 686047455}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1671262135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1671262136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1008,18 +1068,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671262135}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1033978955}
-  m_Father: {fileID: 686047455}
-  m_RootOrder: 2
+  m_Father: {fileID: 2077043217}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 188}
+  m_AnchoredPosition: {x: 0, y: -1450.8888}
   m_SizeDelta: {x: 1715.9937, y: 493.97876}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1671262137
@@ -1066,9 +1126,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1539866240}
-        m_TargetAssemblyTypeName: GoogleSignInService, Assembly-CSharp
-        m_MethodName: SignOutWithGoogle
+      - m_Target: {fileID: 1539866241}
+        m_TargetAssemblyTypeName: FirebaseAuthorization, Assembly-CSharp
+        m_MethodName: SignOutAuthenticatedUser
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1295,6 +1355,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2077043216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2077043217}
+  m_Layer: 5
+  m_Name: SignedInUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2077043217
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077043216}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 747949725}
+  - {fileID: 1671262136}
+  m_Father: {fileID: 686047455}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2117201428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,14 +1419,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117201428}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 86069689}
-  m_Father: {fileID: 686047455}
-  m_RootOrder: 1
+  m_Father: {fileID: 1607996823}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

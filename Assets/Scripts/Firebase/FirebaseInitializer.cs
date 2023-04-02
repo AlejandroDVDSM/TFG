@@ -1,4 +1,5 @@
 using Firebase;
+using Firebase.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,7 +20,7 @@ public class FirebaseInitializer : MonoBehaviour
     private void CheckFirebaseDependencies()
     {
         Debug.Log("Trying to check and fix dependencies...");
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsCompleted)
             {

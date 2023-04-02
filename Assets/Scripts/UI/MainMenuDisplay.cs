@@ -1,23 +1,50 @@
+using System;
 using UnityEngine;
 
 public class MainMenuDisplay : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] private GameObject _signInButton;
-    [SerializeField] private GameObject _playButton;
-    [SerializeField] private GameObject _signOutButton;
+    [SerializeField] private GameObject _signedInMenu;
+    [SerializeField] private GameObject _signedOutMenu;
 
-    public void EnableMainMenu()
-    {
-        _signInButton.SetActive(false);
-        _playButton.SetActive(true);
-        _signOutButton.SetActive(true);
-    }
+    private FirebaseAuthorization _firebaseAuthorization;
     
-    public void DisableMainMenu()
+    private void Start()
     {
-        _signInButton.SetActive(true);
-        _playButton.SetActive(false);
-        _signOutButton.SetActive(false);
+        _firebaseAuthorization = FindObjectOfType<FirebaseAuthorization>();
+        
+        if (_firebaseAuthorization == null)
+            Debug.LogError("MainMenuDisplay - Object of type 'FirebaseAuthorization' could not be found");
+    }
+
+    // Invoke from "FirebaseInitializer.onFirebaseInitialize"
+    public void ChooseUIToDisplay()
+    {
+        if (_firebaseAuthorization == null)
+            return;
+        
+        if (_firebaseAuthorization.IsUserSignedIn())
+            SignedInUI();
+        else
+            SignedOutUI();
+    }
+
+    
+    private void SignedInUI()
+    {
+        _signedInMenu.SetActive(true);
+    }
+
+    
+    private void SignedOutUI()
+    {
+        _signedOutMenu.SetActive(true);
+    }
+
+    // Invoke from "FirebaseAuthorization.onSignInSuccessful" or "FirebaseAuthorization.onSignOutSuccessful" 
+    public void ChangeUIDisplayed()
+    {
+        _signedInMenu.SetActive(!_signedInMenu.activeSelf);
+        _signedOutMenu.SetActive(!_signedOutMenu.activeSelf);
     }
 }

@@ -12,7 +12,7 @@ public class FirebaseDatabase : MonoBehaviour
     }
 
     // Check if user exists. If not, create an entry in the DB.
-    public void CheckIfUserExists(string userID, string userName)
+    public void CheckIfUserExistsInDB(string userID, string userName)
     {
         _dbReference.Child("users").Child(userID).GetValueAsync().ContinueWith(task =>
         {

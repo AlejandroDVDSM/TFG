@@ -10,24 +10,45 @@ public class FirebaseAuthorization : MonoBehaviour
     private FirebaseInitializer _firebaseInitializer;
     private FirebaseAuth _auth;
     private FirebaseDatabase _firebaseDatabase;
+
+    public FirebaseAuthorization instance;
     
     [Space]
     [Header("Events")]
     [Space]
-    public UnityEvent onAuthenticationSuccessful = new UnityEvent();    
+    public UnityEvent onSignInSuccessful = new UnityEvent();    
+    public UnityEvent onSignOutSuccessful = new UnityEvent();    
 
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+            Destroy(this);
+    }
+    
     private void Start()
     {
         _firebaseInitializer = GetComponent<FirebaseInitializer>();
         _firebaseDatabase = GetComponent<FirebaseDatabase>();
     }
+    
+    // Invoke from "FirebaseInitializer.onFirebaseInitialize"
+    public void SetFirebaseAuthReference()
+    {
+        _auth = FirebaseAuth.DefaultInstance;
+        Debug.Log(FirebaseAuth.DefaultInstance.CurrentUser != null ? $"Current user: {FirebaseAuth.DefaultInstance.CurrentUser.DisplayName}" : "Current user: null");
+    }
 
     public void SignInWithGoogleOnFirebase(string idToken)
     {
-        Debug.Log("Trying to sign in with Google on Firebase...");
+        Debug.Log("SignInWithGoogleOnFirebase - Trying to sign in with Google on Firebase...");
         if (_firebaseInitializer.IsFirebaseReady())
         {
-            _auth = FirebaseAuth.DefaultInstance;
+            // _auth = FirebaseAuth.DefaultInstance;
             Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
             
             _auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
@@ -40,21 +61,33 @@ public class FirebaseAuthorization : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Sign in Successful");
-                    onAuthenticationSuccessful.Invoke();
+                    Debug.Log("SignInWithGoogleOnFirebase - Sign in Successful");
+                    onSignInSuccessful.Invoke();
                 }
             });
         }
         else
         {
-            Debug.Log("Couldn't signing in with Google on Firebase because Firebase is not ready to use");
+            Debug.Log("SignInWithGoogleOnFirebase - Firebase is not ready to use yet");
         }
     }
 
-    // Invoke from "onAuthenticationSuccessful"
-    public void CreateUserInDB()
+    public void SignOutAuthenticatedUser()
+    {
+        _auth.SignOut();
+        GetComponent<GoogleSignInService>().SignOutWithGoogle();
+        onSignOutSuccessful.Invoke();
+    }
+
+    public bool IsUserSignedIn()
+    {
+        return _auth.CurrentUser != null;
+    }
+
+    // Invoke from "onSignInSuccessful"
+    public void CheckIfUserExistsInDB()
     {
         FirebaseUser currentUser = _auth.CurrentUser;
-        _firebaseDatabase.CheckIfUserExists(currentUser.UserId, currentUser.DisplayName);
+        _firebaseDatabase.CheckIfUserExistsInDB(currentUser.UserId, currentUser.DisplayName);
     }
 }
