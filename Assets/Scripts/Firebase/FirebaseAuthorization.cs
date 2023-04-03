@@ -75,7 +75,7 @@ public class FirebaseAuthorization : MonoBehaviour
     public void SignOutAuthenticatedUser()
     {
         _auth.SignOut();
-        GetComponent<GoogleSignInService>().SignOutWithGoogle();
+        FindObjectOfType<GoogleSignInService>().SignOutWithGoogle();
         onSignOutSuccessful.Invoke();
     }
 

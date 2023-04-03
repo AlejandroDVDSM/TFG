@@ -4,13 +4,14 @@ using Newtonsoft.Json.Linq;
 
 public class JSONHelper : MonoBehaviour
 {
+    public string GetValue(string jsonToSerialize, string pathToValue)
+    {
+        JToken json = JObject.Parse(jsonToSerialize);
+        return json.SelectToken(pathToValue)?.ToString();
+    }
+    
     public string GetValueFromJson(string jsonName, string pathToValue)
     {
-        /*TextAsset json = FindJson(jsonName);
-        JToken jToken = JObject.Parse(json.text);
-        var value = jToken.SelectToken(pathToValue)?.ToString();
-        return value;*/
-
         TextAsset json = FindJson(jsonName);
         JToken jToken = JObject.Parse(json.text);
         var value = jToken.SelectToken(pathToValue);

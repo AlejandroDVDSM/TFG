@@ -17,7 +17,7 @@ public class GoogleSignInService : MonoBehaviour
 
     private void SetGoogleSignInConfiguration()
     {
-        string webClientId = FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.client[0].oauth_client[1].client_id");
+        string webClientId = FindObjectOfType<JSONHelper>().GetValueFromJson("firebase_parameters", "$.web.client_id");
         string[] scopes = { "https://www.googleapis.com/auth/fitness.activity.read" };
         
         _configuration = new GoogleSignInConfiguration
@@ -69,8 +69,8 @@ public class GoogleSignInService : MonoBehaviour
         else
         {
             Debug.Log("GoogleSignInService - Authentication succeeded");
-            // string authCode = task.Result.AuthCode;
-            FirebaseAuthorization firebaseAuthorization = GetComponent<FirebaseAuthorization>();
+            GetComponent<GoogleFit>().AuthCode = task.Result.AuthCode; 
+            FirebaseAuthorization firebaseAuthorization = FindObjectOfType<FirebaseAuthorization>();
             firebaseAuthorization.SignInWithGoogleOnFirebase(task.Result.IdToken);
         }
     }
