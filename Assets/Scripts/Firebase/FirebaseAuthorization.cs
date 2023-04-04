@@ -48,7 +48,6 @@ public class FirebaseAuthorization : MonoBehaviour
         Debug.Log("SignInWithGoogleOnFirebase - Trying to sign in with Google on Firebase...");
         if (_firebaseInitializer.IsFirebaseReady())
         {
-            // _auth = FirebaseAuth.DefaultInstance;
             Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
             
             _auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>

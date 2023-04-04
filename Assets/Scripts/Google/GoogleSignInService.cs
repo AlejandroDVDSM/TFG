@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Firebase.Extensions;
 using UnityEngine;
 using Google;
-using UnityEngine.Events;
 
 public class GoogleSignInService : MonoBehaviour
 {
@@ -17,12 +16,11 @@ public class GoogleSignInService : MonoBehaviour
 
     private void SetGoogleSignInConfiguration()
     {
-        string webClientId = FindObjectOfType<JSONHelper>().GetValueFromJson("firebase_parameters", "$.web.client_id");
         string[] scopes = { "https://www.googleapis.com/auth/fitness.activity.read" };
         
         _configuration = new GoogleSignInConfiguration
         {
-            WebClientId = webClientId, 
+            WebClientId = FirebaseSettingsData.ClientId, 
             RequestEmail = true, 
             RequestIdToken = true,
             RequestAuthCode = true,
