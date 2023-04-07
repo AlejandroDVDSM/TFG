@@ -19,10 +19,11 @@ public class FirebaseInitializer : MonoBehaviour
     }
 
     // TEST - DON'T FORGET TO COMMENT
-    /*private void Start()
+    private void Start()
     {
-        PlayerPrefs.DeleteAll();
-    }*/
+        //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteKey("authCode");
+    }
 
     private void CheckFirebaseDependencies()
     {
