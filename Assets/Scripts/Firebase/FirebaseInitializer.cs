@@ -1,4 +1,3 @@
-using System;
 using Firebase;
 using Firebase.Extensions;
 using UnityEngine;
@@ -16,13 +15,6 @@ public class FirebaseInitializer : MonoBehaviour
     private void Awake()
     {
         CheckFirebaseDependencies();
-    }
-
-    // TEST - DON'T FORGET TO COMMENT
-    private void Start()
-    {
-        //PlayerPrefs.DeleteAll();
-        //PlayerPrefs.DeleteKey("authCode");
     }
 
     private void CheckFirebaseDependencies()

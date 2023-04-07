@@ -10,8 +10,9 @@ public class FirebaseAuthorization : MonoBehaviour
     private FirebaseInitializer _firebaseInitializer;
     private FirebaseAuth _auth;
     private FirebaseDatabase _firebaseDatabase;
-
     public FirebaseAuthorization instance;
+
+    [SerializeField] private GameObject _tokenRetrieverPrefab;
     
     [Space]
     [Header("Events")]
@@ -41,6 +42,7 @@ public class FirebaseAuthorization : MonoBehaviour
     {
         _auth = FirebaseAuth.DefaultInstance;
         Debug.Log(FirebaseAuth.DefaultInstance.CurrentUser != null ? $"Current user: {FirebaseAuth.DefaultInstance.CurrentUser.DisplayName}" : "Current user: null");
+        if (IsUserSignedIn()) Instantiate(_tokenRetrieverPrefab);
     }
 
     public void SignInWithGoogleOnFirebase(string idToken)
@@ -61,6 +63,7 @@ public class FirebaseAuthorization : MonoBehaviour
                 else
                 {
                     Debug.Log("SignInWithGoogleOnFirebase - Sign in Successful");
+                    Instantiate(_tokenRetrieverPrefab);
                     onSignInSuccessful.Invoke();
                 }
             });

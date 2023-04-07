@@ -7,6 +7,8 @@ using Google;
 
 public class GoogleSignInService : MonoBehaviour
 {
+    public static string AuthCode;
+    
     private GoogleSignInConfiguration _configuration;
     
     private void Start()
@@ -67,8 +69,7 @@ public class GoogleSignInService : MonoBehaviour
         else
         {
             Debug.Log("GoogleSignInService - Authentication succeeded");
-            string authCode = task.Result.AuthCode;
-            PlayerPrefs.SetString("authCode", authCode);
+            AuthCode = task.Result.AuthCode;
             FirebaseAuthorization firebaseAuthorization = FindObjectOfType<FirebaseAuthorization>();
             firebaseAuthorization.SignInWithGoogleOnFirebase(task.Result.IdToken);
         }
