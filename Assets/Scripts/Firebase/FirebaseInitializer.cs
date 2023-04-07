@@ -1,3 +1,4 @@
+using System;
 using Firebase;
 using Firebase.Extensions;
 using UnityEngine;
@@ -16,6 +17,12 @@ public class FirebaseInitializer : MonoBehaviour
     {
         CheckFirebaseDependencies();
     }
+
+    // TEST - DON'T FORGET TO COMMENT
+    /*private void Start()
+    {
+        PlayerPrefs.DeleteAll();
+    }*/
 
     private void CheckFirebaseDependencies()
     {

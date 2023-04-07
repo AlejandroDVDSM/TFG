@@ -67,7 +67,8 @@ public class GoogleSignInService : MonoBehaviour
         else
         {
             Debug.Log("GoogleSignInService - Authentication succeeded");
-            GetComponent<GoogleFit>().AuthCode = task.Result.AuthCode; 
+            string authCode = task.Result.AuthCode;
+            PlayerPrefs.SetString("authCode", authCode);
             FirebaseAuthorization firebaseAuthorization = FindObjectOfType<FirebaseAuthorization>();
             firebaseAuthorization.SignInWithGoogleOnFirebase(task.Result.IdToken);
         }

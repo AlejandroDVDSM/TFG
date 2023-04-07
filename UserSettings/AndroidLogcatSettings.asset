@@ -33,6 +33,12 @@
             "exited": true
         },
         {
+            "deviceId": "2b55da55",
+            "name": "com.miui.home",
+            "processId": 2169,
+            "exited": false
+        },
+        {
             "deviceId": "T8SK8TE6FQ6X6HEQ",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 18372,

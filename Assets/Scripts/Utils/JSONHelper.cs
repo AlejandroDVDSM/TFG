@@ -9,6 +9,12 @@ public class JSONHelper : MonoBehaviour
         JToken json = JObject.Parse(jsonToSerialize);
         return json.SelectToken(pathToValue)?.ToString();
     }
+
+    public JToken GetToken(string jsonToSerialize, string pathToValue)
+    {
+        JToken json = JObject.Parse(jsonToSerialize);
+        return json.SelectToken(pathToValue);
+    }
     
     public string GetValueFromJson(string jsonName, string pathToValue)
     {

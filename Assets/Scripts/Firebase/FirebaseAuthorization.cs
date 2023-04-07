@@ -16,8 +16,8 @@ public class FirebaseAuthorization : MonoBehaviour
     [Space]
     [Header("Events")]
     [Space]
-    public UnityEvent onSignInSuccessful = new UnityEvent();    
-    public UnityEvent onSignOutSuccessful = new UnityEvent();    
+    public UnityEvent onSignInSuccessful = new UnityEvent();
+    public UnityEvent onSignOutSuccessful = new UnityEvent();
 
     public void Awake()
     {
