@@ -28,7 +28,6 @@ public class MainMenuDisplay : MonoBehaviour
         else
             SignedOutUI();
     }
-
     
     private void SignedInUI()
     {

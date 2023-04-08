@@ -64,8 +64,8 @@ public class FirebaseAuthorization : MonoBehaviour
                 else
                 {
                     Debug.Log("SignInWithGoogleOnFirebase - Sign in Successful");
-                    Instantiate(_tokenRetrieverPrefab);
-                    onSignInSuccessful.Invoke();
+                    // Instantiate(_tokenRetrieverPrefab);
+                    //onSignInSuccessful.Invoke();
                 }
             });
         }
@@ -90,7 +90,7 @@ public class FirebaseAuthorization : MonoBehaviour
     // Invoke from "onSignInSuccessful"
     public void CheckIfUserExistsInDB()
     {
-        FirebaseUser currentUser = _auth.CurrentUser;
-        _firebaseDatabase.CheckIfUserExistsInDB(currentUser.UserId, currentUser.DisplayName);
+        CurrentUser = _auth.CurrentUser;
+        _firebaseDatabase.CheckIfUserExistsInDB(CurrentUser.UserId, CurrentUser.DisplayName);
     }
 }

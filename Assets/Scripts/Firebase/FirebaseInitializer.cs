@@ -1,3 +1,4 @@
+using System;
 using Firebase;
 using Firebase.Extensions;
 using UnityEngine;
@@ -15,6 +16,13 @@ public class FirebaseInitializer : MonoBehaviour
     private void Awake()
     {
         CheckFirebaseDependencies();
+    }
+
+    // RECUERDA QUITAR ESTO
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("firstPlayedInEpochMillis"))
+            PlayerPrefs.DeleteKey("firstPlayedInEpochMillis");
     }
 
     private void CheckFirebaseDependencies()

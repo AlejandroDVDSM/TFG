@@ -25,7 +25,7 @@ public class GoogleFit : MonoBehaviour
     {
         const string uri = "https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate";
         
-        string startTimeMillis = "" + 1677766440000; // Este dato tiene que ser el momento en que Google Fit empezó el seguimiento de datos del usuario en Epoch milisegundos
+        string startTimeMillis = PlayerPrefs.GetString("firstPlayedInEpochMillis")/*"" + 1677766440000*/; // Este dato tiene que ser el momento en que Google Fit empezó el seguimiento de datos del usuario en Epoch milisegundos
         string endTimeMillis = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
         
         string json = "{ 'aggregateBy': [{ 'dataTypeName': 'com.google.step_count.delta', 'dataSourceId': 'derived:com.google.step_count.delta:com.google.android.gms:merge_step_deltas'}],'bucketByTime': { 'durationMillis': 86400000 },'startTimeMillis': " + startTimeMillis + ",'endTimeMillis': " + endTimeMillis + "}";
@@ -44,9 +44,8 @@ public class GoogleFit : MonoBehaviour
         }
         
         Debug.Log($"STEPS: {nSteps}");
-        //_firebaseDatabase.UpdateStepsInDB(nSteps);
+        // _firebaseDatabase.UpdateStepsInDB(nSteps);
         //stepsText.text = nSteps.ToString(); // ELIMINAR ESTO EN UN FUTURO
-        _firebaseDatabase.GetFirstPlayedInEpochMillis();
     }
     
     

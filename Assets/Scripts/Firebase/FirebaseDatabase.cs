@@ -1,7 +1,11 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Firebase.Auth;
 using UnityEngine;
 using Firebase.Database;
+using Unity.VisualScripting;
 
 public class FirebaseDatabase : MonoBehaviour
 {
@@ -38,49 +42,34 @@ public class FirebaseDatabase : MonoBehaviour
     
     private void CreateUserInDB(string userID, string userName)
     {
+        
         string timeInEpochMillis = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
         
         User newUser = new User(userName, 0, 0, timeInEpochMillis, timeInEpochMillis);
         string json = FindObjectOfType<JSONHelper>().CreateJsonFromObject(newUser);
         _dbReference.Child("users").Child(userID).SetRawJsonValueAsync(json);
         Debug.Log($"CreateUserInDB - User '{userName} --- {userID}' successfully created");
+        // RetrievePlayerData();
     }
-
-    public void UpdateStepsInDB(int steps)
+    
+    public void RetrievePlayerData()
     {
-        _dbReference.Child("users")
-            .Child(FirebaseAuthorization.CurrentUser.UserId)
-            .Child("steps")
-            .SetValueAsync(steps);
-    }
-
-    public void UpdateLastPlayedInEpochMillisInDB(string lastPlayedInEpochMillis)
-    {
-        _dbReference.Child("users")
-            .Child(FirebaseAuthorization.CurrentUser.UserId)
-            .Child("lastTimeInEpochMillis")
-            .SetValueAsync(lastPlayedInEpochMillis);
-    }
-
-    public void GetFirstPlayedInEpochMillis()
-    {
-        _dbReference.Child("users")
-            .Child(/*FirebaseAuthorization.CurrentUser.UserId*/"xUFlS4CG3mWJMrK202k5jB0Onnk2")
-            .Child("firstPlayedInEpochMillis")
-            .GetValueAsync().ContinueWith(task =>
+        _dbReference.Child("users").Child(FirebaseAuthorization.CurrentUser.UserId).GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsCompleted)
             {
-                if (task.IsCompleted)
-                {
-                    DataSnapshot snapshot = task.Result;
-                    Debug.Log("FirebaseDatabase - GetFirstPlayedInEpochMillis success --" + snapshot.Value);
-                    // PlayerPrefs.SetString(snapshot.Value.ToString());
-                    
-                }
-                else
-                {
-                    Debug.LogError("GetFirstPlayedInEpochMillis - Couldn't be completed");
+                DataSnapshot snapshot = task.Result;
 
+                foreach (DataSnapshot s in snapshot.Children)
+                {
+                    Debug.Log($"SORPRÉNDEME: {s.Key} <-> {s.Value}");
+                    PlayerPrefs.SetString(s.Key, s.Value.ToString());
                 }
-            });
+            }
+            else
+            {
+                Debug.LogError("RetrievePlayerData - Couldn't be completed");
+            }
+        });
     }
 }
