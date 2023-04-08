@@ -1,13 +1,21 @@
 public class User
 {
-    public string UserID;
-    public string UserName;
-    public int HighestScore;
+    public string userName;
+    
+    public int highestScore;
+    public int steps;
 
-    public User(string userID, string userName, int highestScore)
+    public string firstPlayedInEpochMillis;
+    public string lastPlayedInEpochMillis;
+
+    public User(string userName, int highestScore, int steps, string firstPlayedInEpochMillis, string lastPlayedInEpochMillis)
     {
-        UserID = userID;
-        UserName = userName;
-        HighestScore = highestScore;
+        this.userName = userName;
+        
+        this.highestScore = highestScore;
+        this.steps = steps;
+
+        this.firstPlayedInEpochMillis = firstPlayedInEpochMillis;
+        this.lastPlayedInEpochMillis = lastPlayedInEpochMillis;
     }
 }

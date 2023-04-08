@@ -9,10 +9,10 @@ public class FirebaseAuthorization : MonoBehaviour
 {
     private FirebaseInitializer _firebaseInitializer;
     private FirebaseAuth _auth;
+    public static FirebaseUser CurrentUser; 
     private FirebaseDatabase _firebaseDatabase;
-    public FirebaseAuthorization instance;
-
     [SerializeField] private GameObject _tokenRetrieverPrefab;
+    private static FirebaseAuthorization instance;
     
     [Space]
     [Header("Events")]
@@ -25,10 +25,10 @@ public class FirebaseAuthorization : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(gameObject);
         }
         else
-            Destroy(this);
+            Destroy(gameObject);
     }
     
     private void Start()
@@ -37,11 +37,12 @@ public class FirebaseAuthorization : MonoBehaviour
         _firebaseDatabase = GetComponent<FirebaseDatabase>();
     }
     
-    // Invoke from "FirebaseInitializer.onFirebaseInitialize"
+    // Invoke from "FirebaseInitializer.onDependenciesFixed"
     public void SetFirebaseAuthReference()
     {
         _auth = FirebaseAuth.DefaultInstance;
-        Debug.Log(FirebaseAuth.DefaultInstance.CurrentUser != null ? $"Current user: {FirebaseAuth.DefaultInstance.CurrentUser.DisplayName}" : "Current user: null");
+        CurrentUser = _auth.CurrentUser;
+        Debug.Log(CurrentUser != null ? $"Current user: {CurrentUser.DisplayName}" : "Current user: null");
         if (IsUserSignedIn()) Instantiate(_tokenRetrieverPrefab);
     }
 

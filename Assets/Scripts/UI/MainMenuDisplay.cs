@@ -17,7 +17,7 @@ public class MainMenuDisplay : MonoBehaviour
             Debug.LogError("MainMenuDisplay - Object of type 'FirebaseAuthorization' could not be found");
     }
 
-    // Invoke from "FirebaseInitializer.onFirebaseInitialize"
+    // Invoke from "FirebaseInitializer.onDependenciesFixed"
     public void ChooseUIToDisplay()
     {
         if (_firebaseAuthorization == null)
@@ -41,7 +41,7 @@ public class MainMenuDisplay : MonoBehaviour
         _signedOutMenu.SetActive(true);
     }
 
-    // Invoke from "FirebaseAuthorization.onSignInSuccessful" or "FirebaseAuthorization.onSignOutSuccessful" 
+    // Invoke from "FirebaseAuthorization.onSignInSuccessful" and "FirebaseAuthorization.onSignOutSuccessful" 
     public void ChangeUIDisplayed()
     {
         _signedInMenu.SetActive(!_signedInMenu.activeSelf);

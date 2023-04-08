@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Firebase.Database;
 
@@ -5,7 +6,7 @@ public class FirebaseDatabase : MonoBehaviour
 {
     private DatabaseReference _dbReference;
 
-    // Invoke from "FirebaseInitializer.onFirebaseInitialize"
+    // Invoke from "FirebaseInitializer.onDependenciesFixed"
     public void SetDatabaseReference()
     {
         _dbReference = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
@@ -38,9 +39,27 @@ public class FirebaseDatabase : MonoBehaviour
     
     private void CreateUserInDB(string userID, string userName)
     {
-        User newUser = new User(userID, userName, 0);
+        string timeInEpochMillis = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
+        
+        User newUser = new User(userName, 0, 0, timeInEpochMillis, timeInEpochMillis);
         string json = FindObjectOfType<JSONHelper>().CreateJsonFromObject(newUser);
         _dbReference.Child("users").Child(userID).SetRawJsonValueAsync(json);
         Debug.Log($"CreateUserInDB - User '{userName} --- {userID}' successfully created");
+    }
+
+    public void UpdateStepsInDB(int steps)
+    {
+        _dbReference.Child("users")
+            .Child(FirebaseAuthorization.CurrentUser.UserId)
+            .Child("steps")
+            .SetValueAsync(steps);
+    }
+
+    public void UpdateLastPlayedInEpochMillisInDB(string lastPlayedInEpochMillis)
+    {
+        _dbReference.Child("users")
+            .Child(FirebaseAuthorization.CurrentUser.UserId)
+            .Child("lastTimeInEpochMillis")
+            .SetValueAsync(lastPlayedInEpochMillis);
     }
 }

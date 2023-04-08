@@ -1331,7 +1331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581da2f7204ee044081e759fc0f32ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
   _tokenRetrieverPrefab: {fileID: 8092682731697353075, guid: 7f68ec87b4483464387dbd9aac5c15ec, type: 3}
   onSignInSuccessful:
     m_PersistentCalls:
@@ -1387,7 +1386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84b0d1c4a509ae4398d19aadff330ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onFirebaseInitialize:
+  onDependenciesFixed:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1539866241}

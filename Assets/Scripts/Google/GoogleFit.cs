@@ -9,6 +9,12 @@ public class GoogleFit : MonoBehaviour
     
     [SerializeField] private WebRequestHelper requestHandler;
     [SerializeField] private JSONHelper jsonHelper;
+    private FirebaseDatabase _firebaseDatabase;
+
+    private void Start()
+    {
+        _firebaseDatabase = FindObjectOfType<FirebaseDatabase>();
+    }
 
     public void CallAPI()
     {
@@ -38,6 +44,7 @@ public class GoogleFit : MonoBehaviour
         }
         
         Debug.Log($"STEPS: {nSteps}");
+        //_firebaseDatabase.UpdateStepsInDB(nSteps);
         stepsText.text = nSteps.ToString(); // ELIMINAR ESTO EN UN FUTURO
     }
 }

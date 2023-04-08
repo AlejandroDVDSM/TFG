@@ -10,7 +10,7 @@ public class FirebaseInitializer : MonoBehaviour
     [Space]
     [Header("Events")]
     [Space]
-    public UnityEvent onFirebaseInitialize = new UnityEvent();
+    public UnityEvent onDependenciesFixed = new UnityEvent();
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class FirebaseInitializer : MonoBehaviour
                     
                     // Set a flag here to indicate whether Firebase is ready to use by your app.
                     _firebaseIsReady = true;
-                    onFirebaseInitialize.Invoke();
+                    onDependenciesFixed.Invoke();
                 }
                 else
                 {
