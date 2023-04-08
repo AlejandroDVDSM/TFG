@@ -9,7 +9,7 @@ public class FirebaseAuthorization : MonoBehaviour
 {
     private FirebaseInitializer _firebaseInitializer;
     private FirebaseAuth _auth;
-    public static FirebaseUser CurrentUser; 
+    public static FirebaseUser CurrentUser;
     private FirebaseDatabase _firebaseDatabase;
     [SerializeField] private GameObject _tokenRetrieverPrefab;
     private static FirebaseAuthorization instance;

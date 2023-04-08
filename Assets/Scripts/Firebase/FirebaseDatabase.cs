@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using Firebase.Database;
 
@@ -6,6 +7,8 @@ public class FirebaseDatabase : MonoBehaviour
 {
     private DatabaseReference _dbReference;
 
+    private string _result = string.Empty;
+    
     // Invoke from "FirebaseInitializer.onDependenciesFixed"
     public void SetDatabaseReference()
     {
@@ -22,13 +25,9 @@ public class FirebaseDatabase : MonoBehaviour
                 DataSnapshot snapshot = task.Result;
 
                 if (snapshot.Exists)
-                {
                     Debug.Log($"CreateUserInDB - User '{userName} --- {userID}': has been created before");
-                }
                 else
-                {
                     CreateUserInDB(userID, userName);
-                }
             }
             else
             {
@@ -61,5 +60,27 @@ public class FirebaseDatabase : MonoBehaviour
             .Child(FirebaseAuthorization.CurrentUser.UserId)
             .Child("lastTimeInEpochMillis")
             .SetValueAsync(lastPlayedInEpochMillis);
+    }
+
+    public void GetFirstPlayedInEpochMillis()
+    {
+        _dbReference.Child("users")
+            .Child(/*FirebaseAuthorization.CurrentUser.UserId*/"xUFlS4CG3mWJMrK202k5jB0Onnk2")
+            .Child("firstPlayedInEpochMillis")
+            .GetValueAsync().ContinueWith(task =>
+            {
+                if (task.IsCompleted)
+                {
+                    DataSnapshot snapshot = task.Result;
+                    Debug.Log("FirebaseDatabase - GetFirstPlayedInEpochMillis success --" + snapshot.Value);
+                    // PlayerPrefs.SetString(snapshot.Value.ToString());
+                    
+                }
+                else
+                {
+                    Debug.LogError("GetFirstPlayedInEpochMillis - Couldn't be completed");
+
+                }
+            });
     }
 }

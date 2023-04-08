@@ -45,6 +45,9 @@ public class GoogleFit : MonoBehaviour
         
         Debug.Log($"STEPS: {nSteps}");
         //_firebaseDatabase.UpdateStepsInDB(nSteps);
-        stepsText.text = nSteps.ToString(); // ELIMINAR ESTO EN UN FUTURO
+        //stepsText.text = nSteps.ToString(); // ELIMINAR ESTO EN UN FUTURO
+        _firebaseDatabase.GetFirstPlayedInEpochMillis();
     }
+    
+    
 }
