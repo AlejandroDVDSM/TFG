@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class MainMenuDisplay : MonoBehaviour
@@ -6,38 +7,35 @@ public class MainMenuDisplay : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject _signedInMenu;
     [SerializeField] private GameObject _signedOutMenu;
-
-    private FirebaseAuthorization _firebaseAuthorization;
+    [SerializeField] private TMP_Text _loadingMessage;
     
     private void Start()
     {
-        _firebaseAuthorization = FindObjectOfType<FirebaseAuthorization>();
-        
-        if (_firebaseAuthorization == null)
-            Debug.LogError("MainMenuDisplay - Object of type 'FirebaseAuthorization' could not be found");
+        ChooseUIToDisplay();
     }
 
-    // Invoke from "FirebaseInitializer.onDependenciesFixed"
-    public void ChooseUIToDisplay()
+    private void ChooseUIToDisplay()
     {
-        if (_firebaseAuthorization == null)
-            return;
-        
-        if (_firebaseAuthorization.IsUserSignedIn())
-            SignedInUI();
-        else
-            SignedOutUI();
+        if (FirebaseInitializer.IsFirebaseReady())
+        {
+            if (FirebaseAuthorization.IsUserSignedIn())
+                SignedInUI();
+            else
+                SignedOutUI();
+        }
     }
     
-    private void SignedInUI()
+    public void SignedInUI()
     {
         _signedInMenu.SetActive(true);
+        _signedOutMenu.SetActive(false);
     }
 
     
-    private void SignedOutUI()
+    public void SignedOutUI()
     {
         _signedOutMenu.SetActive(true);
+        _signedInMenu.SetActive(false);
     }
 
     // Invoke from "FirebaseAuthorization.onSignInSuccessful" and "FirebaseAuthorization.onSignOutSuccessful" 
@@ -45,5 +43,17 @@ public class MainMenuDisplay : MonoBehaviour
     {
         _signedInMenu.SetActive(!_signedInMenu.activeSelf);
         _signedOutMenu.SetActive(!_signedOutMenu.activeSelf);
+    }
+
+    public void ShowLoadingMessage(string message)
+    {
+        _loadingMessage.gameObject.SetActive(true);
+        _loadingMessage.text = message;
+    }
+
+    public void HideLoadingMessage()
+    {
+        _loadingMessage.text = String.Empty;
+        _loadingMessage.gameObject.SetActive(false);
     }
 }

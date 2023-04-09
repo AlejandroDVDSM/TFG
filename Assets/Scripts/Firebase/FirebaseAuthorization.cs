@@ -1,96 +1,103 @@
 using System;
 using Firebase;
 using Firebase.Auth;
-using Firebase.Extensions;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class FirebaseAuthorization : MonoBehaviour
 {
     private FirebaseInitializer _firebaseInitializer;
     private FirebaseAuth _auth;
-    public static FirebaseUser CurrentUser;
+    private FirebaseAuthorization _instance;
     private FirebaseDatabase _firebaseDatabase;
-    [SerializeField] private GameObject _tokenRetrieverPrefab;
-    private static FirebaseAuthorization instance;
+    //[SerializeField] private GameObject _tokenRetrieverPrefab;
+    private bool _initialized;
+    private MainMenuDisplay _mainMenuDisplay;
     
-    [Space]
-    [Header("Events")]
-    [Space]
-    public UnityEvent onSignInSuccessful = new UnityEvent();
-    public UnityEvent onSignOutSuccessful = new UnityEvent();
+    public static event Action onSignInSuccessful;
+    public static event Action onSignOutSuccessful;
 
-    public void Awake()
+    private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        // Singleton
+        if (_instance == null)
+            _instance = this;
         else
             Destroy(gameObject);
     }
-    
+
     private void Start()
     {
-        _firebaseInitializer = GetComponent<FirebaseInitializer>();
-        _firebaseDatabase = GetComponent<FirebaseDatabase>();
+        if (FindObjectOfType<MainMenuDisplay>() != null)
+            _mainMenuDisplay = FindObjectOfType<MainMenuDisplay>();
+        
+        // Initialize FirebaseAuth
+        if (!_initialized)
+            InitializedFirebaseAuthorization();
+    }
+
+    private void InitializedFirebaseAuthorization()
+    {
+        // Log messages
+        _mainMenuDisplay.ShowLoadingMessage("Initializing Firebase Authorization...");
+        Debug.Log("Initializing Firebase Authorization...");
+        
+        // Set references
+        _auth = FirebaseAuth.DefaultInstance;
+        _initialized = true;
+        
+        // UI
+        _mainMenuDisplay.HideLoadingMessage();
+        _mainMenuDisplay.SignedOutUI();
     }
     
     // Invoke from "FirebaseInitializer.onDependenciesFixed"
-    public void SetFirebaseAuthReference()
+    /*public void SetFirebaseAuthReference()
     {
         _auth = FirebaseAuth.DefaultInstance;
         CurrentUser = _auth.CurrentUser;
         Debug.Log(CurrentUser != null ? $"Current user: {CurrentUser.DisplayName}" : "Current user: null");
         if (IsUserSignedIn()) Instantiate(_tokenRetrieverPrefab);
-    }
+    }*/
 
     public void SignInWithGoogleOnFirebase(string idToken)
     {
+        _mainMenuDisplay.ShowLoadingMessage("Signing in, please wait...");
         Debug.Log("SignInWithGoogleOnFirebase - Trying to sign in with Google on Firebase...");
-        if (_firebaseInitializer.IsFirebaseReady())
+        
+        
+        Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
+        _auth.SignInWithCredentialAsync(credential).ContinueWith(task => //OnMainThread
         {
-            Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
-            
-            _auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
+            AggregateException ex = task.Exception;
+            if (ex != null)
             {
-                AggregateException ex = task.Exception;
-                if (ex != null)
-                {
-                    if (ex.InnerExceptions[0] is FirebaseException inner && (inner.ErrorCode != 0))
-                        Debug.LogError("\nSignInWithGoogleOnFirebase: Error code = " + inner.ErrorCode + " Message = " + inner.Message);
-                }
-                else
-                {
-                    Debug.Log("SignInWithGoogleOnFirebase - Sign in Successful");
-                    // Instantiate(_tokenRetrieverPrefab);
-                    //onSignInSuccessful.Invoke();
-                }
-            });
-        }
-        else
-        {
-            Debug.Log("SignInWithGoogleOnFirebase - Firebase is not ready to use yet");
-        }
+                if (ex.InnerExceptions[0] is FirebaseException inner && (inner.ErrorCode != 0))
+                    Debug.LogError("\nSignInWithGoogleOnFirebase: Error code = " + inner.ErrorCode + " Message = " + inner.Message);
+            }
+            else
+            {
+                Debug.Log("SignInWithGoogleOnFirebase - Sign in Successful");
+                // Instantiate(_tokenRetrieverPrefab);
+                onSignInSuccessful?.Invoke();
+            }
+        });
     }
 
     public void SignOutAuthenticatedUser()
     {
-        _auth.SignOut();
-        FindObjectOfType<GoogleSignInService>().SignOutWithGoogle();
-        onSignOutSuccessful.Invoke();
+        // Sign out
+        FirebaseAuth.DefaultInstance.SignOut();
+        GetComponent<GoogleSignInService>().SignOutWithGoogle();
+        
+        // UI
+        onSignOutSuccessful?.Invoke();
+        /*_mainMenuDisplay.ShowLoadingMessage("Signing out...");
+        _mainMenuDisplay.SignedOutUI();
+        _mainMenuDisplay.HideLoadingMessage();*/
     }
 
-    public bool IsUserSignedIn()
+    public static bool IsUserSignedIn()
     {
-        return _auth.CurrentUser != null;
-    }
-
-    // Invoke from "onSignInSuccessful"
-    public void CheckIfUserExistsInDB()
-    {
-        CurrentUser = _auth.CurrentUser;
-        _firebaseDatabase.CheckIfUserExistsInDB(CurrentUser.UserId, CurrentUser.DisplayName);
+        return FirebaseAuth.DefaultInstance.CurrentUser != null;
     }
 }
