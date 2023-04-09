@@ -92,7 +92,7 @@ public class FirebaseDatabase : MonoBehaviour
         Debug.Log($"CreateUserInDB - User '{userName} --- {userID}' successfully created");
     }
 
-    private void UpdateStepsInDB(int steps)
+    public void UpdateStepsInDB(int steps)
     {
         Debug.Log("Updating 'steps'...");
         string userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;

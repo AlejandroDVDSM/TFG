@@ -65,6 +65,10 @@ public class GoogleFit : MonoBehaviour
             }
             _steps += int.Parse(_jsonHelper.GetValue(response, $"$.bucket[{i}].dataset[0].point[0].value[0].intVal"));
         }
+
+        int newSteps = int.Parse(PlayerPrefs.GetString("steps")) + _steps;
+        PlayerPrefs.SetString("steps", newSteps.ToString());
+        FindObjectOfType<FirebaseDatabase>().UpdateStepsInDB(newSteps);
         PrintSteps();
         Debug.Log($"STEPS: {_steps}");
     }

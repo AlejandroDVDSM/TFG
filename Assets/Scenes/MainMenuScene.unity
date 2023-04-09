@@ -1337,7 +1337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 102, y: -137}
+  m_AnchoredPosition: {x: 160, y: -137}
   m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &894602194
@@ -2396,8 +2396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stepsText: {fileID: 859071443}
-  requestHandler: {fileID: 85672199}
-  jsonHelper: {fileID: 85672197}
 --- !u!1 &2077043216
 GameObject:
   m_ObjectHideFlags: 0
