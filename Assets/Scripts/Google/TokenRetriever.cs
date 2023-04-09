@@ -1,23 +1,37 @@
 using System;
 using Google;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TokenRetriever : MonoBehaviour
 {
     private WebRequestHelper _webRequestHelper;
     private JSONHelper _jsonHelper;
+    private TokenRetriever _instance;
     
-    [Space]
-    [Header("Events")]
-    [Space]
-    public UnityEvent onTokenRetrieved = new UnityEvent();
+    private void Awake()
+    {
+        // Singleton
+        if (_instance == null)
+            _instance = this;
+        else
+            Destroy(gameObject);
+    }    
     
     private void Start()
     {
         _webRequestHelper = FindObjectOfType<WebRequestHelper>();
         _jsonHelper = FindObjectOfType<JSONHelper>();
-        onTokenRetrieved.AddListener(FindObjectOfType<GoogleFit>().CallAPI);
+
+        FirebaseAuthorization.onSignInSuccessful += FirebaseAuthorizationOnSignInSuccessful;
+    }
+
+    private void OnDestroy()
+    {
+        FirebaseAuthorization.onSignInSuccessful -= FirebaseAuthorizationOnSignInSuccessful;
+    }
+
+    private void FirebaseAuthorizationOnSignInSuccessful()
+    {
         RetrieveTokens();
     }
 
@@ -50,7 +64,7 @@ public class TokenRetriever : MonoBehaviour
         Debug.Log($"Access token ---> {accessToken}");
 
         if (!PlayerPrefs.HasKey("refreshToken")) SetRefreshToken(response);
-        onTokenRetrieved.Invoke();
+        FindObjectOfType<GoogleFit>().CallFitnessAPI();
     }
 
     private void SetRefreshToken(string response)

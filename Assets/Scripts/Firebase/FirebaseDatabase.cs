@@ -30,6 +30,12 @@ public class FirebaseDatabase : MonoBehaviour
             InitializedDatabase();
     }
 
+    private void OnApplicationQuit()
+    {
+        UpdateStepsInDB(int.Parse(PlayerPrefs.GetString("steps")));
+        UpdateLastPlayedInEpochMillis();
+    }
+
     private void InitializedDatabase()
     {
         // Log messages
@@ -64,6 +70,7 @@ public class FirebaseDatabase : MonoBehaviour
                 else
                     CreateUserInDB(userID, userName);
                 
+                SetPlayerPrefs();
                 _mainMenuDisplay.HideLoadingMessage();
                 _mainMenuDisplay.SignedInUI();
             }
@@ -83,12 +90,29 @@ public class FirebaseDatabase : MonoBehaviour
         _dbReference.Child("users").Child(userID).SetRawJsonValueAsync(json);
         
         Debug.Log($"CreateUserInDB - User '{userName} --- {userID}' successfully created");
-        // RetrievePlayerData();
+    }
+
+    private void UpdateStepsInDB(int steps)
+    {
+        Debug.Log("Updating 'steps'...");
+        string userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+        _dbReference.Child("users").Child(userID).Child("steps").SetValueAsync(steps);
     }
     
-    /*public void RetrievePlayerData()
+    private void UpdateLastPlayedInEpochMillis()
     {
-        _dbReference.Child("users").Child(FirebaseAuthorization.CurrentUser.UserId).GetValueAsync().ContinueWith(task =>
+        Debug.Log("Updating 'lastPlayedInEpochMillis'");
+        string userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+        string lastPlayedInEpochMillis = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
+        _dbReference.Child("users").Child(userID).Child("lastPlayedInEpochMillis").SetValueAsync(lastPlayedInEpochMillis);
+    }    
+    
+    private void SetPlayerPrefs()
+    {
+        Debug.Log("Setting PlayerPrefs with the data found in DB...");
+        string userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+        
+        _dbReference.Child("users").Child(userID).GetValueAsync().ContinueWith(task =>
         {
             if (task.IsCompleted)
             {
@@ -96,7 +120,7 @@ public class FirebaseDatabase : MonoBehaviour
 
                 foreach (DataSnapshot s in snapshot.Children)
                 {
-                    Debug.Log($"SORPRÉNDEME: {s.Key} <-> {s.Value}");
+                    Debug.Log($"SetPlayerPrefs: {s.Key} <-> {s.Value}");
                     PlayerPrefs.SetString(s.Key, s.Value.ToString());
                 }
             }
@@ -105,5 +129,5 @@ public class FirebaseDatabase : MonoBehaviour
                 Debug.LogError("RetrievePlayerData - Couldn't be completed");
             }
         });
-    }*/
+    }
 }

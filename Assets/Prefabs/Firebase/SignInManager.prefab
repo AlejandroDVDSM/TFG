@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1047481637630248440}
   - component: {fileID: 7392648000520768128}
   - component: {fileID: 104113239060363875}
+  - component: {fileID: -4953888330468498161}
   m_Layer: 0
   m_Name: SignInManager
   m_TagString: Untagged
@@ -57,10 +58,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581da2f7204ee044081e759fc0f32ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tokenRetrieverPrefab: {fileID: 8092682731697353075, guid: 7f68ec87b4483464387dbd9aac5c15ec, type: 3}
-  onSignInSuccessful:
-    m_PersistentCalls:
-      m_Calls: []
-  onSignOutSuccessful:
-    m_PersistentCalls:
-      m_Calls: []
+--- !u!114 &-4953888330468498161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6501900393658742781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280a862759a512844a5c61d845cb55cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

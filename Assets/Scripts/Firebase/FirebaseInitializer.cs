@@ -10,7 +10,7 @@ public class FirebaseInitializer : MonoBehaviour
     
     [SerializeField] private GameObject _signInManagerPrefab;
     [SerializeField] private GameObject _firebaseDatabasePrefab;
-
+    
     private void Awake()
     {
         if (_instance == null)
@@ -52,7 +52,6 @@ public class FirebaseInitializer : MonoBehaviour
                     // Set a flag here to indicate whether Firebase is ready to use by your app.
                     _firebaseIsReady = true;
                     _mainMenuDisplay.HideLoadingMessage();
-                    // onDependenciesFixed.Invoke();
                     Instantiate(_signInManagerPrefab, transform);
                     FirebaseAuthorization.onSignInSuccessful += FirebaseAuthorizationOnSignInSuccessful;
                     FirebaseAuthorization.onSignOutSuccessful += FirebaseAuthorizationOnSignOutSuccessful;
@@ -66,7 +65,7 @@ public class FirebaseInitializer : MonoBehaviour
             else
             {
                 _firebaseIsReady = false;
-                Debug.LogError("Dependency check was not completed. Error : " + task.Exception.Message);
+                Debug.LogError("Dependency check was not completed. Error : " + task.Exception?.Message);
             }
         });
     }

@@ -5,48 +5,67 @@ using UnityEngine;
 
 public class GoogleFit : MonoBehaviour
 {
-    [SerializeField] private TMP_Text stepsText;
+    [SerializeField] private TMP_Text _stepsText;
+    private int _steps;
+    private bool _initialized;
     
-    [SerializeField] private WebRequestHelper requestHandler;
-    [SerializeField] private JSONHelper jsonHelper;
-    private FirebaseDatabase _firebaseDatabase;
+    private WebRequestHelper _webRequestHelper;
+    private JSONHelper _jsonHelper;
+    private GoogleFit _instance;
+    
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
-        _firebaseDatabase = FindObjectOfType<FirebaseDatabase>();
+        _webRequestHelper = FindObjectOfType<WebRequestHelper>();
+        _jsonHelper = FindObjectOfType<JSONHelper>();
+        
+        _steps = PlayerPrefs.HasKey("steps") ? int.Parse(PlayerPrefs.GetString("steps")) : 0;
+        PrintSteps();
     }
 
-    public void CallAPI()
+    private void PrintSteps()
     {
-        GetSteps();
+        _stepsText.text = $"Your steps: {_steps}";
     }
 
-    private void GetSteps()
+    public void CallFitnessAPI()
     {
         const string uri = "https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate";
         
-        string startTimeMillis = PlayerPrefs.GetString("firstPlayedInEpochMillis")/*"" + 1677766440000*/; // Este dato tiene que ser el momento en que Google Fit empezó el seguimiento de datos del usuario en Epoch milisegundos
-        string endTimeMillis = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
-        
-        string json = "{ 'aggregateBy': [{ 'dataTypeName': 'com.google.step_count.delta', 'dataSourceId': 'derived:com.google.step_count.delta:com.google.android.gms:merge_step_deltas'}],'bucketByTime': { 'durationMillis': 86400000 },'startTimeMillis': " + startTimeMillis + ",'endTimeMillis': " + endTimeMillis + "}";
+        string startTimeInEpochMillis = PlayerPrefs.GetString("lastPlayedInEpochMillis");
+        string endTimeInEpochMillis = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
+
+        string json = "{ 'aggregateBy': [{ 'dataTypeName': 'com.google.step_count.delta', 'dataSourceId': 'derived:com.google.step_count.delta:com.google.android.gms:merge_step_deltas'}],'bucketByTime': { 'durationMillis': 86400000 },'startTimeMillis': " + startTimeInEpochMillis + ",'endTimeMillis': " + endTimeInEpochMillis + "}";
         string accessToken = PlayerPrefs.GetString("accessToken");
-        requestHandler.SendPostRequest(uri, accessToken, json, SetSteps); // Se llama al método SendPostRequest y su resultado se envía como parámetro al método SetSteps
+        
+        _webRequestHelper.SendPostRequest(uri, accessToken, json, SetSteps); // Se llama al método SendPostRequest y su resultado se envía como parámetro al método SetSteps
     }
 
     private void SetSteps(string response)
     {
-        int bucketChildren = jsonHelper.GetToken(response, "$.bucket").Children().Count();
-        int nSteps = 0;
+        int bucketChildren = _jsonHelper.GetToken(response, "$.bucket").Children().Count();
         
         for (int i = 0; i < bucketChildren; i++)
         {
-            nSteps += int.Parse(jsonHelper.GetValue(response, $"$.bucket[{i}].dataset[0].point[0].value[0].intVal"));
+            if (!_jsonHelper.GetToken(response, $"$.bucket[{i}].dataset[0].point").Children().Any())
+            {
+                break;
+            }
+            _steps += int.Parse(_jsonHelper.GetValue(response, $"$.bucket[{i}].dataset[0].point[0].value[0].intVal"));
         }
-        
-        Debug.Log($"STEPS: {nSteps}");
-        // _firebaseDatabase.UpdateStepsInDB(nSteps);
-        //stepsText.text = nSteps.ToString(); // ELIMINAR ESTO EN UN FUTURO
+        PrintSteps();
+        Debug.Log($"STEPS: {_steps}");
     }
-    
-    
 }

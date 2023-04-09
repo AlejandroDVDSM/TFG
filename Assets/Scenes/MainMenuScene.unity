@@ -1199,7 +1199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1102}
+  m_AnchoredPosition: {x: 0, y: 536}
   m_SizeDelta: {x: 1621.5256, y: 367.0681}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &859071443
@@ -1998,7 +1998,7 @@ GameObject:
   - component: {fileID: 1539866242}
   - component: {fileID: 1539866244}
   m_Layer: 0
-  m_Name: Firebase
+  m_Name: FirebaseManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2060,7 +2060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1607996823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2362,7 +2362,7 @@ GameObject:
   - component: {fileID: 1982311071}
   - component: {fileID: 1982311072}
   m_Layer: 0
-  m_Name: GoogleServices
+  m_Name: GoogleFit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2395,7 +2395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d257fe74d8bbd3b44881420f1bf36c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepsText: {fileID: 859071443}
+  _stepsText: {fileID: 859071443}
   requestHandler: {fileID: 85672199}
   jsonHelper: {fileID: 85672197}
 --- !u!1 &2077043216
