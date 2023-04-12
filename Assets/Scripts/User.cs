@@ -1,5 +1,6 @@
 public class User
 {
+    // This variables must be public to be stored in Realtime Database (Firebase)
     public string userName;
     
     public int highestScore;

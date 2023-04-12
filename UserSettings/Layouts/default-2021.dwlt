@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1037
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Android Logcat
   m_RootView: {fileID: 7}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 59
+  controlID: 104
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -111,24 +111,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: AndroidLogcatConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 288
+    y: 100
     width: 1159
-    height: 699
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 17}
+    height: 887
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 17}
   - {fileID: 14}
   - {fileID: 13}
-  m_Selected: 0
-  m_LastSelected: 2
+  m_Selected: 2
+  m_LastSelected: 1
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 38
+  controlID: 46
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 37
+  controlID: 45
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -295,7 +295,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1159
-    height: 288
+    height: 100
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
@@ -324,9 +324,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 279
-    y: 729
+    y: 173
     width: 1157
-    height: 310
+    height: 866
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -353,9 +353,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 279
-    y: 264
+    y: 173
     width: 1157
-    height: 775
+    height: 866
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -445,7 +445,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/PopUps
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -459,7 +459,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 7a6d0000
     m_LastClickedID: 28026
-    m_ExpandedIDs: 00000000e61c00004462000046620000486200004a6200004c6200004e62000050620000526200005462000056620000586200005a6200005c6200005e620000
+    m_ExpandedIDs: 00000000e61c00002e63000030630000326300003463000036630000386300003a6300003c6300003e63000040630000426300004463000046630000486300004a6300004c6300004e6300005063000052630000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -484,24 +484,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
+    scrollPos: {x: 0, y: 11}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000e61c00004462000046620000486200004a6200004c6200004e62000050620000526200005462000056620000586200005a6200005c6200005e620000b0620000c0620000da620000cc6f0000ba710000
+    m_ExpandedIDs: ffffffff00000000e61c00002e63000030630000326300003463000036630000386300003a6300003c6300003e63000040630000426300004463000046630000486300004c6300004e6300005063000052630000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: FirebaseDatabase
+      m_OriginalName: FirebaseDatabase
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 4196
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 2}
     m_SearchString: 
@@ -659,7 +659,7 @@ MonoBehaviour:
     x: 279
     y: 73
     width: 1157
-    height: 267
+    height: 79
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -681,7 +681,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: -141, y: 149}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: -96}
       snapCorner: 1
       id: unity-grid-and-snap-toolbar
       index: 1
@@ -998,7 +998,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 7e29ffffc629ffff502bffff6c2bffffb62dffffc02dffff0035ffff2435ffff2e35ffff763bffff3a3cffff843cffff2a3effff383effff0640ffff5040fffff641ffff0442ffff9644ffffe044ffff8646ffff9446ffffde4affff284bffffce4cffffdc4cffffc44effff0e4fffffb450ffffc250ffff5c58ffffaa58ffff505affff605affffc65cffffb05ffffffa5fffffa061ffffae61ffffae67fffff867ffff9e69ffffac69ffff326effff7c6effff2270ffff3070ffff247affff6e7affff907affffa07afffff27bffff3c7cffffe27dfffff27dffff3887ffff8287ffff2689ffff3689ffffbc98ffff0a99ffffb09affffc09affff4eb1ffff98b1ffff46b3ffff5cb3ffffd6b8ffff20b9ffffc6baffffd4baffff44c1ffff8ec1ffff34c3ffff42c3ffff12caffff5ccaffff02ccffff10ccffff1ed0ffff68d0ffff0ed2ffff1cd2ffff78d8ffffc6d8ffff6cdaffff7adaffff14deffff5edeffff04e0ffff10e0ffff7ee5ffffc8e5ffff6ee7ffff7ae7ffff14eaffff62eaffff08ecffff14ecffff24fbfffff4ffffffc26000006c7f00009a820000b4850000ec85000010860000888c0000e2900000089400008a960000ca9600007ca30000a4a3000046b20000beb20000fcb5000074b60000ccc20000a4c6000034d80000
+      m_ExpandedIDs: f2eeffff3cefffffc8f0ffffd6f0ffffd4f1ffffe2f1ffff10f4ffff5ef4ffff04f6ffff12f6ffff8af7ffff24fbffffd2640000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
