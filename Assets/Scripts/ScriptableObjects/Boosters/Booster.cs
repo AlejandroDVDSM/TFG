@@ -3,10 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Booster", menuName = "Booster")]
 public class Booster : ScriptableObject
 {
-    [Space]
-    public string boosterName;
+    public string BoosterName;
+    
     [TextArea]
-    public string description;
-    public Sprite sprite;
-    public int cost;
+    public string Description;
+    public Sprite Sprite;
+    public int Cost;
 }

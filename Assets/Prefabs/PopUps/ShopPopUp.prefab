@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 4767137653749686694}
   - component: {fileID: 89260390790174329}
   - component: {fileID: 5143931295748163157}
+  - component: {fileID: 6828130992521067844}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -205,6 +206,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &6828130992521067844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952824516202622803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef9c03ec3b920f47b9862d2175ca6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boosterCardPrefab: {fileID: 151109681709037028, guid: d46c92b98aa06c94ab7b2467df8f0df2, type: 3}
+  _boosters:
+  - {fileID: 11400000, guid: 21509e11ea675044f974a4d3631ec5e7, type: 2}
+  - {fileID: 11400000, guid: cfabe7c361ed4c2488610016fb07493b, type: 2}
 --- !u!1 &2022941270705705410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,8 +1244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -24}
-  m_SizeDelta: {x: 1564.3306, y: 532.5399}
+  m_AnchoredPosition: {x: 0, y: -70.38585}
+  m_SizeDelta: {x: 1564.3306, y: 625.3116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &837843900453667201
 CanvasRenderer:

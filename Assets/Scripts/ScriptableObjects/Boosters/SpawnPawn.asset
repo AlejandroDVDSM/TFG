@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f87ed97d22a0e247927a18c1d9f8622, type: 3}
-  m_Name: New Booster
+  m_Name: SpawnPawn
   m_EditorClassIdentifier: 
-  boosterName: Points Multiplier
-  description: This booster will make you earn twice the points in the next 10 movements!
-  sprite: {fileID: 0}
-  cost: 1000
+  BoosterName: Spawn Pawn
+  Description: 
+  Sprite: {fileID: 21300000, guid: 3f365079668d55f4a9c4518376b99cd7, type: 3}
+  Cost: 1425
