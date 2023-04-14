@@ -99,7 +99,7 @@ public class FirebaseDatabase : MonoBehaviour
         _dbReference.Child("users").Child(userID).Child("steps").SetValueAsync(steps);
     }
     
-    private void UpdateLastPlayedInEpochMillis()
+    public void UpdateLastPlayedInEpochMillis()
     {
         Debug.Log("Updating 'lastPlayedInEpochMillis'");
         string userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;

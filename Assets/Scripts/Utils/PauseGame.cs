@@ -4,16 +4,17 @@ using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
 {
-    private PopUpManager _popUpManager;
+    //private PopUpManager _popUpManager;
     
-    private void Start()
+    /*private void Start()
     {
         _popUpManager = FindObjectOfType<PopUpManager>();
-    }
+    }*/
 
-    public void Pause()
+    public void Pause(string popUp)
     {
-        _popUpManager.ShowPopUp("PausePopUp");
+        PopUpManager.Instance.ShowPopUp(popUp/*"PausePopUp"*/);
+        //_popUpManager.ShowPopUp("PausePopUp");
         GameStateManager.instance.UpdateGameState(GameState.Pause);
     }
 

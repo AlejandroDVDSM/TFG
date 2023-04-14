@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BoosterManager : MonoBehaviour
+public class BoosterCollectionDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject _boosterCardPrefab;
     [SerializeField] private Booster[] _boosters;
@@ -8,17 +8,15 @@ public class BoosterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadBoostersInShop();
+        DisplayBoostersCardsInShop();
     }
 
-    private void LoadBoostersInShop()
+    private void DisplayBoostersCardsInShop()
     {
         foreach (var booster in _boosters)
         {
             GameObject boosterCard = Instantiate(_boosterCardPrefab, transform);
-            boosterCard.GetComponent<BoosterCard>().LoadData(booster);
-
+            boosterCard.GetComponent<BoosterCard>().InitializeBooster(booster);
         }
-        
     }
 }

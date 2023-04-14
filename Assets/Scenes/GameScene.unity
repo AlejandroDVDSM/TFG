@@ -210,13 +210,13 @@ MonoBehaviour:
       - m_Target: {fileID: 120417601}
         m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
         m_MethodName: Pause
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: PausePopUp
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &120417599
@@ -751,17 +751,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 928376327020068457, guid: f2d8050e1b0df7041803bfb9eb167bc9, type: 3}
   m_PrefabInstance: {fileID: 736764224}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &839593611 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 928376327020068456, guid: f2d8050e1b0df7041803bfb9eb167bc9, type: 3}
-  m_PrefabInstance: {fileID: 736764224}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62315de15a4940548a5bd7c71069ebda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &878929976
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +808,7 @@ GameObject:
   - component: {fileID: 880290532}
   - component: {fileID: 880290531}
   - component: {fileID: 880290530}
+  - component: {fileID: 880290533}
   m_Layer: 5
   m_Name: ShopButton
   m_TagString: Untagged
@@ -891,9 +881,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 839593611}
-        m_TargetAssemblyTypeName: PopUpManager, Assembly-CSharp
-        m_MethodName: ShowPopUp
+      - m_Target: {fileID: 880290533}
+        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
+        m_MethodName: Pause
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -941,6 +931,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880290528}
   m_CullTransparentMesh: 1
+--- !u!114 &880290533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880290528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcc4469eeb8baf41b4c20a5a862346c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1019071562
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,20 +1,37 @@
-using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BoosterCard : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _name;
-    [SerializeField] private TMP_Text _description;
-    [SerializeField] private TMP_Text _cost;
-    [SerializeField] private Image _image;
+    private Booster _booster;
+    [SerializeField] private Button _button;
     
-    public void LoadData(Booster booster)
+    private void Start()
     {
+        _button.onClick.AddListener(CheckIfCanBuy);
+    }
+
+    private void OnDestroy()
+    {
+        _button.onClick.RemoveListener(CheckIfCanBuy);
+    }
+    
+    private void CheckIfCanBuy()
+    {
+        int steps = int.Parse(PlayerPrefs.GetString("steps"));
+        
+        if (steps >= _booster.Cost)
+            GetComponentInParent<BoosterManager>().BuyBooster(name);
+        else
+            Debug.Log("no money no booster my friend");
+    }
+    
+    public void InitializeBooster(Booster booster)
+    {
+        _booster = booster;
         name = booster.BoosterName;
-        _name.text = booster.BoosterName;
-        // _description.text = _booster.Description;
-        _cost.text = booster.Cost.ToString();
-        _image.sprite = booster.Sprite;
+        GetComponent<BoosterCardDisplay>().DisplayData(_booster);
     }
 }

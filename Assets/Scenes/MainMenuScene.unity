@@ -1639,7 +1639,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sign out with Google
+  m_text: Sign out
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e52d75c311c8e4443a6bd3f99c369a50, type: 2}
   m_sharedMaterial: {fileID: 4372942571569601127, guid: e52d75c311c8e4443a6bd3f99c369a50, type: 2}
@@ -2120,7 +2120,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -1186}
-  m_SizeDelta: {x: 1715.9937, y: 493.97876}
+  m_SizeDelta: {x: 1026.3584, y: 493.9788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1671262137
 MonoBehaviour:
@@ -2411,7 +2411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2077043217
 RectTransform:
   m_ObjectHideFlags: 0

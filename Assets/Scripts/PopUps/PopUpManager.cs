@@ -23,7 +23,7 @@ public class PopUpManager : MonoBehaviour
     {
         Transform canvas = FindObjectOfType<Canvas>().transform;
         GameObject popUp = _popUps.First(popUp => popUp.name == popUpName);
-        
+
         if (popUp != null)
             Instantiate(popUp, canvas);
         else

@@ -85,6 +85,11 @@ public class FirebaseAuthorization : MonoBehaviour
 
     public void SignOutAuthenticatedUser()
     {
+        // Actions before signing out...
+        FirebaseDatabase firebaseDatabase = FindObjectOfType<FirebaseDatabase>();
+        firebaseDatabase.UpdateStepsInDB(int.Parse(PlayerPrefs.GetString("steps")));
+        firebaseDatabase.UpdateLastPlayedInEpochMillis();
+        
         // Sign out
         FirebaseAuth.DefaultInstance.SignOut();
         GetComponent<GoogleSignInService>().SignOutWithGoogle();
