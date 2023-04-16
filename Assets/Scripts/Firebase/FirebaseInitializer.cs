@@ -6,7 +6,6 @@ public class FirebaseInitializer : MonoBehaviour
 {
     private static bool _firebaseIsReady;
     private static FirebaseInitializer _instance;
-    //private MainMenuDisplay _mainMenuDisplay;
     
     [SerializeField] private GameObject _signInManagerPrefab;
     [SerializeField] private GameObject _firebaseDatabasePrefab;
@@ -22,9 +21,6 @@ public class FirebaseInitializer : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        /*if (FindObjectOfType<MainMenuDisplay>() != null)
-            _mainMenuDisplay = FindObjectOfType<MainMenuDisplay>();*/
         
         if (!_firebaseIsReady)
             CheckFirebaseDependencies();

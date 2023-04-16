@@ -10,7 +10,6 @@ public class FirebaseAuthorization : MonoBehaviour
     private FirebaseAuthorization _instance;
     private FirebaseDatabase _firebaseDatabase;
     private bool _initialized;
-    //private MainMenuDisplay _mainMenuDisplay;
     
     public static event Action onSignInSuccessful;
     public static event Action onSignOutSuccessful;
@@ -26,9 +25,6 @@ public class FirebaseAuthorization : MonoBehaviour
 
     private void Start()
     {
-        /*if (FindObjectOfType<MainMenuDisplay>() != null)
-            _mainMenuDisplay = FindObjectOfType<MainMenuDisplay>();*/
-        
         // Initialize FirebaseAuth
         if (!_initialized)
             InitializedFirebaseAuthorization();
@@ -37,7 +33,6 @@ public class FirebaseAuthorization : MonoBehaviour
     private void InitializedFirebaseAuthorization()
     {
         // Log messages
-        //_mainMenuDisplay.ShowLoadingMessage("Initializing Firebase Authorization...");
         MainMenuDisplay.Instance.ShowLoadingMessage("Initializing Firebase Authorization...");
         Debug.Log("Initializing Firebase Authorization...");
         
@@ -46,15 +41,12 @@ public class FirebaseAuthorization : MonoBehaviour
         _initialized = true;
         
         // UI
-       //_mainMenuDisplay.HideLoadingMessage();
        MainMenuDisplay.Instance.HideLoadingMessage();
-       // _mainMenuDisplay.SignedOutUI();
        MainMenuDisplay.Instance.SignedOutUI();
     }
 
     public void SignInWithGoogleOnFirebase(string idToken)
     {
-       // _mainMenuDisplay.ShowLoadingMessage("Signing in, please wait...");
         MainMenuDisplay.Instance.ShowLoadingMessage("Signing in, please wait...");
         Debug.Log("SignInWithGoogleOnFirebase - Trying to sign in with Google on Firebase...");
         
