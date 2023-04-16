@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private ChessPieceSpawner _chessPieceSpawner;
+    /*private ChessPieceSpawner _chessPieceSpawner;
     
     private void Awake()
     {
@@ -25,5 +25,5 @@ public class EnemyManager : MonoBehaviour
     private void GameStateManagerOnOnGameStateChanged(GameState state)
     {
         if (state == GameState.EnemyTurn) _chessPieceSpawner.SpawnEnemy();
-    }
+    }*/
 }

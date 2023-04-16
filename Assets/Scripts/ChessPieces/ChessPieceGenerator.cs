@@ -48,7 +48,7 @@ public class ChessPieceGenerator : MonoBehaviour
         return nextChessPiece;
     }
 
-    public GameObject GetRandomEnemy()
+    /*public GameObject GetRandomEnemy()
     {
         int randomIndex;
         if (_onlyGenerateEnemyPawn) // If flag is activated - Test purposes
@@ -67,5 +67,5 @@ public class ChessPieceGenerator : MonoBehaviour
             randomIndex = new Random().Next(0, _enemyPieces.Length); // First parameter: included --- Second parameter: excluded
         
         return _enemyPieces[randomIndex];
-    }
+    }*/
 }

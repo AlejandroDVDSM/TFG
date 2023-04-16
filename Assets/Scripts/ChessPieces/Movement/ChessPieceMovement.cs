@@ -38,7 +38,7 @@ public class ChessPieceMovement: MonoBehaviour
         IsMoving = false;
         GetBackToNormal();
         availableMoves.Clear();
-        GameStateManager.instance.UpdateGameState(GameState.EnemyTurn);
+        //GameStateManager.instance.UpdateGameState(GameState.EnemyTurn);
     }
 
     public void MoveAndEat(Tile targetTile)

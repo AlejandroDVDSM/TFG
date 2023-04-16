@@ -28,7 +28,7 @@ public class ChessPieceSpawner : MonoBehaviour
             
             _nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
             Debug.Log($"Spawn successful in <{tileWhereToSpawn.name}>");
-            GameStateManager.instance.UpdateGameState(GameState.EnemyTurn);
+            //GameStateManager.instance.UpdateGameState(GameState.EnemyTurn);
         }
         else
         {
@@ -36,7 +36,7 @@ public class ChessPieceSpawner : MonoBehaviour
         }
     }
 
-    public void SpawnEnemy()
+    /*public void SpawnEnemy()
     {
         if (ignoreEnemySpawn) // TEST PURPOSES
         {
@@ -54,5 +54,5 @@ public class ChessPieceSpawner : MonoBehaviour
         randomTile.IsFree = false;
         
         GameStateManager.instance.UpdateGameState(GameState.PlayerTurn);
-    }
+    }*/
 }

@@ -1289,7 +1289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4606b992c092f44f9e8c7757f29a28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doublePoints: 0
 --- !u!114 &1292003755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1641,6 +1640,7 @@ MonoBehaviour:
   _chessPieces:
   - {fileID: 2002372659035174584, guid: 82907fbef3f78b843b78b483935581b4, type: 3}
   - {fileID: 339159196022809705, guid: b25e7ef4a4697a249b244f42b1223059, type: 3}
+  - {fileID: 1195334709842036198, guid: 7faf1f050d52c4541b3f0d5582ce3a7f, type: 3}
   _enemyPieces:
   - {fileID: 1195334709842036198, guid: 7faf1f050d52c4541b3f0d5582ce3a7f, type: 3}
   - {fileID: 7648248836935225991, guid: 3c05c2a4bc5f4d2429790787c9cf72a9, type: 3}
