@@ -8,7 +8,7 @@ public class FirebaseDatabase : MonoBehaviour
 {
     private DatabaseReference _dbReference;
     private bool _initialized;
-    private MainMenuDisplay _mainMenuDisplay;
+    //private MainMenuDisplay _mainMenuDisplay;
     private FirebaseDatabase _instance;
 
     private void Awake()
@@ -22,8 +22,8 @@ public class FirebaseDatabase : MonoBehaviour
 
     private void Start()
     {
-        if (FindObjectOfType<MainMenuDisplay>() != null)
-            _mainMenuDisplay = FindObjectOfType<MainMenuDisplay>();
+        /*if (FindObjectOfType<MainMenuDisplay>() != null)
+            _mainMenuDisplay = FindObjectOfType<MainMenuDisplay>();*/
         
         // Initialize FirebaseDatabase
         if (!_initialized)
@@ -32,14 +32,15 @@ public class FirebaseDatabase : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        UpdateStepsInDB(int.Parse(PlayerPrefs.GetString("steps")));
+        // UpdateStepsInDB(int.Parse(PlayerPrefs.GetString("steps")));
         UpdateLastPlayedInEpochMillis();
     }
 
     private void InitializedDatabase()
     {
         // Log messages
-        _mainMenuDisplay.ShowLoadingMessage("Initializing Firebase Database...");
+        //_mainMenuDisplay.ShowLoadingMessage("Initializing Firebase Database...");
+        MainMenuDisplay.Instance.ShowLoadingMessage("Initializing Firebase Database...");
         Debug.Log("Initializing Firebase Database...");
         
         // Set references
@@ -48,13 +49,15 @@ public class FirebaseDatabase : MonoBehaviour
         CheckIfUserExistsInDB();
         
         // UI
-        _mainMenuDisplay.HideLoadingMessage();
+        //_mainMenuDisplay.HideLoadingMessage();
+        MainMenuDisplay.Instance.HideLoadingMessage();
     }
 
     // Check if user exists. If not, create an entry in the DB.
     private void CheckIfUserExistsInDB()
     {
-        _mainMenuDisplay.ShowLoadingMessage("Checking if user exist in DB...");
+        //_mainMenuDisplay.ShowLoadingMessage("Checking if user exist in DB...");
+        MainMenuDisplay.Instance.ShowLoadingMessage("Checking if user exist in DB...");
         
         string userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
         string userName = FirebaseAuth.DefaultInstance.CurrentUser.DisplayName;
@@ -71,8 +74,10 @@ public class FirebaseDatabase : MonoBehaviour
                     CreateUserInDB(userID, userName);
                 
                 SetPlayerPrefs();
-                _mainMenuDisplay.HideLoadingMessage();
-                _mainMenuDisplay.SignedInUI();
+                //_mainMenuDisplay.HideLoadingMessage();
+                MainMenuDisplay.Instance.HideLoadingMessage();
+                //_mainMenuDisplay.SignedInUI();
+                MainMenuDisplay.Instance.SignedInUI();
             }
             else
             {
@@ -101,7 +106,7 @@ public class FirebaseDatabase : MonoBehaviour
     
     public void UpdateLastPlayedInEpochMillis()
     {
-        Debug.Log("Updating 'lastPlayedInEpochMillis'");
+        Debug.Log("Updating 'lastPlayedInEpochMillis'...");
         string userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
         string lastPlayedInEpochMillis = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
         _dbReference.Child("users").Child(userID).Child("lastPlayedInEpochMillis").SetValueAsync(lastPlayedInEpochMillis);

@@ -11,7 +11,7 @@ public class GoogleFit : MonoBehaviour
     
     private WebRequestHelper _webRequestHelper;
     private JSONHelper _jsonHelper;
-    private GoogleFit _instance;
+    private static GoogleFit _instance;
     
     private void Awake()
     {

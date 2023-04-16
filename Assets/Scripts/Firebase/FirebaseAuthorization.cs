@@ -9,9 +9,8 @@ public class FirebaseAuthorization : MonoBehaviour
     private FirebaseAuth _auth;
     private FirebaseAuthorization _instance;
     private FirebaseDatabase _firebaseDatabase;
-    //[SerializeField] private GameObject _tokenRetrieverPrefab;
     private bool _initialized;
-    private MainMenuDisplay _mainMenuDisplay;
+    //private MainMenuDisplay _mainMenuDisplay;
     
     public static event Action onSignInSuccessful;
     public static event Action onSignOutSuccessful;
@@ -27,8 +26,8 @@ public class FirebaseAuthorization : MonoBehaviour
 
     private void Start()
     {
-        if (FindObjectOfType<MainMenuDisplay>() != null)
-            _mainMenuDisplay = FindObjectOfType<MainMenuDisplay>();
+        /*if (FindObjectOfType<MainMenuDisplay>() != null)
+            _mainMenuDisplay = FindObjectOfType<MainMenuDisplay>();*/
         
         // Initialize FirebaseAuth
         if (!_initialized)
@@ -38,7 +37,8 @@ public class FirebaseAuthorization : MonoBehaviour
     private void InitializedFirebaseAuthorization()
     {
         // Log messages
-        _mainMenuDisplay.ShowLoadingMessage("Initializing Firebase Authorization...");
+        //_mainMenuDisplay.ShowLoadingMessage("Initializing Firebase Authorization...");
+        MainMenuDisplay.Instance.ShowLoadingMessage("Initializing Firebase Authorization...");
         Debug.Log("Initializing Firebase Authorization...");
         
         // Set references
@@ -46,24 +46,17 @@ public class FirebaseAuthorization : MonoBehaviour
         _initialized = true;
         
         // UI
-        _mainMenuDisplay.HideLoadingMessage();
-        _mainMenuDisplay.SignedOutUI();
+       //_mainMenuDisplay.HideLoadingMessage();
+       MainMenuDisplay.Instance.HideLoadingMessage();
+       // _mainMenuDisplay.SignedOutUI();
+       MainMenuDisplay.Instance.SignedOutUI();
     }
-    
-    // Invoke from "FirebaseInitializer.onDependenciesFixed"
-    /*public void SetFirebaseAuthReference()
-    {
-        _auth = FirebaseAuth.DefaultInstance;
-        CurrentUser = _auth.CurrentUser;
-        Debug.Log(CurrentUser != null ? $"Current user: {CurrentUser.DisplayName}" : "Current user: null");
-        if (IsUserSignedIn()) Instantiate(_tokenRetrieverPrefab);
-    }*/
 
     public void SignInWithGoogleOnFirebase(string idToken)
     {
-        _mainMenuDisplay.ShowLoadingMessage("Signing in, please wait...");
+       // _mainMenuDisplay.ShowLoadingMessage("Signing in, please wait...");
+        MainMenuDisplay.Instance.ShowLoadingMessage("Signing in, please wait...");
         Debug.Log("SignInWithGoogleOnFirebase - Trying to sign in with Google on Firebase...");
-        
         
         Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
         _auth.SignInWithCredentialAsync(credential).ContinueWith(task => //OnMainThread
@@ -77,7 +70,6 @@ public class FirebaseAuthorization : MonoBehaviour
             else
             {
                 Debug.Log("SignInWithGoogleOnFirebase - Sign in Successful");
-                // Instantiate(_tokenRetrieverPrefab);
                 onSignInSuccessful?.Invoke();
             }
         });
@@ -96,9 +88,6 @@ public class FirebaseAuthorization : MonoBehaviour
         
         // UI
         onSignOutSuccessful?.Invoke();
-        /*_mainMenuDisplay.ShowLoadingMessage("Signing out...");
-        _mainMenuDisplay.SignedOutUI();
-        _mainMenuDisplay.HideLoadingMessage();*/
     }
 
     public static bool IsUserSignedIn()

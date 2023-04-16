@@ -6,7 +6,7 @@ public class FirebaseInitializer : MonoBehaviour
 {
     private static bool _firebaseIsReady;
     private static FirebaseInitializer _instance;
-    private MainMenuDisplay _mainMenuDisplay;
+    //private MainMenuDisplay _mainMenuDisplay;
     
     [SerializeField] private GameObject _signInManagerPrefab;
     [SerializeField] private GameObject _firebaseDatabasePrefab;
@@ -23,13 +23,13 @@ public class FirebaseInitializer : MonoBehaviour
             Destroy(gameObject);
         }
         
-        if (FindObjectOfType<MainMenuDisplay>() != null)
-            _mainMenuDisplay = FindObjectOfType<MainMenuDisplay>();
+        /*if (FindObjectOfType<MainMenuDisplay>() != null)
+            _mainMenuDisplay = FindObjectOfType<MainMenuDisplay>();*/
         
         if (!_firebaseIsReady)
             CheckFirebaseDependencies();
     }
-    
+                                                                                       
     private void OnDestroy()
     {
         FirebaseAuthorization.onSignInSuccessful -= FirebaseAuthorizationOnSignInSuccessful;
@@ -38,7 +38,7 @@ public class FirebaseInitializer : MonoBehaviour
 
     private void CheckFirebaseDependencies()
     {
-        _mainMenuDisplay.ShowLoadingMessage("Fixing dependencies...");
+        MainMenuDisplay.Instance.ShowLoadingMessage("Fixing dependencies...");
         Debug.Log("Trying to check and fix dependencies...");
         
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
@@ -51,7 +51,7 @@ public class FirebaseInitializer : MonoBehaviour
                     
                     // Set a flag here to indicate whether Firebase is ready to use by your app.
                     _firebaseIsReady = true;
-                    _mainMenuDisplay.HideLoadingMessage();
+                    MainMenuDisplay.Instance.HideLoadingMessage();
                     Instantiate(_signInManagerPrefab, transform);
                     FirebaseAuthorization.onSignInSuccessful += FirebaseAuthorizationOnSignInSuccessful;
                     FirebaseAuthorization.onSignOutSuccessful += FirebaseAuthorizationOnSignOutSuccessful;
@@ -78,13 +78,13 @@ public class FirebaseInitializer : MonoBehaviour
     private void FirebaseAuthorizationOnSignInSuccessful()
     {
         Instantiate(_firebaseDatabasePrefab, transform);
-        _mainMenuDisplay.HideLoadingMessage();
+        MainMenuDisplay.Instance.HideLoadingMessage();
     }
 
     private void FirebaseAuthorizationOnSignOutSuccessful()
     {
-        _mainMenuDisplay.ShowLoadingMessage("Signing out...");
-        _mainMenuDisplay.SignedOutUI();
-        _mainMenuDisplay.HideLoadingMessage();
+        MainMenuDisplay.Instance.ShowLoadingMessage("Signing out...");
+        MainMenuDisplay.Instance.SignedOutUI();
+        MainMenuDisplay.Instance.HideLoadingMessage();
     }
 }
