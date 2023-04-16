@@ -7,7 +7,7 @@ public class BoosterManager : MonoBehaviour
     private Dictionary<string, IBoosterFactory> _factories = new()
     {
         {"Double Points", new BoosterDoublePointsFactory()},
-        {"Spawn Pawn", new BoosterSpawnPawnFactory()}
+        {"New Random Piece", new BoosterNewRandomPieceFactory()}
     };
 
     public void BuyBooster(string boosterName, int boosterCost)

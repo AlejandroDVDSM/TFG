@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f87ed97d22a0e247927a18c1d9f8622, type: 3}
-  m_Name: SpawnPawn
+  m_Name: NewRandomPiece
   m_EditorClassIdentifier: 
-  BoosterName: Spawn Pawn
-  Description: 
-  Sprite: {fileID: 21300000, guid: 3f365079668d55f4a9c4518376b99cd7, type: 3}
-  Cost: 1425
+  BoosterName: New Random Piece
+  Sprite: {fileID: 21300000, guid: 10100b40e57ad4d44a0a106859a483a9, type: 3}
+  Cost: 1000

@@ -14,7 +14,8 @@ public class ChessPieceSpawner : MonoBehaviour
     private void Start()
     {
         _chessPieceGenerator = GetComponent<ChessPieceGenerator>();
-        _nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
+        SetNextRandomChessPiece();
+        //_nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
     }
 
     public void SpawnChessPiece(Tile tileWhereToSpawn)
@@ -26,7 +27,8 @@ public class ChessPieceSpawner : MonoBehaviour
             Instantiate(_nextChessPiece, tileWhereToSpawn.transform);
             tileWhereToSpawn.IsFree = false;
             
-            _nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
+            SetNextRandomChessPiece();
+            //_nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
             Debug.Log($"Spawn successful in <{tileWhereToSpawn.name}>");
             //GameStateManager.instance.UpdateGameState(GameState.EnemyTurn);
         }
@@ -34,6 +36,11 @@ public class ChessPieceSpawner : MonoBehaviour
         {
             Debug.Log($"<{tileWhereToSpawn.name}> is NOT free");
         }
+    }
+
+    public void SetNextRandomChessPiece()
+    {
+        _nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
     }
 
     /*public void SpawnEnemy()
