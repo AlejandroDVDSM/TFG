@@ -23,7 +23,7 @@ public class BoosterCard : MonoBehaviour
         int steps = int.Parse(PlayerPrefs.GetString("steps"));
         
         if (steps >= _booster.Cost)
-            GetComponentInParent<BoosterManager>().BuyBooster(name);
+            GetComponentInParent<BoosterManager>().BuyBooster(name, _booster.Cost);
         else
             Debug.Log("no money no booster my friend");
     }

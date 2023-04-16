@@ -34,12 +34,7 @@ public class GoogleFit : MonoBehaviour
         _steps = PlayerPrefs.HasKey("steps") ? int.Parse(PlayerPrefs.GetString("steps")) : 0;
         PrintSteps();
     }
-
-    private void PrintSteps()
-    {
-        _stepsText.text = $"Your steps: {_steps}";
-    }
-
+    
     public void CallFitnessAPI()
     {
         const string uri = "https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate";
@@ -65,11 +60,26 @@ public class GoogleFit : MonoBehaviour
             }
             _steps += int.Parse(_jsonHelper.GetValue(response, $"$.bucket[{i}].dataset[0].point[0].value[0].intVal"));
         }
+        
+        UpdateSteps();
+        PrintSteps();
+    }
 
-        // int newSteps = int.Parse(PlayerPrefs.GetString("steps")) + _steps;
+    private void UpdateSteps()
+    {
         PlayerPrefs.SetString("steps", _steps.ToString());
         FindObjectOfType<FirebaseDatabase>().UpdateStepsInDB(_steps);
-        PrintSteps();
-        Debug.Log($"STEPS: {_steps}");
+    }
+    
+    private void PrintSteps()
+    {
+        _stepsText.text = $"Your steps: {_steps}";
+    }    
+
+    public void SubtractSteps(int steps)
+    {
+        _steps -= steps;
+        UpdateSteps();
     }
 }
+

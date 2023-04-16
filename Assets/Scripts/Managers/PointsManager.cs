@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PointsManager : MonoBehaviour
 {
     private int _totalPoints;
     private PointsDisplay _pointsDisplay;
+    private bool _doublePointsFlag;
 
     private void Start()
     {
@@ -13,14 +15,23 @@ public class PointsManager : MonoBehaviour
 
     public void Add(int pointsToAdd)
     {
-        _totalPoints += pointsToAdd;
+        if (_doublePointsFlag)
+            _totalPoints += pointsToAdd * 2;
+        else
+            _totalPoints += pointsToAdd;
+        
         _pointsDisplay.UpdateText(_totalPoints);
     }
 
-    public void Substract(int pointsToSubstract)
+    public void Subtract(int pointsToSubtract)
     {
-        if (_totalPoints - pointsToSubstract < 0) return;
-        _totalPoints -= pointsToSubstract;
+        if (_totalPoints - pointsToSubtract < 0) return;
+        _totalPoints -= pointsToSubtract;
         _pointsDisplay.UpdateText(_totalPoints);
+    }
+
+    public void ActivateDoublePoints()
+    {
+        _doublePointsFlag = true;
     }
 }

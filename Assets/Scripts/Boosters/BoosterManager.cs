@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,9 +10,10 @@ public class BoosterManager : MonoBehaviour
         {"Spawn Pawn", new BoosterSpawnPawnFactory()}
     };
 
-    public void BuyBooster(string boosterName)
+    public void BuyBooster(string boosterName, int boosterCost)
     {
         var factory = _factories.FirstOrDefault(f => f.Key.Equals(boosterName)).Value;
         factory.ApplyBooster();
+        FindObjectOfType<GoogleFit>().SubtractSteps(boosterCost);
     }
 }

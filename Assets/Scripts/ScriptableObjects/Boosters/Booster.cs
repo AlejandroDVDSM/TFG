@@ -7,5 +7,4 @@ public class Booster : ScriptableObject
     
     public Sprite Sprite;
     public int Cost;
-    
 }

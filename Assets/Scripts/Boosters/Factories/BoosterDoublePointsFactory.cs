@@ -4,6 +4,7 @@ public class BoosterDoublePointsFactory : MonoBehaviour, IBoosterFactory
 {
     public void ApplyBooster()
     {
-        Debug.Log("Josefina la Fina");
+        Debug.Log("Double Points bought");
+        FindObjectOfType<PointsManager>().ActivateDoublePoints();
     }
 }
