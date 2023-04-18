@@ -7,13 +7,12 @@ public enum GameState
     PlayerTurn,
     EnemyTurn,
     Pause,
-    Won,
-    Lost
+    End,
 }
 
 public class GameStateManager : MonoBehaviour
 {
-    public static GameStateManager instance;
+    public static GameStateManager Instance;
     
     public GameState gameState = GameState.PlayerTurn; // This must be changed to "Start" when the main menu is implemented
 
@@ -21,7 +20,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     public bool IsPlayerTurn()
@@ -52,11 +51,9 @@ public class GameStateManager : MonoBehaviour
             case GameState.Pause:
                 // PENDING TO DO
                 break;
-            case GameState.Won:
+            case GameState.End:
                 // PENDING TO DO
-                break;
-            case GameState.Lost:
-                // PENDING TO DO
+                PopUpManager.Instance.ShowPopUp("EndGamePopUp");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);

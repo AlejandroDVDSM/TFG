@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -12,7 +13,7 @@ public class Tile : MonoBehaviour
     {
         _chessboardManager = FindObjectOfType<ChessboardManager>();
     }
-    
+
     public void CheckNearbyTiles()
     {
         Debug.Log($"Tile where I am: {name}" );

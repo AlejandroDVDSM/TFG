@@ -11,8 +11,8 @@ public class FirebaseAuthorization : MonoBehaviour
     private FirebaseDatabase _firebaseDatabase;
     private bool _initialized;
     
-    public static event Action onSignInSuccessful;
-    public static event Action onSignOutSuccessful;
+    public static event Action OnSignInSuccessful;
+    public static event Action OnSignOutSuccessful;
 
     private void Awake()
     {
@@ -62,7 +62,7 @@ public class FirebaseAuthorization : MonoBehaviour
             else
             {
                 Debug.Log("SignInWithGoogleOnFirebase - Sign in Successful");
-                onSignInSuccessful?.Invoke();
+                OnSignInSuccessful?.Invoke();
             }
         });
     }
@@ -79,7 +79,7 @@ public class FirebaseAuthorization : MonoBehaviour
         GetComponent<GoogleSignInService>().SignOutWithGoogle();
         
         // UI
-        onSignOutSuccessful?.Invoke();
+        OnSignOutSuccessful?.Invoke();
     }
 
     public static bool IsUserSignedIn()

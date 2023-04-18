@@ -15,11 +15,11 @@ public class PauseGame : MonoBehaviour
     {
         PopUpManager.Instance.ShowPopUp(popUp/*"PausePopUp"*/);
         //_popUpManager.ShowPopUp("PausePopUp");
-        GameStateManager.instance.UpdateGameState(GameState.Pause);
+        GameStateManager.Instance.UpdateGameState(GameState.Pause);
     }
 
     public void Resume()
     {
-        GameStateManager.instance.UpdateGameState(GameState.PlayerTurn);
+        GameStateManager.Instance.UpdateGameState(GameState.PlayerTurn);
     }
 }

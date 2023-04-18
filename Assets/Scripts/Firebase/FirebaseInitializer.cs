@@ -28,8 +28,8 @@ public class FirebaseInitializer : MonoBehaviour
                                                                                        
     private void OnDestroy()
     {
-        FirebaseAuthorization.onSignInSuccessful -= FirebaseAuthorizationOnSignInSuccessful;
-        FirebaseAuthorization.onSignOutSuccessful -= FirebaseAuthorizationOnSignOutSuccessful;
+        FirebaseAuthorization.OnSignInSuccessful -= FirebaseAuthorizationOnSignInSuccessful;
+        FirebaseAuthorization.OnSignOutSuccessful -= FirebaseAuthorizationOnSignOutSuccessful;
     }
 
     private void CheckFirebaseDependencies()
@@ -49,8 +49,8 @@ public class FirebaseInitializer : MonoBehaviour
                     _firebaseIsReady = true;
                     MainMenuDisplay.Instance.HideLoadingMessage();
                     Instantiate(_signInManagerPrefab, transform);
-                    FirebaseAuthorization.onSignInSuccessful += FirebaseAuthorizationOnSignInSuccessful;
-                    FirebaseAuthorization.onSignOutSuccessful += FirebaseAuthorizationOnSignOutSuccessful;
+                    FirebaseAuthorization.OnSignInSuccessful += FirebaseAuthorizationOnSignInSuccessful;
+                    FirebaseAuthorization.OnSignOutSuccessful += FirebaseAuthorizationOnSignOutSuccessful;
                 }
                 else
                 {

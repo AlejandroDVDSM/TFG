@@ -1609,6 +1609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab3a525e55ba754aa13ca337fcb0e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _chessboardManager: {fileID: 1019071563}
   ignoreEnemySpawn: 0
 --- !u!4 &1507277273
 Transform:
@@ -1641,19 +1642,6 @@ MonoBehaviour:
   - {fileID: 2002372659035174584, guid: 82907fbef3f78b843b78b483935581b4, type: 3}
   - {fileID: 339159196022809705, guid: b25e7ef4a4697a249b244f42b1223059, type: 3}
   - {fileID: 1195334709842036198, guid: 7faf1f050d52c4541b3f0d5582ce3a7f, type: 3}
-  _enemyPieces:
-  - {fileID: 1195334709842036198, guid: 7faf1f050d52c4541b3f0d5582ce3a7f, type: 3}
-  - {fileID: 7648248836935225991, guid: 3c05c2a4bc5f4d2429790787c9cf72a9, type: 3}
-  - {fileID: 2323130868517757825, guid: 3bc1c0029c2b59349a0d73968853daae, type: 3}
-  - {fileID: 3686897324570511168, guid: 50ce43317b4f7a8439df10ab14484a68, type: 3}
-  - {fileID: 1468030793775451746, guid: f2d65eeb8cbc30d4cb4dcae327ff0a5b, type: 3}
-  - {fileID: 2272231029355101359, guid: 5985c9bafc0cf1947895a2e97de56c89, type: 3}
-  _onlyGenerateEnemyPawn: 0
-  _onlyGenerateEnemyBishop: 0
-  _onlyGenerateEnemyKnight: 0
-  _onlyGenerateEnemyRook: 0
-  _onlyGenerateEnemyQueen: 0
-  _onlyGenerateEnemyKing: 0
   _topPanelDisplay: {fileID: 1971814314}
 --- !u!1 &1971814309
 GameObject:

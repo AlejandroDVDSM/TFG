@@ -94,6 +94,13 @@ public class FirebaseDatabase : MonoBehaviour
         _dbReference.Child("users").Child(userID).Child("steps").SetValueAsync(steps);
     }
     
+    public void UpdateHighestScoreInDB(int newHighestScore)
+    {
+        Debug.Log("Updating 'highestScore'...");
+        string userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+        _dbReference.Child("users").Child(userID).Child("highestScore").SetValueAsync(newHighestScore);
+    }
+    
     public void UpdateLastPlayedInEpochMillis()
     {
         Debug.Log("Updating 'lastPlayedInEpochMillis'...");

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,5 +41,10 @@ public class ChessboardManager : MonoBehaviour
     public Tile GetTileAtPosition(Vector2Int coordinates)
     {
         return _tiles.TryGetValue(coordinates, out var tile) ? tile : null;
+    }
+
+    public bool AreAllTilesOccupy()
+    {
+        return _tiles.All(tile => !tile.Value.IsFree);
     }
 }

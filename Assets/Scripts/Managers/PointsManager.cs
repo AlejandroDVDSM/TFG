@@ -1,5 +1,9 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Firebase.Auth;
+using Firebase.Database;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PointsManager : MonoBehaviour
 {
@@ -11,6 +15,14 @@ public class PointsManager : MonoBehaviour
     {
         _pointsDisplay = GetComponent<PointsDisplay>();
         _pointsDisplay.UpdateText(_totalPoints);
+
+        GameStateManager.OnGameStateChanged += CheckUserHighestScore;
+    }
+
+
+    private void OnDestroy()
+    {
+        GameStateManager.OnGameStateChanged -= CheckUserHighestScore;
     }
 
     public void Add(int pointsToAdd)
@@ -33,5 +45,28 @@ public class PointsManager : MonoBehaviour
     public void ActivateDoublePoints()
     {
         _doublePointsFlag = true;
+    }
+
+    private void CheckUserHighestScore(GameState gameState)
+    {
+        if (gameState.Equals(GameState.End))
+            StartCoroutine(CheckUserHighestScoreCoroutine());
+    }
+    
+    private IEnumerator CheckUserHighestScoreCoroutine()
+    {
+        var dbReference = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
+        var userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+
+        var userData = dbReference.Child("users").Child(userID).Child("highestScore").GetValueAsync();
+        
+        yield return new WaitUntil(predicate: () => userData.IsCompleted);
+
+        if (userData == null) yield break;
+        
+        DataSnapshot snapshot = userData.Result;
+        
+        if ((long)snapshot.Value < _totalPoints)
+            FindObjectOfType<FirebaseDatabase>().UpdateHighestScoreInDB(_totalPoints);
     }
 }

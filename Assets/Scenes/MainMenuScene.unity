@@ -720,7 +720,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: GameScene
+          m_StringArgument: LeaderboardScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &331825791
@@ -1176,7 +1176,7 @@ GameObject:
   - component: {fileID: 859071444}
   - component: {fileID: 859071443}
   m_Layer: 5
-  m_Name: StepsTest
+  m_Name: StepsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ---
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e52d75c311c8e4443a6bd3f99c369a50, type: 2}
   m_sharedMaterial: {fileID: 4372942571569601127, guid: e52d75c311c8e4443a6bd3f99c369a50, type: 2}
@@ -2411,7 +2411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2077043217
 RectTransform:
   m_ObjectHideFlags: 0

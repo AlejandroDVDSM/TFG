@@ -10,7 +10,7 @@ public class TouchController : MonoBehaviour
     
     private void Update()
     {
-        if (!GameStateManager.instance.IsPlayerTurn()) return;
+        if (!GameStateManager.Instance.IsPlayerTurn()) return;
         
         if (Input.touchCount > 0)
         {

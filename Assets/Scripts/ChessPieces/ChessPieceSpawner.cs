@@ -1,13 +1,10 @@
-using System;
-using System.Linq;
 using UnityEngine;
-using Random = System.Random;
 
 public class ChessPieceSpawner : MonoBehaviour
 {
-    private GameObject _nextChessPiece;
-
+    [SerializeField] private ChessboardManager _chessboardManager; 
     private ChessPieceGenerator _chessPieceGenerator;
+    private GameObject _nextChessPiece;
 
     [SerializeField] private bool ignoreEnemySpawn = false; // FLAG
 
@@ -15,6 +12,7 @@ public class ChessPieceSpawner : MonoBehaviour
     {
         _chessPieceGenerator = GetComponent<ChessPieceGenerator>();
         SetNextRandomChessPiece();
+        
         //_nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
     }
 
@@ -27,8 +25,11 @@ public class ChessPieceSpawner : MonoBehaviour
             Instantiate(_nextChessPiece, tileWhereToSpawn.transform);
             tileWhereToSpawn.IsFree = false;
             
-            SetNextRandomChessPiece();
-            //_nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
+            if (_chessboardManager.AreAllTilesOccupy())
+                GameStateManager.Instance.UpdateGameState(GameState.End);
+            else
+                SetNextRandomChessPiece();
+            
             Debug.Log($"Spawn successful in <{tileWhereToSpawn.name}>");
             //GameStateManager.instance.UpdateGameState(GameState.EnemyTurn);
         }
