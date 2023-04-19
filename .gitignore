@@ -65,3 +65,6 @@ crashlytics-build.properties
 # JSON
 /[Aa]ssets/Resources/*.json
 /[Aa]ssets/StreamingAssets/*.json
+
+# Generated Local Repo
+/[Aa]ssets/GeneratedLocalRepo
