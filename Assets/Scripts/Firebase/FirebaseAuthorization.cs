@@ -27,10 +27,10 @@ public class FirebaseAuthorization : MonoBehaviour
     {
         // Initialize FirebaseAuth
         if (!_initialized)
-            InitializedFirebaseAuthorization();
+            InitializeFirebaseAuthorization();
     }
 
-    private void InitializedFirebaseAuthorization()
+    private void InitializeFirebaseAuthorization()
     {
         // Log messages
         MainMenuDisplay.Instance.ShowLoadingMessage("Initializing Firebase Authorization...");

@@ -23,7 +23,7 @@ public class FirebaseDatabase : MonoBehaviour
     {
         // Initialize FirebaseDatabase
         if (!_initialized)
-            InitializedDatabase();
+            InitializeDatabase();
     }
 
     private void OnApplicationQuit()
@@ -31,7 +31,7 @@ public class FirebaseDatabase : MonoBehaviour
         UpdateLastPlayedInEpochMillis();
     }
 
-    private void InitializedDatabase()
+    private void InitializeDatabase()
     {
         // Log messages
         MainMenuDisplay.Instance.ShowLoadingMessage("Initializing Firebase Database...");

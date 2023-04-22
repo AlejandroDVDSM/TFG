@@ -7,8 +7,8 @@ using UnityEngine.Networking;
 public class FirebaseStorageTest : MonoBehaviour
 {
     private FirebaseStorage _storage;
-    
     private FirebaseStorageTest _instance;
+    private bool initialized; 
     
     private void Awake()
     {
@@ -21,7 +21,11 @@ public class FirebaseStorageTest : MonoBehaviour
     
     void Start()
     {
-        _storage = FirebaseStorage.DefaultInstance;
+        if (!initialized)
+        {
+            _storage = FirebaseStorage.DefaultInstance;
+            initialized = true;
+        }
     }
 
     public void GetImage(string path, SpriteRenderer spriteRenderer)
