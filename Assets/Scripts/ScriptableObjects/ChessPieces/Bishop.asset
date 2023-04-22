@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d626281258f86d549822d97c8a6dbf0b, type: 3}
   m_Name: Bishop
   m_EditorClassIdentifier: 
-  type: 1
-  sprite: {fileID: 21300000, guid: b7694ff631f61cd4e8d5c8fde225b75a, type: 3}
-  points: 20
+  Type: 1
+  Team: 1
+  Points: 15

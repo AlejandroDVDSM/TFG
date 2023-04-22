@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "New Piece", menuName = "Piece")]
 public class Piece : ScriptableObject
 {
-    [Space]
-    public Type type;
-    public Sprite sprite;
-    public int points;
+    public Type Type;
+    //public Sprite sprite;
+    public Team Team;
+    public int Points;
 }
 
 public enum Type
@@ -17,4 +18,10 @@ public enum Type
     Rook,
     Queen,
     King
+}
+
+public enum Team
+{
+    White,
+    Black
 }

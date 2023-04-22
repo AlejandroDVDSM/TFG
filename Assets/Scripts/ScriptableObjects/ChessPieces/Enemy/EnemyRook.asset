@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d626281258f86d549822d97c8a6dbf0b, type: 3}
   m_Name: EnemyRook
   m_EditorClassIdentifier: 
-  type: 3
-  sprite: {fileID: 21300000, guid: f7d34fcaa30e20a4c8707dfc63fad968, type: 3}
-  points: 0
+  Type: 3
+  Team: 0
+  Points: 0

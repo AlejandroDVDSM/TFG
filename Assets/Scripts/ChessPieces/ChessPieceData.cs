@@ -13,22 +13,22 @@ public class ChessPieceData : MonoBehaviour
 
     private void SetSprite()
     {
-        GetComponent<SpriteRenderer>().sprite = _chessPiece.sprite;
+       FindObjectOfType<FirebaseStorageTest>().GetImage($"chesspieces/{GetTeam()}/{GetChessPieceType()}.png", GetComponent<SpriteRenderer>());
     }
-    
-    public Sprite GetSprite()
+
+    public Team GetTeam()
     {
-        return _chessPiece.sprite;
+        return _chessPiece.Team;
     }
     
     public Type GetChessPieceType()
     {
-        return _chessPiece.type;
+        return _chessPiece.Type;
     }
     
     public int GetPoints()
     {
-        return _chessPiece.points;
+        return _chessPiece.Points;
     }
     
     public Tile GetInWhichTileIAm()

@@ -13,4 +13,10 @@ public class TopPanelDisplay : MonoBehaviour
         _nextChessPieceType.text = nextChessPieceType.ToString();
         _nextChessPieceImage.sprite = nextChessPieceImage;
     }
+    
+    public void UpdateTopPanel(ChessPieceData nextChessPiece)
+    {
+        _nextChessPieceType.text = nextChessPiece.GetChessPieceType().ToString();
+        //FindObjectOfType<FirebaseStorageTest>().GetImage($"chesspieces/{nextChessPiece.GetTeam()}/{nextChessPiece.GetChessPieceType()}.png", _nextChessPieceImage.GetComponent<Image>());
+    }
 }

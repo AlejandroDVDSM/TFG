@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d626281258f86d549822d97c8a6dbf0b, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: 
-  type: 2
-  sprite: {fileID: 21300000, guid: 303caa1ecd78a7e4eadb0708d64ad075, type: 3}
-  points: 100
+  Type: 2
+  Team: 1
+  Points: 100

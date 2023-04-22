@@ -2181,6 +2181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _signInManagerPrefab: {fileID: 6501900393658742781, guid: 147dd3761bad2754f950512e0e3069ba, type: 3}
   _firebaseDatabasePrefab: {fileID: 8316242236322691415, guid: b3e4bc760d5906840924fe9b4950b4d4, type: 3}
+  _firebaseStoragePrefab: {fileID: 4112306636770145034, guid: 32f35f458f0a26a4a8e596674f9f3410, type: 3}
 --- !u!114 &1539866244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2694,7 +2695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2077043217
 RectTransform:
   m_ObjectHideFlags: 0

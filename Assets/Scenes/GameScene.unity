@@ -1456,12 +1456,12 @@ GameObject:
   - component: {fileID: 1434879520}
   - component: {fileID: 1434879522}
   m_Layer: 0
-  m_Name: Manolo
+  m_Name: FirebaseStorageTesting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1434879520
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1707,7 +1707,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chessboardManager: {fileID: 1019071563}
-  ignoreEnemySpawn: 0
 --- !u!4 &1507277273
 Transform:
   m_ObjectHideFlags: 0

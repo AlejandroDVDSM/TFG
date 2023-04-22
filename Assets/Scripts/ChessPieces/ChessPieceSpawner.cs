@@ -6,14 +6,10 @@ public class ChessPieceSpawner : MonoBehaviour
     private ChessPieceGenerator _chessPieceGenerator;
     private GameObject _nextChessPiece;
 
-    [SerializeField] private bool ignoreEnemySpawn = false; // FLAG
-
     private void Start()
     {
         _chessPieceGenerator = GetComponent<ChessPieceGenerator>();
         SetNextRandomChessPiece();
-        
-        //_nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
     }
 
     public void SpawnChessPiece(Tile tileWhereToSpawn)
@@ -31,7 +27,6 @@ public class ChessPieceSpawner : MonoBehaviour
                 SetNextRandomChessPiece();
             
             Debug.Log($"Spawn successful in <{tileWhereToSpawn.name}>");
-            //GameStateManager.instance.UpdateGameState(GameState.EnemyTurn);
         }
         else
         {
@@ -43,24 +38,4 @@ public class ChessPieceSpawner : MonoBehaviour
     {
         _nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
     }
-
-    /*public void SpawnEnemy()
-    {
-        if (ignoreEnemySpawn) // TEST PURPOSES
-        {
-            Debug.Log("Flag <ignoreEnemySpawn> is TRUE...");
-            GameStateManager.instance.UpdateGameState(GameState.PlayerTurn);
-            return;
-        }
-        
-        Tile[] freeTiles = FindObjectsOfType<Tile>().Where(tile => tile.IsFree).ToArray();
-        
-        int randomIndex = new Random().Next(0, freeTiles.Length); // First parameter: included --- Second parameter: excluded
-        var randomTile = freeTiles[randomIndex];
-
-        Instantiate(_chessPieceGenerator.GetRandomEnemy(), randomTile.transform);
-        randomTile.IsFree = false;
-        
-        GameStateManager.instance.UpdateGameState(GameState.PlayerTurn);
-    }*/
 }

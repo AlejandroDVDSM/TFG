@@ -9,7 +9,8 @@ public class FirebaseInitializer : MonoBehaviour
     
     [SerializeField] private GameObject _signInManagerPrefab;
     [SerializeField] private GameObject _firebaseDatabasePrefab;
-    
+    [SerializeField] private GameObject _firebaseStoragePrefab;
+
     private void Awake()
     {
         if (_instance == null)
@@ -74,6 +75,7 @@ public class FirebaseInitializer : MonoBehaviour
     private void FirebaseAuthorizationOnSignInSuccessful()
     {
         Instantiate(_firebaseDatabasePrefab, transform);
+        Instantiate(_firebaseStoragePrefab, transform);
         MainMenuDisplay.Instance.HideLoadingMessage();
     }
 
