@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 120417599}
   - component: {fileID: 120417598}
   - component: {fileID: 120417601}
+  - component: {fileID: 120417603}
+  - component: {fileID: 120417602}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -239,7 +241,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 702fca465e114074090f5c898831e5fb, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -269,6 +271,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcc4469eeb8baf41b4c20a5a862346c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &120417602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120417596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &120417603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120417596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Icons/Pause_Pushed.png
 --- !u!1 &144747212
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +343,7 @@ GameObject:
   - component: {fileID: 222044471}
   - component: {fileID: 222044470}
   - component: {fileID: 222044469}
+  - component: {fileID: 222044472}
   m_Layer: 5
   m_Name: ChessPieceImage
   m_TagString: Untagged
@@ -381,6 +409,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 225, y: 225}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &222044472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222044468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &269182852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,7 +1501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1434879520
 SpriteRenderer:
   m_ObjectHideFlags: 0

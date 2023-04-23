@@ -8,15 +8,12 @@ public class TopPanelDisplay : MonoBehaviour
     [SerializeField] private TMP_Text _nextChessPieceType;
     [SerializeField] private Image _nextChessPieceImage;
     
-    public void UpdateTopPanel(Type nextChessPieceType, Sprite nextChessPieceImage)
-    {
-        _nextChessPieceType.text = nextChessPieceType.ToString();
-        _nextChessPieceImage.sprite = nextChessPieceImage;
-    }
-    
     public void UpdateTopPanel(ChessPieceData nextChessPiece)
     {
         _nextChessPieceType.text = nextChessPiece.GetChessPieceType().ToString();
-        //FindObjectOfType<FirebaseStorageTest>().GetImage($"chesspieces/{nextChessPiece.GetTeam()}/{nextChessPiece.GetChessPieceType()}.png", _nextChessPieceImage.GetComponent<Image>());
+
+        string path = $"chesspieces/{nextChessPiece.GetTeam()}/{nextChessPiece.GetChessPieceType()}.png";
+        ITarget target = _nextChessPieceImage.GetComponent<ITarget>();
+        FindObjectOfType<FirebaseStorageTest>().GetImage(path, target);
     }
 }

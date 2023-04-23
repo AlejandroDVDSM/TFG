@@ -13,7 +13,9 @@ public class ChessPieceData : MonoBehaviour
 
     private void SetSprite()
     {
-       FindObjectOfType<FirebaseStorageTest>().GetImage($"chesspieces/{GetTeam()}/{GetChessPieceType()}.png", GetComponent<SpriteRenderer>());
+        string path = $"chesspieces/{GetTeam()}/{GetChessPieceType()}.png";
+        ITarget target = GetComponent<ITarget>();
+        FindObjectOfType<FirebaseStorageTest>().GetImage(path, target);
     }
 
     public Team GetTeam()
@@ -26,7 +28,7 @@ public class ChessPieceData : MonoBehaviour
         return _chessPiece.Type;
     }
     
-    public int GetPoints()
+    private int GetPoints()
     {
         return _chessPiece.Points;
     }

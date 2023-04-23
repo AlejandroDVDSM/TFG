@@ -8,7 +8,8 @@ public class FirebaseStorageTest : MonoBehaviour
 {
     private FirebaseStorage _storage;
     private FirebaseStorageTest _instance;
-    private bool initialized; 
+    private bool initialized;
+    public static string BaseURL;
     
     private void Awake()
     {
@@ -24,25 +25,26 @@ public class FirebaseStorageTest : MonoBehaviour
         if (!initialized)
         {
             _storage = FirebaseStorage.DefaultInstance;
+            BaseURL = "gs://" + FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.project_info.storage_bucket");
             initialized = true;
         }
     }
 
-    public void GetImage(string path, SpriteRenderer spriteRenderer)
+    public void GetImage(string path, ITarget target)
     {
         Debug.Log("Getting image...");
         
-        StorageReference pathReference = _storage.GetReferenceFromUrl($"gs://tfgunity-f1271.appspot.com/{path}");
+        StorageReference pathReference = _storage.GetReferenceFromUrl($"{BaseURL}/{path}");
         pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task =>
         {
             if (!task.IsFaulted && !task.IsCanceled)
-                StartCoroutine(LoadSprite(task.Result.ToString(), spriteRenderer));
+                StartCoroutine(LoadSprite(task.Result.ToString(), target));
             else
                 Debug.LogError($"FirebaseStorage - Error while getting image for the url '{path}'");
         });
     }
     
-    private IEnumerator LoadSprite(string reference, SpriteRenderer spriteRenderer)
+    private IEnumerator LoadSprite(string reference, ITarget target)
     {
         Debug.Log("Loading image...");
         
@@ -59,7 +61,7 @@ public class FirebaseStorageTest : MonoBehaviour
             var myTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             var mySprite = Sprite.Create(myTexture, new Rect(0.0f, 0.0f, myTexture.width, myTexture.height),
                 new Vector2(0.5f, 0.5f), 100.0f);
-            spriteRenderer.sprite = mySprite;
+            target.SetSprite(mySprite);
 
         }
     }

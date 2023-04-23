@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2323130868517757831}
   - component: {fileID: 2323130868517757824}
   - component: {fileID: 3798809104221491187}
+  - component: {fileID: 8421955101635508060}
   - component: {fileID: -7204951628138335178}
   m_Layer: 0
   m_Name: EnemyKnight
@@ -112,6 +113,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8421955101635508060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2323130868517757825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1444a5e38561f4096e02bf4db203d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-7204951628138335178
 MonoBehaviour:
   m_ObjectHideFlags: 0

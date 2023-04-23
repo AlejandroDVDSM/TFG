@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2272231029355101353}
   - component: {fileID: 2272231029355101358}
   - component: {fileID: 796549868843569373}
+  - component: {fileID: -6098928604547119161}
   - component: {fileID: -7576458735404448479}
   m_Layer: 0
   m_Name: EnemyKing
@@ -112,6 +113,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-6098928604547119161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2272231029355101359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1444a5e38561f4096e02bf4db203d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-7576458735404448479
 MonoBehaviour:
   m_ObjectHideFlags: 0
