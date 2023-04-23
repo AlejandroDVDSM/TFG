@@ -24,11 +24,16 @@ public class FirebaseStorageTest : MonoBehaviour
     {
         if (!_initialized)
         {
-            Debug.Log("Initializing Firebase Storage...");
-            _storage = FirebaseStorage.DefaultInstance;
-            _baseURL = "gs://" + FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.project_info.storage_bucket");
-            _initialized = true;
+            InitializeStorage();
         }
+    }
+
+    private void InitializeStorage()
+    {
+        Debug.Log("Initializing Firebase Storage...");
+        _storage = FirebaseStorage.DefaultInstance;
+        _baseURL = "gs://" + FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.project_info.storage_bucket");
+        _initialized = true;
     }
 
     public void GetImage(string path, ITarget target)
