@@ -8,8 +8,8 @@ public class FirebaseStorageTest : MonoBehaviour
 {
     private FirebaseStorage _storage;
     private FirebaseStorageTest _instance;
-    private bool initialized;
-    public static string BaseURL;
+    private bool _initialized;
+    private string _baseURL;
     
     private void Awake()
     {
@@ -22,11 +22,12 @@ public class FirebaseStorageTest : MonoBehaviour
     
     void Start()
     {
-        if (!initialized)
+        if (!_initialized)
         {
+            Debug.Log("Initializing Firebase Storage...");
             _storage = FirebaseStorage.DefaultInstance;
-            BaseURL = "gs://" + FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.project_info.storage_bucket");
-            initialized = true;
+            _baseURL = "gs://" + FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.project_info.storage_bucket");
+            _initialized = true;
         }
     }
 
@@ -34,7 +35,7 @@ public class FirebaseStorageTest : MonoBehaviour
     {
         Debug.Log("Getting image...");
         
-        StorageReference pathReference = _storage.GetReferenceFromUrl($"{BaseURL}/{path}");
+        StorageReference pathReference = _storage.GetReferenceFromUrl($"{_baseURL}/{path}");
         pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task =>
         {
             if (!task.IsFaulted && !task.IsCanceled)
@@ -46,8 +47,6 @@ public class FirebaseStorageTest : MonoBehaviour
     
     private IEnumerator LoadSprite(string reference, ITarget target)
     {
-        Debug.Log("Loading image...");
-        
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(reference);
         yield return www.SendWebRequest();
         
@@ -57,7 +56,7 @@ public class FirebaseStorageTest : MonoBehaviour
         }
         else
         {
-            Debug.Log("FirebaseStorage - Success while loading image for the reference'");
+            Debug.Log("FirebaseStorage - Success while loading image");
             var myTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             var mySprite = Sprite.Create(myTexture, new Rect(0.0f, 0.0f, myTexture.width, myTexture.height),
                 new Vector2(0.5f, 0.5f), 100.0f);

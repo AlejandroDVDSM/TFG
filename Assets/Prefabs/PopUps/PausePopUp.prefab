@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 252406150565669104}
   - component: {fileID: 8597046939310066473}
   - component: {fileID: 6969633993124702591}
+  - component: {fileID: 8026148187817917009}
+  - component: {fileID: 8587199269663853411}
   m_Layer: 5
   m_Name: SoundButton
   m_TagString: Untagged
@@ -60,14 +62,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ddeefff88f7a3364d89c63eb3c232f7f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -121,6 +123,31 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8026148187817917009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204858151132479863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8587199269663853411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204858151132479863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Icons/Volume_2_Pushed.png
 --- !u!1 &2344626988241414339
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +161,8 @@ GameObject:
   - component: {fileID: 7787840316748251540}
   - component: {fileID: 5662420871373456705}
   - component: {fileID: 4839907514008878247}
+  - component: {fileID: 6381016561669840691}
+  - component: {fileID: 1248876145358975654}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -182,14 +211,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 10100b40e57ad4d44a0a106859a483a9, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -267,6 +296,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add36d5166792b748b83c8537ab0772a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6381016561669840691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344626988241414339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1248876145358975654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344626988241414339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Icons/Restart.png
 --- !u!1 &2856705989385224168
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +481,8 @@ GameObject:
   - component: {fileID: 6944318097181299442}
   - component: {fileID: 6444941054762074502}
   - component: {fileID: 1031030621401312922}
+  - component: {fileID: 8343099806222574300}
+  - component: {fileID: 5032103628013634568}
   m_Layer: 5
   m_Name: ExitGame
   m_TagString: Untagged
@@ -475,14 +531,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b8a13ced67f9f10439953d78890a0e14, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -560,6 +616,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f6004bfacf6b143977d65d000d41a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8343099806222574300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416543660979690299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5032103628013634568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416543660979690299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Icons/ExitGame.png
 --- !u!1 &4807792462801264128
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,6 +947,8 @@ GameObject:
   - component: {fileID: 6991062757847007581}
   - component: {fileID: 6991062757847007578}
   - component: {fileID: 1535104737376172117}
+  - component: {fileID: 6228795094917048619}
+  - component: {fileID: 3666186390667795221}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -914,14 +997,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 76f7474a2723b784c8dbe6edd0c83bc8, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1011,6 +1094,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcc4469eeb8baf41b4c20a5a862346c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6228795094917048619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991062757847007576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3666186390667795221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991062757847007576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Icons/Cross_Pushed.png
 --- !u!1 &6991062758690124534
 GameObject:
   m_ObjectHideFlags: 0

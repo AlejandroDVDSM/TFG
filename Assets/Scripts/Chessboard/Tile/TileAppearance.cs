@@ -9,7 +9,16 @@ public class TileAppearance : MonoBehaviour
 
     public void SetSprite(bool isOffset)
     {
-        _spriteRenderer.sprite = isOffset ? _brownTileSprite : _whiteTileSprite;
-    }
+        //_spriteRenderer.sprite = isOffset ? _brownTileSprite : _whiteTileSprite;
+        FirebaseStorageTest firebaseStorageTest = FindObjectOfType<FirebaseStorageTest>();
 
+        if (firebaseStorageTest == null)
+        {
+            Debug.LogError("TileAppearance - Couldn't find an object of type FirebaseStorage");
+            return;
+        }
+
+        firebaseStorageTest.GetImage(isOffset ? "Chessboard/BrownTile.png" : "Chessboard/WhiteTile.png",
+            GetComponent<ITarget>());
+    }
 }

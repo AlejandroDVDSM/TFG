@@ -52,6 +52,7 @@ public class FirebaseInitializer : MonoBehaviour
                     Instantiate(_signInManagerPrefab, transform);
                     FirebaseAuthorization.OnSignInSuccessful += FirebaseAuthorizationOnSignInSuccessful;
                     FirebaseAuthorization.OnSignOutSuccessful += FirebaseAuthorizationOnSignOutSuccessful;
+                    Instantiate(_firebaseStoragePrefab, transform);
                 }
                 else
                 {
@@ -75,7 +76,6 @@ public class FirebaseInitializer : MonoBehaviour
     private void FirebaseAuthorizationOnSignInSuccessful()
     {
         Instantiate(_firebaseDatabasePrefab, transform);
-        Instantiate(_firebaseStoragePrefab, transform);
         MainMenuDisplay.Instance.HideLoadingMessage();
     }
 
