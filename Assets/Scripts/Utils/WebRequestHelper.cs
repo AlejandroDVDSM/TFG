@@ -56,16 +56,20 @@ public class WebRequestHelper : MonoBehaviour
     // POST
     public void SendPostRequest(string uri, WWWForm form, System.Action<string> callback)
     {
+        Debug.Log("SendPostRequest");
         StartCoroutine(SendPostRequestCoroutine(uri, form, callback));
     }
 
     // Coroutine POST
     private IEnumerator SendPostRequestCoroutine(string uri, WWWForm form, System.Action<string> callback = null)
     {
+        Debug.Log("SendPostRequestCoroutine");
         if (form != null)
         {
+            Debug.Log("SendPostRequestCoroutine - form != null");
             UnityWebRequest www = UnityWebRequest.Post(uri, form);
             yield return www.SendWebRequest();
+            Debug.Log("SendPostRequestCoroutine - www.SendWebRequest");
             
             if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
             {
@@ -79,8 +83,10 @@ public class WebRequestHelper : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"Error sending a POST request. Form is null");
+            Debug.LogError("Error sending a POST request. Form is null");
         }
+        
+        Debug.Log("Última línea de SendPostRequestCoroutine | Deberían haber cuatro logs detrás");
     }
     
     // POST + JSON

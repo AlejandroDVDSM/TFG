@@ -23,9 +23,13 @@ public class FirebaseStorageTest : MonoBehaviour
     void Start()
     {
         if (!_initialized)
-        {
-            InitializeStorage();
-        }
+            FirebaseInitializer.OnDependenciesFixed += InitializeStorage;
+        //InitializeStorage();
+    }
+
+    private void OnDestroy()
+    {
+        FirebaseInitializer.OnDependenciesFixed -= InitializeStorage;
     }
 
     private void InitializeStorage()

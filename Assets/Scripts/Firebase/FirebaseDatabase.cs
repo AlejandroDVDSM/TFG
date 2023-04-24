@@ -23,7 +23,14 @@ public class FirebaseDatabase : MonoBehaviour
     {
         // Initialize FirebaseDatabase
         if (!_initialized)
-            InitializeDatabase();
+            FirebaseInitializer.OnDependenciesFixed += InitializeDatabase;
+            //InitializeDatabase();
+    }
+
+    private void OnDestroy()
+    {
+        FirebaseInitializer.OnDependenciesFixed -= InitializeDatabase;
+        FirebaseAuthorization.OnSignInSuccessful -= CheckIfUserExistsInDB;
     }
 
     private void OnApplicationQuit()
@@ -39,8 +46,9 @@ public class FirebaseDatabase : MonoBehaviour
         
         // Set references
         _dbReference = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
+        FirebaseAuthorization.OnSignInSuccessful += CheckIfUserExistsInDB;
         _initialized = true;
-        CheckIfUserExistsInDB();
+        //CheckIfUserExistsInDB();
         
         // UI
         MainMenuDisplay.Instance.HideLoadingMessage();

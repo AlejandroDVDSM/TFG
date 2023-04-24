@@ -1,5 +1,3 @@
-using System;
-using Google;
 using UnityEngine;
 
 public class TokenRetriever : MonoBehaviour
@@ -22,25 +20,25 @@ public class TokenRetriever : MonoBehaviour
         _webRequestHelper = FindObjectOfType<WebRequestHelper>();
         _jsonHelper = FindObjectOfType<JSONHelper>();
 
-        FirebaseAuthorization.OnSignInSuccessful += FirebaseAuthorizationOnSignInSuccessful;
+        if (!GetComponent<FirebaseAuthorization>().Initialized)
+            FirebaseAuthorization.OnSignInSuccessful += RetrieveTokens;//FirebaseAuthorizationOnSignInSuccessful;
     }
 
     private void OnDestroy()
     {
-        FirebaseAuthorization.OnSignInSuccessful -= FirebaseAuthorizationOnSignInSuccessful;
+        FirebaseAuthorization.OnSignInSuccessful -= RetrieveTokens;//FirebaseAuthorizationOnSignInSuccessful;
     }
 
-    private void FirebaseAuthorizationOnSignInSuccessful()
+    /*private void FirebaseAuthorizationOnSignInSuccessful()
     {
         RetrieveTokens();
-    }
+    }*/
 
     private void RetrieveTokens()
     {
         WWWForm form = new WWWForm();
         form.AddField("client_id", FirebaseSettingsData.ClientId);
         form.AddField("client_secret", FirebaseSettingsData.ClientSecret);
-
         if (PlayerPrefs.HasKey("refreshToken"))
         {
             Debug.Log("Trying to retrieve token with refresh token...");
@@ -63,7 +61,8 @@ public class TokenRetriever : MonoBehaviour
         PlayerPrefs.SetString("accessToken", accessToken);
         Debug.Log($"Access token ---> {accessToken}");
 
-        if (!PlayerPrefs.HasKey("refreshToken")) SetRefreshToken(response);
+        if (!PlayerPrefs.HasKey("refreshToken")) 
+            SetRefreshToken(response);
         FindObjectOfType<GoogleFit>().CallFitnessAPI();
     }
 

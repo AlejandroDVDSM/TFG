@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class FirebaseAuthorization : MonoBehaviour
 {
-    private FirebaseInitializer _firebaseInitializer;
     private FirebaseAuth _auth;
     private FirebaseAuthorization _instance;
-    private FirebaseDatabase _firebaseDatabase;
     private bool _initialized;
     
     public static event Action OnSignInSuccessful;
-    public static event Action OnSignOutSuccessful;
+
+    public bool Initialized => _initialized;
+    //public static event Action OnSignOutSuccessful;
 
     private void Awake()
     {
@@ -25,9 +25,13 @@ public class FirebaseAuthorization : MonoBehaviour
 
     private void Start()
     {
-        // Initialize FirebaseAuth
-        if (!_initialized)
-            InitializeFirebaseAuthorization();
+        if (!Initialized)
+            FirebaseInitializer.OnDependenciesFixed += InitializeFirebaseAuthorization;
+    }
+
+    private void OnDestroy()
+    {
+        FirebaseInitializer.OnDependenciesFixed -= InitializeFirebaseAuthorization;
     }
 
     private void InitializeFirebaseAuthorization()
@@ -41,8 +45,8 @@ public class FirebaseAuthorization : MonoBehaviour
         _initialized = true;
         
         // UI
-       MainMenuDisplay.Instance.HideLoadingMessage();
-       MainMenuDisplay.Instance.SignedOutUI();
+        MainMenuDisplay.Instance.HideLoadingMessage();
+        MainMenuDisplay.Instance.SignedOutUI();
     }
 
     public void SignInWithGoogleOnFirebase(string idToken)
@@ -70,16 +74,16 @@ public class FirebaseAuthorization : MonoBehaviour
     public void SignOutAuthenticatedUser()
     {
         // Actions before signing out...
-        FirebaseDatabase firebaseDatabase = FindObjectOfType<FirebaseDatabase>();
+        FirebaseDatabase firebaseDatabase = GetComponent<FirebaseDatabase>();
         firebaseDatabase.UpdateStepsInDB(int.Parse(PlayerPrefs.GetString("steps")));
         firebaseDatabase.UpdateLastPlayedInEpochMillis();
         
         // Sign out
         FirebaseAuth.DefaultInstance.SignOut();
         GetComponent<GoogleSignInService>().SignOutWithGoogle();
-        
+
         // UI
-        OnSignOutSuccessful?.Invoke();
+        //OnSignOutSuccessful?.Invoke();
     }
 
     public static bool IsUserSignedIn()

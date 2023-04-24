@@ -8,7 +8,6 @@ using Google;
 public class GoogleSignInService : MonoBehaviour
 {
     public static string AuthCode;
-    
     private GoogleSignInConfiguration _configuration;
     
     private void Start()
@@ -19,7 +18,6 @@ public class GoogleSignInService : MonoBehaviour
     private void SetGoogleSignInConfiguration()
     {
         string[] scopes = { "https://www.googleapis.com/auth/fitness.activity.read" };
-        
         _configuration = new GoogleSignInConfiguration
         {
             WebClientId = FirebaseSettingsData.ClientId, 
@@ -35,6 +33,7 @@ public class GoogleSignInService : MonoBehaviour
     
     public void SignInWithGoogle()
     {
+        // SetGoogleSignInConfiguration();
         GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnGoogleAuthenticationFinished);
     }
 
@@ -42,6 +41,7 @@ public class GoogleSignInService : MonoBehaviour
     {
         Debug.Log("Signing out...");
         GoogleSignIn.DefaultInstance.SignOut();
+        MainMenuDisplay.Instance.SignedOutUI();
     }
 
     private void OnGoogleAuthenticationFinished(Task<GoogleSignInUser> task)
@@ -70,7 +70,7 @@ public class GoogleSignInService : MonoBehaviour
         {
             Debug.Log("GoogleSignInService - Authentication succeeded");
             AuthCode = task.Result.AuthCode;
-            FirebaseAuthorization firebaseAuthorization = FindObjectOfType<FirebaseAuthorization>();
+            FirebaseAuthorization firebaseAuthorization = GetComponent<FirebaseAuthorization>();
             firebaseAuthorization.SignInWithGoogleOnFirebase(task.Result.IdToken);
         }
     }

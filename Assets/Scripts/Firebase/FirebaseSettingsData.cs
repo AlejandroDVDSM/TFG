@@ -5,7 +5,6 @@ public class FirebaseSettingsData : MonoBehaviour
     private static string _clientId;
     private static string _clientSecret;
     private static string _tokenUri;
-    
     public static string ClientId => _clientId;
     public static string ClientSecret => _clientSecret;
     public static string TokenUri => _tokenUri;
@@ -13,7 +12,7 @@ public class FirebaseSettingsData : MonoBehaviour
     private JSONHelper _jsonHelper;
     private const string _jsonName = "firebase_parameters";
     
-    private void Start()
+    private void Awake()
     {
         _jsonHelper = FindObjectOfType<JSONHelper>();
         if (_jsonHelper == null) Debug.LogError("FirebaseSettingsData - Could not find object of type 'JSONHelper'");
