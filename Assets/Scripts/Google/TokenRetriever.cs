@@ -20,8 +20,7 @@ public class TokenRetriever : MonoBehaviour
         _webRequestHelper = FindObjectOfType<WebRequestHelper>();
         _jsonHelper = FindObjectOfType<JSONHelper>();
 
-        if (!GetComponent<FirebaseAuthorization>().Initialized)
-            FirebaseAuthorization.OnSignInSuccessful += RetrieveTokens;//FirebaseAuthorizationOnSignInSuccessful;
+        FirebaseAuthorization.OnSignInSuccessful += RetrieveTokens;//FirebaseAuthorizationOnSignInSuccessful;
     }
 
     private void OnDestroy()
@@ -51,12 +50,13 @@ public class TokenRetriever : MonoBehaviour
             form.AddField("code", GoogleSignInService.AuthCode);
             form.AddField("grant_type", "authorization_code");
         }
-        
+        _webRequestHelper = FindObjectOfType<WebRequestHelper>(); // test
         _webRequestHelper.SendPostRequest(FirebaseSettingsData.TokenUri, form, SetAccessToken);
     }
 
     private void SetAccessToken(string response)
     {
+        _jsonHelper = FindObjectOfType<JSONHelper>(); // test
         string accessToken = "Bearer " + _jsonHelper.GetValue(response, "$.access_token");
         PlayerPrefs.SetString("accessToken", accessToken);
         Debug.Log($"Access token ---> {accessToken}");
