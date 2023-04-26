@@ -13,7 +13,7 @@ public class ChessPieceData : MonoBehaviour
 
     private void SetSprite()
     {
-        string path = $"chesspieces/{GetTeam()}/{GetChessPieceType()}.png";
+        string path = $"Chesspieces/{GetTeam()}/{GetChessPieceType()}.png";
         ITarget target = GetComponent<ITarget>();
         FindObjectOfType<Storage>().InitializeSprite(path, target);
     }

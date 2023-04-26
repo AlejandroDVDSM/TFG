@@ -1,9 +1,7 @@
-using System.Collections;
 using System.IO;
 using Firebase.Extensions;
 using Firebase.Storage;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class Storage : MonoBehaviour
 {
@@ -43,8 +41,15 @@ public class Storage : MonoBehaviour
     private void DefineBaseUrl()
     {
         string storageBucket = FindObjectOfType<JSONHelper>()
-            .GetValueFromJson("google-services", "$.project_info.storage_bucket"); 
-        _baseURL = $"gs://{storageBucket}";
+            .GetValueFromJson("google-services", "$.project_info.storage_bucket");
+        
+        int version = 1;
+        
+        if (PlayerPrefs.HasKey("version"))
+            version = PlayerPrefs.GetInt("version");
+        
+        _baseURL = $"gs://{storageBucket}/Versions/{version}";
+        Debug.Log($"Set BaseUrl: '{_baseURL}'");
     }
     
     public void InitializeSprite(string storagePath, ITarget target)

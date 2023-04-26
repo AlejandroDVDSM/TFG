@@ -35,7 +35,8 @@ public class FirebaseDatabase : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        UpdateLastPlayedInEpochMillis();
+        if (FirebaseAuth.DefaultInstance.CurrentUser != null)
+            UpdateLastPlayedInEpochMillis();
     }
 
     private void InitializeDatabase()
@@ -48,10 +49,30 @@ public class FirebaseDatabase : MonoBehaviour
         _dbReference = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
         FirebaseAuthorization.OnSignInSuccessful += CheckIfUserExistsInDB;
         _initialized = true;
-        //CheckIfUserExistsInDB();
+        
+        UpdateVersion();
         
         // UI
         MainMenuDisplay.Instance.HideLoadingMessage();
+    }
+
+    private void UpdateVersion()
+    {
+        Debug.Log("Setting PlayerPrefs with the data found in DB...");
+        
+        _dbReference.Child("version").GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                PlayerPrefs.SetInt(snapshot.Key, int.Parse(snapshot.Value.ToString()));
+                Debug.Log($"Update local version to the one found in DB: {snapshot.Key} <-> {snapshot.Value}");
+            }
+            else
+            {
+                Debug.LogError("UpdateVersion - Couldn't be completed");
+            }
+        });
     }
 
     // Check if user exists. If not, create an entry in the DB.

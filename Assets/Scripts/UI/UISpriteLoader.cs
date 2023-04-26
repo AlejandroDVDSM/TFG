@@ -17,6 +17,6 @@ public class UISpriteLoader : MonoBehaviour
         if (_storage != null)
             _storage.InitializeSprite(_path, GetComponent<ITarget>());
         else
-            Debug.LogError("UISpriteLoader - Couldn't find an object of type FirebaseStorage");
+            Debug.LogError("UISpriteLoader - Couldn't find an object of type Storage");
     }
 }
