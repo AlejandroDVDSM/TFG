@@ -15,7 +15,7 @@ public class UISpriteLoader : MonoBehaviour
         _storage = FindObjectOfType<Storage>();
         
         if (_storage != null)
-            _storage.GetImage(_path, GetComponent<ITarget>());
+            _storage.TestDownloadLoad(_path, GetComponent<ITarget>());
         else
             Debug.LogError("UISpriteLoader - Couldn't find an object of type FirebaseStorage");
     }
