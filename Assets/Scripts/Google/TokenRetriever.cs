@@ -20,18 +20,13 @@ public class TokenRetriever : MonoBehaviour
         _webRequestHelper = FindObjectOfType<WebRequestHelper>();
         _jsonHelper = FindObjectOfType<JSONHelper>();
 
-        FirebaseAuthorization.OnSignInSuccessful += RetrieveTokens;//FirebaseAuthorizationOnSignInSuccessful;
+        FirebaseAuthorization.OnSignInSuccessful += RetrieveTokens;
     }
 
     private void OnDestroy()
     {
-        FirebaseAuthorization.OnSignInSuccessful -= RetrieveTokens;//FirebaseAuthorizationOnSignInSuccessful;
+        FirebaseAuthorization.OnSignInSuccessful -= RetrieveTokens;
     }
-
-    /*private void FirebaseAuthorizationOnSignInSuccessful()
-    {
-        RetrieveTokens();
-    }*/
 
     private void RetrieveTokens()
     {

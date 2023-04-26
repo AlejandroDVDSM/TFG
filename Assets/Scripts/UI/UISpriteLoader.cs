@@ -7,15 +7,15 @@ public class UISpriteLoader : MonoBehaviour
 {
     [SerializeField] private string _path;
 
-    private FirebaseStorageTest _firebaseStorageTest;
+    private Storage _storage;
     
     // Start is called before the first frame update
     void Start()
     {
-        _firebaseStorageTest = FindObjectOfType<FirebaseStorageTest>();
+        _storage = FindObjectOfType<Storage>();
         
-        if (_firebaseStorageTest != null)
-            _firebaseStorageTest.GetImage(_path, GetComponent<ITarget>());
+        if (_storage != null)
+            _storage.GetImage(_path, GetComponent<ITarget>());
         else
             Debug.LogError("UISpriteLoader - Couldn't find an object of type FirebaseStorage");
     }

@@ -4,10 +4,10 @@ using Firebase.Storage;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class FirebaseStorageTest : MonoBehaviour
+public class Storage : MonoBehaviour
 {
     private FirebaseStorage _storage;
-    private FirebaseStorageTest _instance;
+    private Storage _instance;
     private bool _initialized;
     private string _baseURL;
     
@@ -24,7 +24,6 @@ public class FirebaseStorageTest : MonoBehaviour
     {
         if (!_initialized)
             FirebaseInitializer.OnDependenciesFixed += InitializeStorage;
-        //InitializeStorage();
     }
 
     private void OnDestroy()

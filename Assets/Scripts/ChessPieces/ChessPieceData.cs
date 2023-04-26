@@ -15,7 +15,7 @@ public class ChessPieceData : MonoBehaviour
     {
         string path = $"chesspieces/{GetTeam()}/{GetChessPieceType()}.png";
         ITarget target = GetComponent<ITarget>();
-        FindObjectOfType<FirebaseStorageTest>().GetImage(path, target);
+        FindObjectOfType<Storage>().GetImage(path, target);
     }
 
     public Team GetTeam()
