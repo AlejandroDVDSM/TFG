@@ -36,109 +36,46 @@ public class Storage : MonoBehaviour
     {
         Debug.Log("Initializing Firebase Storage...");
         _storage = FirebaseStorage.DefaultInstance;
-        _baseURL = "gs://" + FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.project_info.storage_bucket");
+        DefineBaseUrl();
         _initialized = true;
     }
 
-    /*public void GetImage(string path, ITarget target)
+    private void DefineBaseUrl()
     {
-        Debug.Log("Getting image...");
-        
-        StorageReference pathReference = _storage.GetReferenceFromUrl($"{_baseURL}/{path}");
-        pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task =>
-        {
-            if (!task.IsFaulted && !task.IsCanceled)
-                StartCoroutine(LoadSprite(task.Result.ToString(), target));
-            else
-                Debug.LogError($"FirebaseStorage - Error while getting image for the url '{path}'");
-        });
+        string storageBucket = FindObjectOfType<JSONHelper>()
+            .GetValueFromJson("google-services", "$.project_info.storage_bucket"); 
+        _baseURL = $"gs://{storageBucket}";
     }
     
-    private IEnumerator LoadSprite(string reference, ITarget target)
+    public void InitializeSprite(string storagePath, ITarget target)
     {
-        UnityWebRequest www = UnityWebRequestTexture.GetTexture(reference);
-        yield return www.SendWebRequest();
-        
-        if (www.result.Equals(UnityWebRequest.Result.ConnectionError) || www.result.Equals(UnityWebRequest.Result.ProtocolError))
-        {
-            Debug.LogError($"FirebaseStorage - Error while loading image for the reference '{reference}'");
-        }
-        else
-        {
-            Debug.Log("FirebaseStorage - Success while loading image");
-            var myTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            var mySprite = Sprite.Create(myTexture, new Rect(0.0f, 0.0f, myTexture.width, myTexture.height),
-                new Vector2(0.5f, 0.5f), 100.0f);
-            target.SetSprite(mySprite);
-
-        }
-    }*/
-
-    public void TestDownloadLoad(string path, ITarget target)
-    {
-        string localPath = $"{Application.persistentDataPath}/{path}";
+        string localPath = $"{Application.persistentDataPath}/{storagePath}";
         
         if (File.Exists(localPath))
         { // Load
-            LoadSprite(localPath, target);
+            Debug.Log($"Found local sprite in '{localPath}'");
+            SpriteLoader.GetInstance().LoadSprite(localPath, target);
         }
         else
         { // Download
-            StorageReference pathReference = _storage.GetReferenceFromUrl($"{_baseURL}/{path}");
-            pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task =>
-            {
-                if (task.IsCanceled || task.IsFaulted)
-                {
-                    Debug.LogError("Error downloading image");
-                }
-                else
-                {
-                    StartCoroutine(DownloadSprite(task.Result.ToString(), localPath, target));
-                }
-            });
+            Debug.Log($"Didn't find local sprite in '{localPath}'. Preparing things to download sprite from Firebase Storage");
+            DownloadSprite(storagePath, target);
         }
     }
 
-    private IEnumerator DownloadSprite(string reference, string localPath, ITarget target)
+    private void DownloadSprite(string storagePath, ITarget target)
     {
-        UnityWebRequest www = UnityWebRequestTexture.GetTexture(reference);
-        yield return www.SendWebRequest();
-
-        if (www.result.Equals(UnityWebRequest.Result.ConnectionError) ||
-            www.result.Equals(UnityWebRequest.Result.ProtocolError))
-        {
-            Debug.LogError($"FirebaseStorage - Error while loading image for the reference '{reference}'");
-        }
-        else
-        {
-            Debug.Log("FirebaseStorage - Success while loading image");
-            var bytes = www.downloadHandler.data;
-            //Directory.CreateDirectory($"{Application.persistentDataPath}/chesspieces/Black/");
-            var folderPath = $"{localPath.Substring(0, localPath.LastIndexOf('/'))}/";
-            Directory.CreateDirectory(folderPath);
-            File.WriteAllBytes(localPath, bytes);
-            LoadSprite(localPath, target);
-        }
-    }
-
-    private void LoadSprite(string localPath, ITarget target)
-    {
-        File.ReadAllBytesAsync(localPath).ContinueWithOnMainThread(task =>
+        StorageReference pathReference = _storage.GetReferenceFromUrl($"{_baseURL}/{storagePath}");
+        pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsCanceled || task.IsFaulted)
             {
-                Debug.LogError("Error loading image");
+                Debug.LogError($"Error downloading '{storagePath}'. Exception: '{task.Exception}'");
             }
             else
             {
-                Debug.Log("Loading image success");
-                byte[] fileData = task.Result;
-                Texture2D myTexture = new Texture2D(2, 2);
-                myTexture.LoadImage(fileData);
-                    
-                var mySprite = Sprite.Create(myTexture, new Rect(0.0f, 0.0f, myTexture.width, myTexture.height),
-                    new Vector2(0.5f, 0.5f), 100.0f);
-                target.SetSprite(mySprite);
+                string localPath = $"{Application.persistentDataPath}/{storagePath}";
+                StartCoroutine(SpriteLoader.GetInstance().DownloadSprite(task.Result.ToString(), localPath, target));
             }
         });        
     }

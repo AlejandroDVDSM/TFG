@@ -14,6 +14,6 @@ public class TopPanelDisplay : MonoBehaviour
 
         string path = $"chesspieces/{nextChessPiece.GetTeam()}/{nextChessPiece.GetChessPieceType()}.png";
         ITarget target = _nextChessPieceImage.GetComponent<ITarget>();
-        FindObjectOfType<Storage>().TestDownloadLoad(path, target);
+        FindObjectOfType<Storage>().InitializeSprite(path, target);
     }
 }

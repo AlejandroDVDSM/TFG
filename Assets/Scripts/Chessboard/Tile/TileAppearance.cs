@@ -18,7 +18,7 @@ public class TileAppearance : MonoBehaviour
             return;
         }
 
-        storage.TestDownloadLoad(isOffset ? "Chessboard/BrownTile.png" : "Chessboard/WhiteTile.png",
+        storage.InitializeSprite(isOffset ? "Chessboard/BrownTile.png" : "Chessboard/WhiteTile.png",
             GetComponent<ITarget>());
     }
 }

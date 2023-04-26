@@ -15,7 +15,7 @@ public class ChessPieceData : MonoBehaviour
     {
         string path = $"chesspieces/{GetTeam()}/{GetChessPieceType()}.png";
         ITarget target = GetComponent<ITarget>();
-        FindObjectOfType<Storage>().TestDownloadLoad(path, target);
+        FindObjectOfType<Storage>().InitializeSprite(path, target);
     }
 
     public Team GetTeam()
