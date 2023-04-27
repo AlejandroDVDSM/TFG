@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3809940378172557942}
   - component: {fileID: 3809940378172557943}
   - component: {fileID: 3809940378172557941}
+  - component: {fileID: 2561873274224268090}
+  - component: {fileID: 8777755338503902910}
   m_Layer: 5
   m_Name: LeaderboardRow
   m_TagString: Untagged
@@ -106,6 +108,31 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2561873274224268090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809940378172557945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8777755338503902910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809940378172557945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Panels/Panel.png
 --- !u!1 &3809940378259793550
 GameObject:
   m_ObjectHideFlags: 0

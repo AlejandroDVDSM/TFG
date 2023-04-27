@@ -186,6 +186,8 @@ GameObject:
   - component: {fileID: 24800168127870990}
   - component: {fileID: 7226871029574419738}
   - component: {fileID: 1305547708731526942}
+  - component: {fileID: 6094650599533461868}
+  - component: {fileID: 8660099299589813700}
   m_Layer: 5
   m_Name: EndGameButton
   m_TagString: Untagged
@@ -320,6 +322,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add36d5166792b748b83c8537ab0772a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6094650599533461868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021946554244159113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8660099299589813700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021946554244159113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Buttons/Button.png
 --- !u!1 &1495501854855115354
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +757,8 @@ GameObject:
   - component: {fileID: 5228290515015752586}
   - component: {fileID: 5228290515015752585}
   - component: {fileID: 1561926690524385677}
+  - component: {fileID: 208990331889808609}
+  - component: {fileID: 7017406340960955095}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -825,6 +854,31 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &208990331889808609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228290515015752599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7017406340960955095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228290515015752599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Panels/BrownPanel.png
 --- !u!1 &5353067093867339195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,6 +1333,8 @@ GameObject:
   - component: {fileID: 4029716151240662728}
   - component: {fileID: 3342124964333435580}
   - component: {fileID: 3137300988067073755}
+  - component: {fileID: 6649738967459229883}
+  - component: {fileID: 1860504547432495590}
   m_Layer: 5
   m_Name: TitlePanel
   m_TagString: Untagged
@@ -1345,6 +1401,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6649738967459229883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724541741439711073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1860504547432495590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724541741439711073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Panels/WhitePanel.png
 --- !u!1 &8422925363900530011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,7 +1464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 438.4386, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2993662352147367784

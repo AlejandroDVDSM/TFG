@@ -15,7 +15,6 @@ public class Storage : MonoBehaviour
 
     public static event Action OnStorageInitialized;
 
-
     private void Awake()
     {
         // Singleton

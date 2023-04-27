@@ -334,6 +334,8 @@ GameObject:
   - component: {fileID: 3013958816338317679}
   - component: {fileID: 5602654843324427387}
   - component: {fileID: 4293510122655032959}
+  - component: {fileID: 3824094656431304164}
+  - component: {fileID: 25943295105255829}
   m_Layer: 5
   m_Name: EndGameButton
   m_TagString: Untagged
@@ -468,6 +470,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add36d5166792b748b83c8537ab0772a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3824094656431304164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2856705989385224168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &25943295105255829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2856705989385224168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Buttons/Button.png
 --- !u!1 &4416543660979690299
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +679,8 @@ GameObject:
   - component: {fileID: 2190945628962142121}
   - component: {fileID: 570335367156077533}
   - component: {fileID: 144764640266119098}
+  - component: {fileID: 5972902965939271866}
+  - component: {fileID: 8986797486976518766}
   m_Layer: 5
   m_Name: TitlePanel
   m_TagString: Untagged
@@ -718,6 +747,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5972902965939271866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4807792462801264128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8986797486976518766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4807792462801264128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Panels/WhitePanel.png
 --- !u!1 &6732773629857764410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,6 +1184,8 @@ GameObject:
   - component: {fileID: 6991062758690124521}
   - component: {fileID: 6991062758690124523}
   - component: {fileID: 6991062758690124520}
+  - component: {fileID: 5134775039123985054}
+  - component: {fileID: 6139650179175267869}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1199,6 +1255,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5134775039123985054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991062758690124534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6139650179175267869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991062758690124534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Panels/BrownPanel.png
 --- !u!1 &6991062758809235247
 GameObject:
   m_ObjectHideFlags: 0

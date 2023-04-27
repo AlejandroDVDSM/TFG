@@ -3,6 +3,7 @@ using System.IO;
 using Firebase.Extensions;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class SpriteLoader
 {
@@ -29,12 +30,9 @@ public class SpriteLoader
             {
                 Debug.Log("Load sprite successfully");
                 byte[] spriteData = task.Result;
-                Texture2D myTexture = new Texture2D(2, 2);
-                myTexture.LoadImage(spriteData);
-
-                var mySprite = Sprite.Create(myTexture, new Rect(0.0f, 0.0f, myTexture.width, myTexture.height),
-                    new Vector2(0.5f, 0.5f), 100.0f);
-                target.SetSprite(mySprite);
+                Texture2D texture2D = CreateTextureFromBytes(spriteData);
+                Sprite sprite = CreateSpriteFromTexture2D(texture2D);
+                target.SetSprite(sprite); 
             }
         });
     }
@@ -64,4 +62,26 @@ public class SpriteLoader
         }
     }
 
+    private Texture2D CreateTextureFromBytes(byte[] spriteData)
+    {
+        Texture2D texture2D = new Texture2D(2, 2)
+        {
+            filterMode = FilterMode.Point,
+            wrapMode = TextureWrapMode.Clamp
+        };
+        
+        texture2D.LoadImage(spriteData);
+        return texture2D;
+    }
+
+    private Sprite CreateSpriteFromTexture2D(Texture2D texture2D)
+    {
+        return Sprite.Create(
+            texture2D, 
+            new Rect(0.0f, 0.0f, texture2D.width, texture2D.height),
+            new Vector2(0.5f, 0.5f),
+            100.0f, 
+            0, SpriteMeshType.FullRect, 
+            new Vector4(106f, 100f, 116f, 126f));   
+    }
 }
