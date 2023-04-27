@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ImageAdapter))]
@@ -25,6 +23,11 @@ public class UIImageSpriteLoader : MonoBehaviour
         {
             Debug.LogError("UISpriteLoader - Couldn't find an object of type Storage");
         }
+    }
+
+    private void OnDestroy()
+    {
+        Storage.OnStorageInitialized -= InitializeImageSprite;
     }
 
     private void InitializeImageSprite()
