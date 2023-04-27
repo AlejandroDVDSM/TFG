@@ -9,6 +9,7 @@ public class Storage : MonoBehaviour
     private Storage _instance;
     private bool _initialized;
     private string _baseURL;
+    private string _versionURL;
     
     private void Awake()
     {
@@ -47,14 +48,15 @@ public class Storage : MonoBehaviour
         
         if (PlayerPrefs.HasKey("version"))
             version = PlayerPrefs.GetInt("version");
-        
-        _baseURL = $"gs://{storageBucket}/Versions/{version}";
+
+        _versionURL = $"Versions/{version}";
+        _baseURL = $"gs://{storageBucket}/{_versionURL}";
         Debug.Log($"Set BaseUrl: '{_baseURL}'");
     }
     
     public void InitializeSprite(string storagePath, ITarget target)
     {
-        string localPath = $"{Application.persistentDataPath}/{storagePath}";
+        string localPath = $"{Application.persistentDataPath}/{_versionURL}/{storagePath}";
         
         if (File.Exists(localPath))
         { // Load
@@ -63,23 +65,23 @@ public class Storage : MonoBehaviour
         }
         else
         { // Download
-            Debug.Log($"Didn't find local sprite in '{localPath}'. Preparing things to download sprite from Firebase Storage");
-            DownloadSprite(storagePath, target);
+            Debug.Log($"Didn't find local sprite in '{localPath}'. Preparing things to get it from Firebase Storage");
+            GetSpriteFromStorage(storagePath, target);
         }
     }
 
-    private void DownloadSprite(string storagePath, ITarget target)
+    private void GetSpriteFromStorage(string storagePath, ITarget target)
     {
         StorageReference pathReference = _storage.GetReferenceFromUrl($"{_baseURL}/{storagePath}");
         pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsCanceled || task.IsFaulted)
             {
-                Debug.LogError($"Error downloading '{storagePath}'. Exception: '{task.Exception}'");
+                Debug.LogError($"Error getting '{storagePath}' from Storage. Exception: '{task.Exception}'");
             }
             else
             {
-                string localPath = $"{Application.persistentDataPath}/{storagePath}";
+                string localPath = $"{Application.persistentDataPath}/{_versionURL}/{storagePath}";
                 StartCoroutine(SpriteLoader.GetInstance().DownloadSprite(task.Result.ToString(), localPath, target));
             }
         });        

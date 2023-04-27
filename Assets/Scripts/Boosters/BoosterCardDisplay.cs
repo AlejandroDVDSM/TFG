@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BoosterCardDisplay : MonoBehaviour
@@ -12,8 +10,14 @@ public class BoosterCardDisplay : MonoBehaviour
  
     public void DisplayData(Booster booster)
     {
+        // Texts
         _name.text = booster.BoosterName;
         _cost.text = booster.Cost.ToString();
-        _image.sprite = booster.Sprite;
+        
+        // Image
+        string boosterName = booster.BoosterName.Replace(" ", "");
+        string path = $"Boosters/{boosterName}.png";
+        FindObjectOfType<Storage>().InitializeSprite(path,_image.GetComponent<ITarget>());
     }
+    
 }

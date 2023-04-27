@@ -41,19 +41,18 @@ public class SpriteLoader
     
     public IEnumerator DownloadSprite(string referenceToStorage, string localPath, ITarget target)
     {
-        Debug.Log("Downloading sprite...");
+        Debug.Log($"SpriteLoader - Downloading sprite in '{localPath}'...");
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(referenceToStorage);
         yield return www.SendWebRequest();
 
         if (www.result.Equals(UnityWebRequest.Result.ConnectionError) ||
             www.result.Equals(UnityWebRequest.Result.ProtocolError))
         {
-            Debug.LogError($"SpriteLoader - Error while downloading sprite for the reference '{referenceToStorage}'");
+            Debug.LogError($"SpriteLoader - Error while downloading sprite for the reference '{referenceToStorage}' | Exception: '{www.error}'");
         }
         else
         {
             var bytes = www.downloadHandler.data;
-            //Directory.CreateDirectory($"{Application.persistentDataPath}/chesspieces/Black/");
             var directoryPath = $"{localPath.Substring(0, localPath.LastIndexOf('/'))}/";
             
             if (!Directory.Exists(directoryPath))
