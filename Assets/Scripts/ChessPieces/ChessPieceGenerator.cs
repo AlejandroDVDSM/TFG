@@ -13,14 +13,12 @@ public class ChessPieceGenerator : MonoBehaviour
 
     public GameObject GenerateNextChessPiece()
     {
-        int randomIndex = new Random().Next(0, _chessPieces.Length); // First parameter: included --- Second parameter: excluded*/
+        int randomIndex = new Random().Next(0, _chessPieces.Length); // First parameter: included --- Second parameter: excluded
         
         GameObject nextChessPiece = _chessPieces[randomIndex];
         
         ChessPieceData nextChessPieceData = nextChessPiece.GetComponent<ChessPieceData>();
-        //Type nextChessPieceType = nextChessPieceData.GetChessPieceType();
-        //Sprite nextChessPieceSprite = FindObjectOfType<FirebaseStorageTest>().GetImage($"chesspieces/{nextChessPieceData.GetTeam()}/{nextChessPieceData.GetChessPieceType()}.png")//nextChessPieceData.GetSprite();
-        _topPanelDisplay.UpdateTopPanel(/*nextChessPieceType, nextChessPieceSprite*/nextChessPieceData);
+        _topPanelDisplay.UpdateTopPanel(nextChessPieceData);
         
         return nextChessPiece;
     }

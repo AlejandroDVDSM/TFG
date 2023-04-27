@@ -234,7 +234,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &85672199
 MonoBehaviour:
@@ -628,6 +628,8 @@ GameObject:
   - component: {fileID: 331825791}
   - component: {fileID: 331825790}
   - component: {fileID: 331825789}
+  - component: {fileID: 331825794}
+  - component: {fileID: 331825793}
   m_Layer: 5
   m_Name: LeaderboardButton
   m_TagString: Untagged
@@ -762,6 +764,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331825787}
   m_CullTransparentMesh: 1
+--- !u!114 &331825793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331825787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Buttons/Button.png
+--- !u!114 &331825794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331825787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &686047451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,6 +1110,8 @@ GameObject:
   - component: {fileID: 747949727}
   - component: {fileID: 747949726}
   - component: {fileID: 747949729}
+  - component: {fileID: 747949731}
+  - component: {fileID: 747949730}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -1215,6 +1244,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: add36d5166792b748b83c8537ab0772a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &747949730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747949724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Buttons/Button.png
+--- !u!114 &747949731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747949724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &785653183
@@ -2349,63 +2403,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422374001}
   m_CullTransparentMesh: 1
---- !u!1 &1539866238
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1539866239}
-  - component: {fileID: 1539866242}
-  - component: {fileID: 1539866244}
-  m_Layer: 0
-  m_Name: FirebaseManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1539866239
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539866238}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1539866242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539866238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a84b0d1c4a509ae4398d19aadff330ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1539866244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539866238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06a78c3b806b294aadbd1403b8157be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1607996822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2456,6 +2453,8 @@ GameObject:
   - component: {fileID: 1671262138}
   - component: {fileID: 1671262137}
   - component: {fileID: 1671262140}
+  - component: {fileID: 1671262142}
+  - component: {fileID: 1671262141}
   m_Layer: 5
   m_Name: SignOutButton
   m_TagString: Untagged
@@ -2588,6 +2587,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fd3dbfb3acd0de4ca4839a7f8122b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1671262141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671262135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Buttons/Button.png
+--- !u!114 &1671262142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671262135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1893699107
@@ -2890,7 +2914,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1982311072
 MonoBehaviour:
@@ -3093,6 +3117,8 @@ GameObject:
   - component: {fileID: 2117201431}
   - component: {fileID: 2117201430}
   - component: {fileID: 2117201433}
+  - component: {fileID: 2117201435}
+  - component: {fileID: 2117201434}
   m_Layer: 5
   m_Name: SignInButton
   m_TagString: Untagged
@@ -3227,6 +3253,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd3dbfb3acd0de4ca4839a7f8122b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2117201434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117201428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c1e0a9712d6ec468b62b06657ed0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: UI/Buttons/Button.png
+--- !u!114 &2117201435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117201428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc12541c20df24181a48d87d95582d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2144001910
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,7 +3398,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &928376325926375870
 PrefabInstance:

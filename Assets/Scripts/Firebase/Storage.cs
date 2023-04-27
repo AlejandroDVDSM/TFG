@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Firebase.Extensions;
 using Firebase.Storage;
@@ -8,9 +9,13 @@ public class Storage : MonoBehaviour
     private FirebaseStorage _storage;
     private Storage _instance;
     private bool _initialized;
+    public bool Initialized => _initialized;
     private string _baseURL;
     private string _versionURL;
-    
+
+    public static event Action OnStorageInitialized;
+
+
     private void Awake()
     {
         // Singleton
@@ -22,7 +27,7 @@ public class Storage : MonoBehaviour
     
     void Start()
     {
-        if (!_initialized)
+        if (!Initialized)
             FirebaseInitializer.OnDependenciesFixed += InitializeStorage;
     }
 
@@ -37,6 +42,7 @@ public class Storage : MonoBehaviour
         _storage = FirebaseStorage.DefaultInstance;
         DefineBaseUrl();
         _initialized = true;
+        OnStorageInitialized?.Invoke();
     }
 
     private void DefineBaseUrl()

@@ -12,7 +12,7 @@ public class TopPanelDisplay : MonoBehaviour
     {
         _nextChessPieceType.text = nextChessPiece.GetChessPieceType().ToString();
 
-        string path = $"chesspieces/{nextChessPiece.GetTeam()}/{nextChessPiece.GetChessPieceType()}.png";
+        string path = $"Chesspieces/{nextChessPiece.GetTeam()}/{nextChessPiece.GetChessPieceType()}.png";
         ITarget target = _nextChessPieceImage.GetComponent<ITarget>();
         FindObjectOfType<Storage>().InitializeSprite(path, target);
     }
