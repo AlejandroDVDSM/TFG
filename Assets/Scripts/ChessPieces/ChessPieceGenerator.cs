@@ -1,7 +1,4 @@
-using System;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using Random = System.Random;
 
 public class ChessPieceGenerator : MonoBehaviour

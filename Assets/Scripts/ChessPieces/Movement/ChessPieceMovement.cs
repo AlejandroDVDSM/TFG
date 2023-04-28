@@ -8,12 +8,12 @@ public class ChessPieceMovement: MonoBehaviour
     private ChessboardManager _chessboardManager;
     
     public bool IsMoving = false;
-    private ChessPieceGenerator _chessPieceGenerator;
+    private ChessPieceSpawner _chessPieceGenerator;
 
     private void Start()
     {
         _chessboardManager = FindObjectOfType<ChessboardManager>();
-        _chessPieceGenerator = FindObjectOfType<ChessPieceGenerator>();
+        _chessPieceGenerator = FindObjectOfType<ChessPieceSpawner>();
     }
 
     public void SetAllAvailableMoves()
@@ -34,10 +34,10 @@ public class ChessPieceMovement: MonoBehaviour
         transform.SetParent(targetTile.transform);
         transform.localPosition = new Vector2(.05f, .3f);
         GetComponentInParent<Tile>().IsFree = false; // New parent
-        AudioManager.Instance.Play("ChesspieceAction");
+        AudioManager.Instance.Play("ChesspieceMove");
         targetTile.CheckNearbyTiles(); // Check if this chess piece can make new connections after moving it
 
-        _chessPieceGenerator.GenerateNextChessPiece();
+        _chessPieceGenerator.SetNextRandomChessPiece();
         IsMoving = false;
         GetBackToNormal();
         availableMoves.Clear();
@@ -47,6 +47,7 @@ public class ChessPieceMovement: MonoBehaviour
     public void MoveAndEat(Tile targetTile)
     {
         Destroy(targetTile.transform.GetChild(0).gameObject);
+        AudioManager.Instance.Play("ChesspieceEat");
         Move(targetTile);
     }
     

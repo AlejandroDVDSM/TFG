@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(ChessPieceGenerator))]
 public class ChessPieceSpawner : MonoBehaviour
 {
     [SerializeField] private ChessboardManager _chessboardManager; 
@@ -19,7 +20,7 @@ public class ChessPieceSpawner : MonoBehaviour
         if (tileWhereToSpawn.IsFree)
         {
             Instantiate(_nextChessPiece, tileWhereToSpawn.transform);
-            AudioManager.Instance.Play("ChesspieceAction");
+            AudioManager.Instance.Play("ChesspieceMove");
             tileWhereToSpawn.IsFree = false;
             
             if (_chessboardManager.AreAllTilesOccupy())
@@ -31,6 +32,7 @@ public class ChessPieceSpawner : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.Play("Error");
             Debug.Log($"<{tileWhereToSpawn.name}> is NOT free");
         }
     }

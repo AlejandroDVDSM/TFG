@@ -39,6 +39,7 @@ public class TouchController : MonoBehaviour
                 if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
                 {
                     Debug.Log("Player is moving a piece...");
+                    AudioManager.Instance.Play("Error");
                     break;
                 }
                 

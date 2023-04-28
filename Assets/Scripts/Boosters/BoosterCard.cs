@@ -24,7 +24,7 @@ public class BoosterCard : MonoBehaviour
             GetComponentInParent<BoosterManager>().BuyBooster(name, _booster.Cost);
         else
         {
-            AudioManager.Instance.Play("ErrorBuyingBooster");
+            AudioManager.Instance.Play("Error");
             Debug.Log("no money no booster my friend");
         }
     }

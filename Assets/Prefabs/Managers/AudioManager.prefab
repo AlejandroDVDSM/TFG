@@ -63,9 +63,21 @@ MonoBehaviour:
     Volume: 1
     Pitch: 1
     Loop: 0
-  - Name: ChesspieceAction
+  - Name: ChesspieceMove
     source: {fileID: 0}
     Clip: {fileID: 8300000, guid: cdf1e81ddc1af094ab21d54c08aa298d, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+  - Name: ChesspieceUpgraded
+    source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 4eed5eb32d03fc24ca4097640f6fa17b, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+  - Name: ChesspieceEat
+    source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 0dd5e73077cbb02489ebe250933e93f6, type: 3}
     Volume: 1
     Pitch: 1
     Loop: 0
@@ -75,7 +87,7 @@ MonoBehaviour:
     Volume: 1
     Pitch: 1
     Loop: 0
-  - Name: ErrorBuyingBooster
+  - Name: Error
     source: {fileID: 0}
     Clip: {fileID: 8300000, guid: c03d37de581180a46a78d94ef96bcb3a, type: 3}
     Volume: 1

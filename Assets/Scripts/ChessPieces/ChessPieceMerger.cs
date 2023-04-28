@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class ChessPieceMerger : MonoBehaviour
 {
@@ -26,6 +24,7 @@ public class ChessPieceMerger : MonoBehaviour
     {
         if (!isMergeAvailable) return;
         // transform.parent = tile where I am
+        AudioManager.Instance.Play("ChesspieceUpgraded");
         Instantiate(_chessPieceUpgraded, transform.parent);
     }
 }

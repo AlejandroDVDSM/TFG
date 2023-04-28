@@ -14,13 +14,18 @@ public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance;
     
-    public GameState gameState = GameState.PlayerTurn; // This must be changed to "Start" when the loading page is implemented
+    public GameState gameState /*= GameState.Start/*PlayerTurn*/; // This must be changed to "Start" when the 
 
     public static event Action<GameState> OnGameStateChanged;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        UpdateGameState(GameState.Start);
     }
 
     public bool IsPlayerTurn()
@@ -41,7 +46,9 @@ public class GameStateManager : MonoBehaviour
         {
             case GameState.Start:
                 // PENDING TO DO
-                // Play GameTheme and Stop MainMenuTheme
+                AudioManager.Instance.Stop("MainMenuTheme");
+                AudioManager.Instance.Play("GameTheme");
+                UpdateGameState(GameState.PlayerTurn);
                 break;
             case GameState.PlayerTurn:
                 // PENDING TO DO

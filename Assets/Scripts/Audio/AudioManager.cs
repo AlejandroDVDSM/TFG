@@ -1,15 +1,12 @@
-using System;
-using System.Linq;
-using UnityEngine.Audio; 
+using System.Linq; 
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public Sound[] Sounds;
     private bool _isMuted;
-
+    
     private void Awake()
     {
         if (Instance == null)
@@ -47,23 +44,41 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string name)
     {
-        var sound = Sounds.FirstOrDefault(sound => sound.Name.Equals(name));
-
+        Sound sound = GetSound(name);
+        
         if (sound == null)
-        {
-            Debug.LogError($"AudioManager - Could not find a sound with the name '{name}'");
             return;
-        }
         
         Debug.Log($"Playing the next sound: '{name}'");
         sound.source.Play();
     }
     
+    public void Stop(string name)
+    {
+        Sound sound = GetSound(name);
+        
+        if (sound == null)
+            return;
+        
+        Debug.Log($"Stopping the next sound: '{name}'");
+        sound.source.Stop();
+    }
+
+    private Sound GetSound(string name)
+    {
+        var sound = Sounds.FirstOrDefault(sound => sound.Name.Equals(name));
+
+        if (sound == null)
+            Debug.LogError($"AudioManager - Could not find a sound with the name '{name}'");
+
+        return sound;
+    }
+    
+    // Invoke from OnClick()
     public void Mute()
     {
         _isMuted = !_isMuted;
         AudioListener.pause = _isMuted;
         PlayerPrefs.SetInt("muted", _isMuted ? 1 : 0);
-        Debug.Log("Muting audio");
     }
 }
