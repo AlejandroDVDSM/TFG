@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public Sound[] Sounds;
+    private bool _isMuted;
 
     private void Awake()
     {
@@ -25,8 +26,10 @@ public class AudioManager : MonoBehaviour
         SetSounds();
     }
 
-    private void OnEnable()
+    private void Start()
     {
+        _isMuted = PlayerPrefs.GetInt("muted") == 1;
+        AudioListener.pause = _isMuted;
         Play("MainMenuTheme");
     }
 
@@ -56,8 +59,11 @@ public class AudioManager : MonoBehaviour
         sound.source.Play();
     }
     
-    public void Stop(string name)
+    public void Mute()
     {
-        
+        _isMuted = !_isMuted;
+        AudioListener.pause = _isMuted;
+        PlayerPrefs.SetInt("muted", _isMuted ? 1 : 0);
+        Debug.Log("Muting audio");
     }
 }
