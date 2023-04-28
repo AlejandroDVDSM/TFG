@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6969633993124702591}
   - component: {fileID: 8026148187817917009}
   - component: {fileID: 8587199269663853411}
+  - component: {fileID: 8572565513830668446}
   m_Layer: 5
   m_Name: SoundButton
   m_TagString: Untagged
@@ -122,7 +123,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8597046939310066473}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8572565513830668446}
+        m_TargetAssemblyTypeName: ButtonSFX, Assembly-CSharp
+        m_MethodName: ClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8026148187817917009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +161,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: UI/Icons/Volume_2_Pushed.png
+--- !u!114 &8572565513830668446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204858151132479863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c3fedc2a8e63841b20cb5b06352cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2344626988241414339
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +188,7 @@ GameObject:
   - component: {fileID: 4839907514008878247}
   - component: {fileID: 6381016561669840691}
   - component: {fileID: 1248876145358975654}
+  - component: {fileID: 5913303365677757494}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -272,6 +298,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5913303365677757494}
+        m_TargetAssemblyTypeName: ButtonSFX, Assembly-CSharp
+        m_MethodName: ClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4839907514008878247}
         m_TargetAssemblyTypeName: Scene, Assembly-CSharp
         m_MethodName: LoadScene
@@ -321,6 +359,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: UI/Icons/Restart.png
+--- !u!114 &5913303365677757494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344626988241414339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c3fedc2a8e63841b20cb5b06352cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2856705989385224168
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +386,7 @@ GameObject:
   - component: {fileID: 4293510122655032959}
   - component: {fileID: 3824094656431304164}
   - component: {fileID: 25943295105255829}
+  - component: {fileID: 2448238553050749555}
   m_Layer: 5
   m_Name: EndGameButton
   m_TagString: Untagged
@@ -446,6 +497,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2448238553050749555}
+        m_TargetAssemblyTypeName: ButtonSFX, Assembly-CSharp
+        m_MethodName: ClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4293510122655032959}
         m_TargetAssemblyTypeName: Scene, Assembly-CSharp
         m_MethodName: LoadScene
@@ -495,6 +558,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: UI/Buttons/Button.png
+--- !u!114 &2448238553050749555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2856705989385224168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c3fedc2a8e63841b20cb5b06352cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4416543660979690299
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +585,7 @@ GameObject:
   - component: {fileID: 1031030621401312922}
   - component: {fileID: 8343099806222574300}
   - component: {fileID: 5032103628013634568}
+  - component: {fileID: 581142859110497069}
   m_Layer: 5
   m_Name: ExitGame
   m_TagString: Untagged
@@ -619,6 +695,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 581142859110497069}
+        m_TargetAssemblyTypeName: ButtonSFX, Assembly-CSharp
+        m_MethodName: ClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1031030621401312922}
         m_TargetAssemblyTypeName: ApplicationQuitter, Assembly-CSharp
         m_MethodName: ExitGame
@@ -668,6 +756,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: UI/Icons/ExitGame.png
+--- !u!114 &581142859110497069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416543660979690299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c3fedc2a8e63841b20cb5b06352cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4807792462801264128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,6 +1103,7 @@ GameObject:
   - component: {fileID: 1535104737376172117}
   - component: {fileID: 6228795094917048619}
   - component: {fileID: 3666186390667795221}
+  - component: {fileID: 7056377919946142402}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -1112,9 +1213,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1535104737376172117}
-        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
-        m_MethodName: Resume
+      - m_Target: {fileID: 7056377919946142402}
+        m_TargetAssemblyTypeName: ButtonSFX, Assembly-CSharp
+        m_MethodName: ClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6846536893122913938}
+        m_TargetAssemblyTypeName: PopUpUtils, Assembly-CSharp
+        m_MethodName: CloseThisPopUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1173,6 +1286,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: UI/Icons/Cross_Pushed.png
+--- !u!114 &7056377919946142402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991062757847007576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c3fedc2a8e63841b20cb5b06352cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6991062758690124534
 GameObject:
   m_ObjectHideFlags: 0

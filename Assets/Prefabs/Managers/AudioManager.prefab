@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7865912866375140521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7865912866375140519}
+  - component: {fileID: 7865912866375140520}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7865912866375140519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865912866375140521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7865912866375140520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865912866375140521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0ca9f780470ed43a425ae47885ffdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - Name: MainMenuTheme
+    source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: ebcc81f3e7a9ecc42b42d07a5fbabb47, type: 3}
+    Volume: 0.297
+    Pitch: 1
+    Loop: 1
+  - Name: GameTheme
+    source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 7a8eefd34ee8cf846a51d0b443862ace, type: 3}
+    Volume: 0.439
+    Pitch: 1
+    Loop: 1
+  - Name: Click
+    source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: da5c22d60bce0874cb0d87c0ad4dea43, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+  - Name: ChesspieceAction
+    source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: cdf1e81ddc1af094ab21d54c08aa298d, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+  - Name: BuyBooster
+    source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 19d820431d781744584a11223be64156, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+  - Name: ErrorBuyingBooster
+    source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: c03d37de581180a46a78d94ef96bcb3a, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0

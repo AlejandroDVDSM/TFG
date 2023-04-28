@@ -14,7 +14,7 @@ public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance;
     
-    public GameState gameState = GameState.PlayerTurn; // This must be changed to "Start" when the main menu is implemented
+    public GameState gameState = GameState.PlayerTurn; // This must be changed to "Start" when the loading page is implemented
 
     public static event Action<GameState> OnGameStateChanged;
 
@@ -41,6 +41,7 @@ public class GameStateManager : MonoBehaviour
         {
             case GameState.Start:
                 // PENDING TO DO
+                // Play GameTheme and Stop MainMenuTheme
                 break;
             case GameState.PlayerTurn:
                 // PENDING TO DO
@@ -53,6 +54,7 @@ public class GameStateManager : MonoBehaviour
                 break;
             case GameState.End:
                 // PENDING TO DO
+                // Stop GameTheme (maybe play "EndGameTheme (?))"
                 PopUpManager.Instance.ShowPopUp("EndGamePopUp");
                 break;
             default:

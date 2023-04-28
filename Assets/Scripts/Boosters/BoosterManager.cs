@@ -15,5 +15,6 @@ public class BoosterManager : MonoBehaviour
         var factory = _factories.FirstOrDefault(f => f.Key.Equals(boosterName)).Value;
         factory.ApplyBooster();
         FindObjectOfType<GoogleFit>().SubtractSteps(boosterCost);
+        AudioManager.Instance.Play("BuyBooster");
     }
 }

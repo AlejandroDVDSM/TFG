@@ -19,6 +19,7 @@ public class ChessPieceSpawner : MonoBehaviour
         if (tileWhereToSpawn.IsFree)
         {
             Instantiate(_nextChessPiece, tileWhereToSpawn.transform);
+            AudioManager.Instance.Play("ChesspieceAction");
             tileWhereToSpawn.IsFree = false;
             
             if (_chessboardManager.AreAllTilesOccupy())

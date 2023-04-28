@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +23,10 @@ public class BoosterCard : MonoBehaviour
         if (steps >= _booster.Cost)
             GetComponentInParent<BoosterManager>().BuyBooster(name, _booster.Cost);
         else
+        {
+            AudioManager.Instance.Play("ErrorBuyingBooster");
             Debug.Log("no money no booster my friend");
+        }
     }
     
     public void InitializeBooster(Booster booster)
