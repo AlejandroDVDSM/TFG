@@ -40,6 +40,7 @@ public class GameStateManager : MonoBehaviour
 
     public void UpdateGameState(GameState newGameState)
     {
+        Debug.Log($"Game state updated from '{gameState}' to '{newGameState}'");
         gameState = newGameState;
 
         switch (newGameState)

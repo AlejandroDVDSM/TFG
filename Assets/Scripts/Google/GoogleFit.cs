@@ -1,11 +1,9 @@
 using System;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 
 public class GoogleFit : MonoBehaviour
 {
-    // [SerializeField] private TMP_Text _stepsText;
     private int _steps;
     private bool _initialized;
     
@@ -35,7 +33,6 @@ public class GoogleFit : MonoBehaviour
         
         _steps = PlayerPrefs.HasKey("steps") ? int.Parse(PlayerPrefs.GetString("steps")) : 0;
         OnStepsUpdated?.Invoke();
-        // PrintSteps();
     }
     
     public void CallFitnessAPI()
@@ -65,7 +62,6 @@ public class GoogleFit : MonoBehaviour
         }
         
         UpdateSteps();
-        // PrintSteps();
     }
 
     private void UpdateSteps()
@@ -75,11 +71,6 @@ public class GoogleFit : MonoBehaviour
         OnStepsUpdated?.Invoke();
     }
     
-    /*private void PrintSteps()
-    {
-        _stepsText.text = $"Your steps: {_steps}";
-    }*/
-
     public void SubtractSteps(int steps)
     {
         _steps -= steps;

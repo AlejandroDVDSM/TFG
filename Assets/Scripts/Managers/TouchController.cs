@@ -48,13 +48,22 @@ public class TouchController : MonoBehaviour
                 break;
             
             case "PlayerPiece":
-                if (_selectedChessPiece != null && _selectedChessPiece.IsMoving && hitCollider.gameObject == _selectedChessPiece.gameObject)
+                if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
                 {
-                    if (_touch.tapCount == 2)
+                    if (hitCollider.gameObject == _selectedChessPiece.gameObject)
+                    {
+                        if (_touch.tapCount == 2)
+                        {
+                            _selectedChessPiece.GetBackToNormal();
+                            _selectedChessPiece.IsMoving = false;
+                            break;
+                        }                        
+                    }
+                    else
                     {
                         _selectedChessPiece.GetBackToNormal();
                         _selectedChessPiece.IsMoving = false;
-                        break;
+                        
                     }
                 }
                 
@@ -73,8 +82,12 @@ public class TouchController : MonoBehaviour
                 if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
                 {
                     Tile targetTileWithEnemyPiece = hitCollider.transform.GetComponentInParent<Tile>();
-                    _selectedChessPiece.MoveAndEat(targetTileWithEnemyPiece);
-                    _selectedChessPiece = null;
+
+                    if (targetTileWithEnemyPiece.tag.Equals("TileToMove"))
+                    {
+                        _selectedChessPiece.MoveAndEat(targetTileWithEnemyPiece);
+                        _selectedChessPiece = null;
+                    }
                 }
                 break;
             

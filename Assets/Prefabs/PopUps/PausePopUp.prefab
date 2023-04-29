@@ -1248,9 +1248,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6846536893122913938}
-        m_TargetAssemblyTypeName: PopUpUtils, Assembly-CSharp
-        m_MethodName: CloseThisPopUp
+      - m_Target: {fileID: 1535104737376172117}
+        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
