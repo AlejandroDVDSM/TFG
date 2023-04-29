@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class GoogleFit : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _stepsText;
+    // [SerializeField] private TMP_Text _stepsText;
     private int _steps;
     private bool _initialized;
     
     private WebRequestHelper _webRequestHelper;
     private JSONHelper _jsonHelper;
     private static GoogleFit _instance;
-    
+
+    public static event Action OnStepsUpdated;
+
     private void Awake()
     {
         if (_instance == null)
@@ -32,7 +34,8 @@ public class GoogleFit : MonoBehaviour
         _jsonHelper = FindObjectOfType<JSONHelper>();
         
         _steps = PlayerPrefs.HasKey("steps") ? int.Parse(PlayerPrefs.GetString("steps")) : 0;
-        PrintSteps();
+        OnStepsUpdated?.Invoke();
+        // PrintSteps();
     }
     
     public void CallFitnessAPI()
@@ -62,19 +65,20 @@ public class GoogleFit : MonoBehaviour
         }
         
         UpdateSteps();
-        PrintSteps();
+        // PrintSteps();
     }
 
     private void UpdateSteps()
     {
         PlayerPrefs.SetString("steps", _steps.ToString());
         FindObjectOfType<FirebaseDatabase>().UpdateStepsInDB(_steps);
+        OnStepsUpdated?.Invoke();
     }
     
-    private void PrintSteps()
+    /*private void PrintSteps()
     {
         _stepsText.text = $"Your steps: {_steps}";
-    }    
+    }*/
 
     public void SubtractSteps(int steps)
     {

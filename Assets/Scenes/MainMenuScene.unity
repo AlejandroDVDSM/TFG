@@ -1467,6 +1467,7 @@ GameObject:
   - component: {fileID: 859071442}
   - component: {fileID: 859071444}
   - component: {fileID: 859071443}
+  - component: {fileID: 859071445}
   m_Layer: 5
   m_Name: StepsText
   m_TagString: Untagged
@@ -1591,6 +1592,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859071441}
   m_CullTransparentMesh: 1
+--- !u!114 &859071445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859071441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c612162f009d64c99147b8f19da7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &894602192
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,7 +3041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d257fe74d8bbd3b44881420f1bf36c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stepsText: {fileID: 859071443}
 --- !u!1 &2018011208
 GameObject:
   m_ObjectHideFlags: 0
