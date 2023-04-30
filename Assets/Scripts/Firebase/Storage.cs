@@ -12,7 +12,8 @@ public class Storage : MonoBehaviour
     public bool Initialized => _initialized;
     private string _baseURL;
     private string _versionURL;
-
+    private int _latestVersion = 3;
+    
     public static event Action OnStorageInitialized;
 
     private void Awake()
@@ -48,20 +49,27 @@ public class Storage : MonoBehaviour
     {
         string storageBucket = FindObjectOfType<JSONHelper>()
             .GetValueFromJson("google-services", "$.project_info.storage_bucket");
-        
-        int version = 1;
-        
-        if (PlayerPrefs.HasKey("version"))
-            version = PlayerPrefs.GetInt("version");
 
-        _versionURL = $"Versions/{version}";
-        _baseURL = $"gs://{storageBucket}/{_versionURL}";
+
+        if (PlayerPrefs.HasKey("version"))
+            _latestVersion = 2;/*PlayerPrefs.GetInt("version");*/ // TEST TEST TEST TEST
+
+        //_versionURL = $"Versions/{/*version*/2}";
+        _baseURL = $"gs://{storageBucket}/Versions/{_latestVersion}";// TEST TEST TEST TEST// TEST TEST TEST TEST
         Debug.Log($"Set BaseUrl: '{_baseURL}'");
+    }
+    
+    private string GetVersionURL(int version)
+    {
+        string storageBucket = FindObjectOfType<JSONHelper>()
+            .GetValueFromJson("google-services", "$.project_info.storage_bucket");
+
+        return $"gs://{storageBucket}/Versions/{version}";
     }
     
     public void InitializeSprite(string storagePath, ITarget target)
     {
-        string localPath = $"{Application.persistentDataPath}/{_versionURL}/{storagePath}";
+        string localPath = $"{Application.persistentDataPath}/Versions/{_latestVersion}/{storagePath}";
         
         if (File.Exists(localPath))
         { // Load
@@ -71,24 +79,46 @@ public class Storage : MonoBehaviour
         else
         { // Download
             Debug.Log($"Didn't find local sprite in '{localPath}'. Preparing things to get it from Firebase Storage");
-            GetSpriteFromStorage(storagePath, target);
+            GetSpriteFromStorage(storagePath, target, _latestVersion);
         }
     }
 
-    private void GetSpriteFromStorage(string storagePath, ITarget target)
+    
+    private void GetSpriteFromStorage(string storagePath, ITarget target, int version)
     {
-        StorageReference pathReference = _storage.GetReferenceFromUrl($"{_baseURL}/{storagePath}");
+        StorageReference pathReference = _storage.GetReferenceFromUrl($"{GetVersionURL(version)}/{storagePath}");
         pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsCanceled || task.IsFaulted)
             {
-                Debug.LogError($"Error getting '{storagePath}' from Storage. Exception: '{task.Exception}'");
+                Debug.LogError($"Error getting '{pathReference}' from Storage. Exception: '{task.Exception}'");
+                RetryInitializeSprite(storagePath, target, version - 1);
             }
             else
             {
-                string localPath = $"{Application.persistentDataPath}/{_versionURL}/{storagePath}";
+                string localPath = $"{Application.persistentDataPath}/Versions/{version}/{storagePath}";
                 StartCoroutine(SpriteLoader.GetInstance().DownloadSprite(task.Result.ToString(), localPath, target));
             }
         });        
     }
+
+    private void RetryInitializeSprite(string storagePath, ITarget target, int version)
+    {
+        Debug.Log($"Retrying initialize sprite with version: '{version}'");
+        if (version < 1)
+            return;
+        
+        string localPath = $"{Application.persistentDataPath}/Versions/{version}/{storagePath}";
+        
+        if (File.Exists(localPath))
+        { // Load
+            Debug.Log($"Found local sprite with older version in '{localPath}'");
+            SpriteLoader.GetInstance().LoadSprite(localPath, target);
+        }
+        else
+        { // Download
+            Debug.Log($"Didn't find local sprite with older version in '{localPath}'. Preparing things to get it from Firebase Storage");
+            GetSpriteFromStorage(storagePath, target, version);
+        }
+    }    
 }
