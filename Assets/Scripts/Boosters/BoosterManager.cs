@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class BoosterManager : MonoBehaviour
 {
-    private Dictionary<string, IBoosterFactory> _factories = new()
+    [SerializeField] private Booster[] _boosters;
+    
+    private Dictionary<string, IBoosterFactory> _factories = new();
+    
+    private void Start()
     {
-        {"Double Points", new BoosterDoublePointsFactory()},
-        {"New Random Piece", new BoosterNewRandomPieceFactory()}
-    };
+        GetComponent<BoosterCollectionDisplay>().DisplayBoostersCardsInShop(_boosters);
+
+        var factoriesComponents = GetComponents<IBoosterFactory>();
+        for (int i = 0; i < factoriesComponents.Length; i++)
+        {
+            _factories.Add(_boosters[i].name, factoriesComponents[i]);
+        }
+    }
 
     public void BuyBooster(string boosterName, int boosterCost)
     {
-        var factory = _factories.FirstOrDefault(f => f.Key.Equals(boosterName)).Value;
+        var factory = GetFactory(boosterName);
         factory.ApplyBooster();
+        
         FindObjectOfType<GoogleFit>().SubtractSteps(boosterCost);
         AudioManager.Instance.Play("BuyBooster");
     }
+
+    private IBoosterFactory GetFactory(string boosterName)
+    {
+        return _factories.FirstOrDefault(f => f.Key.Equals(boosterName)).Value;
+    }
+    
 }

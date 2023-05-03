@@ -41,4 +41,10 @@ public class ChessPieceSpawner : MonoBehaviour
     {
         _nextChessPiece = _chessPieceGenerator.GenerateNextChessPiece();
     }
+
+    public void SetNextChessPiece(ChessPieceData nextChessPiece)
+    {
+        _nextChessPiece = nextChessPiece.gameObject;
+        FindObjectOfType<TopPanelDisplay>().UpdateTopPanel(nextChessPiece);
+    }
 }

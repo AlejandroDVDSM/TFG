@@ -16,6 +16,13 @@ public class BoosterCard : MonoBehaviour
         _button.onClick.RemoveListener(CheckIfCanBuy);
     }
     
+    public void InitializeBooster(Booster booster)
+    {
+        _booster = booster;
+        name = booster.BoosterName;
+        GetComponent<BoosterCardDisplay>().DisplayData(_booster);
+    }
+    
     private void CheckIfCanBuy()
     {
         int steps = int.Parse(PlayerPrefs.GetString("steps"));
@@ -27,12 +34,5 @@ public class BoosterCard : MonoBehaviour
             AudioManager.Instance.Play("Error");
             Debug.Log("no money no booster my friend");
         }
-    }
-    
-    public void InitializeBooster(Booster booster)
-    {
-        _booster = booster;
-        name = booster.BoosterName;
-        GetComponent<BoosterCardDisplay>().DisplayData(_booster);
     }
 }

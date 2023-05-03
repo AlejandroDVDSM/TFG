@@ -11,7 +11,7 @@ public class Storage : MonoBehaviour
     private bool _initialized;
     public bool Initialized => _initialized;
     private int _latestVersion = 1;
-    private string storageBucket;
+    private string _storageBucket;
     
     public static event Action OnStorageInitialized;
 
@@ -29,7 +29,7 @@ public class Storage : MonoBehaviour
         if (!Initialized)
             FirebaseInitializer.OnDependenciesFixed += InitializeStorage;
         
-        storageBucket = FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.project_info.storage_bucket");
+        _storageBucket = FindObjectOfType<JSONHelper>().GetValueFromJson("google-services", "$.project_info.storage_bucket");
         if (PlayerPrefs.HasKey("version"))
             _latestVersion = PlayerPrefs.GetInt("version");
     }
@@ -49,7 +49,7 @@ public class Storage : MonoBehaviour
     
     private string GetUrl(int version)
     {
-        return $"gs://{storageBucket}/Versions/{version}";
+        return $"gs://{_storageBucket}/Versions/{version}";
     }
     
     public void InitializeSprite(string storagePath, ITarget target)
