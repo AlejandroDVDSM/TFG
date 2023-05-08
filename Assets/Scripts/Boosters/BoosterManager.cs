@@ -15,7 +15,8 @@ public class BoosterManager : MonoBehaviour
         var factoriesComponents = GetComponents<IBoosterFactory>();
         for (int i = 0; i < factoriesComponents.Length; i++)
         {
-            _factories.Add(_boosters[i].name, factoriesComponents[i]);
+            Debug.Log($"Adding {_boosters[i].BoosterName} to factory");
+            _factories.Add(_boosters[i].BoosterName, factoriesComponents[i]);
         }
     }
 

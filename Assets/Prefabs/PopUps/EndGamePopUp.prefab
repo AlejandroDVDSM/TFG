@@ -1298,8 +1298,9 @@ GameObject:
   - component: {fileID: 6994861700608389666}
   - component: {fileID: 5145383741042555766}
   - component: {fileID: 3558531582479449074}
+  - component: {fileID: 9166428701670100306}
   m_Layer: 5
-  m_Name: Score
+  m_Name: TotalPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1353,7 +1354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your score: 123456789'
+  m_text: ---
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e52d75c311c8e4443a6bd3f99c369a50, type: 2}
   m_sharedMaterial: {fileID: 4372942571569601127, guid: e52d75c311c8e4443a6bd3f99c369a50, type: 2}
@@ -1422,6 +1423,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9166428701670100306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7310745317343372088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f47708616334194baa24e507f97d056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointsText: {fileID: 0}
 --- !u!1 &7724541741439711073
 GameObject:
   m_ObjectHideFlags: 0

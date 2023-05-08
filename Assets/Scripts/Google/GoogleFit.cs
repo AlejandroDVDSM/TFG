@@ -66,6 +66,7 @@ public class GoogleFit : MonoBehaviour
 
     private void UpdateSteps()
     {
+        Debug.Log($"Updating steps from '{PlayerPrefs.GetString("steps")}' to '{_steps}'");
         PlayerPrefs.SetString("steps", _steps.ToString());
         FindObjectOfType<FirebaseDatabase>().UpdateStepsInDB(_steps);
         OnStepsUpdated?.Invoke();

@@ -118,9 +118,9 @@ public class FirebaseDatabase : MonoBehaviour
 
     public void UpdateStepsInDB(int steps)
     {
-        Debug.Log("Updating 'steps'...");
         string userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
         _dbReference.Child("users").Child(userID).Child("steps").SetValueAsync(steps);
+        Debug.Log("Steps updated...");
     }
     
     public void UpdateHighestScoreInDB(int newHighestScore)

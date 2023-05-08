@@ -1,20 +1,20 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Firebase.Auth;
 using Firebase.Database;
 using UnityEngine;
 
 public class PointsManager : MonoBehaviour
 {
-    private int _totalPoints;
+    private int _totalPoints = 0;
     private PointsDisplay _pointsDisplay;
     private bool _doublePointsFlag;
+
+    public int TotalPoints => _totalPoints;
 
     private void Start()
     {
         _pointsDisplay = GetComponent<PointsDisplay>();
-        _pointsDisplay.UpdateText(_totalPoints);
+        _pointsDisplay.UpdateText(/*TotalPoints*/);
 
         GameStateManager.OnGameStateChanged += CheckUserHighestScore;
     }
@@ -28,18 +28,18 @@ public class PointsManager : MonoBehaviour
     public void Add(int pointsToAdd)
     {
         if (_doublePointsFlag)
-            _totalPoints += pointsToAdd * 2;
+            _totalPoints = TotalPoints + pointsToAdd * 2;
         else
-            _totalPoints += pointsToAdd;
+            _totalPoints = TotalPoints + pointsToAdd;
         
-        _pointsDisplay.UpdateText(_totalPoints);
+        _pointsDisplay.UpdateText(/*TotalPoints*/);
     }
 
     public void Subtract(int pointsToSubtract)
     {
-        if (_totalPoints - pointsToSubtract < 0) return;
-        _totalPoints -= pointsToSubtract;
-        _pointsDisplay.UpdateText(_totalPoints);
+        if (TotalPoints - pointsToSubtract < 0) return;
+        _totalPoints = TotalPoints - pointsToSubtract;
+        _pointsDisplay.UpdateText(/*TotalPoints*/);
     }
 
     public void ActivateDoublePoints()
@@ -66,7 +66,7 @@ public class PointsManager : MonoBehaviour
         
         DataSnapshot snapshot = userData.Result;
         
-        if ((long)snapshot.Value < _totalPoints)
-            FindObjectOfType<FirebaseDatabase>().UpdateHighestScoreInDB(_totalPoints);
+        if ((long)snapshot.Value < TotalPoints)
+            FindObjectOfType<FirebaseDatabase>().UpdateHighestScoreInDB(TotalPoints);
     }
 }

@@ -25,6 +25,7 @@ public class BoosterCard : MonoBehaviour
     
     private void CheckIfCanBuy()
     {
+        Debug.Log($"Trying to buy '{name}'");
         int steps = int.Parse(PlayerPrefs.GetString("steps"));
         
         if (steps >= _booster.Cost)
