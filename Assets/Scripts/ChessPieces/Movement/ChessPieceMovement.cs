@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChessPieceMovement: MonoBehaviour
 {
-    private List<Vector2Int> availableMoves = new List<Vector2Int>();
+    private List<Vector2Int> _availableMoves = new();
 
     private ChessboardManager _chessboardManager;
     
@@ -18,9 +19,9 @@ public class ChessPieceMovement: MonoBehaviour
 
     public void SetAllAvailableMoves()
     {
-        availableMoves = GetComponent<IMovement>().GetAllAvailableMoves();
+        _availableMoves = GetComponent<IMovement>().GetAllAvailableMoves();
 
-        if (availableMoves.Count > 0)
+        if (_availableMoves.Count > 0)
             HighlightAvailableTiles();
         else
             IsMoving = false;
@@ -37,11 +38,12 @@ public class ChessPieceMovement: MonoBehaviour
         AudioManager.Instance.Play("ChesspieceMove");
         targetTile.CheckNearbyTiles(); // Check if this chess piece can make new connections after moving it
 
-        _chessPieceGenerator.SetNextRandomChessPiece();
+        if (!SceneManager.GetActiveScene().name.Equals("TutorialScene"))
+            _chessPieceGenerator.SetNextRandomChessPiece();
+        
         IsMoving = false;
         GetBackToNormal();
-        availableMoves.Clear();
-        
+        _availableMoves.Clear();
     }
 
     public void MoveAndEat(Tile targetTile)
@@ -53,7 +55,7 @@ public class ChessPieceMovement: MonoBehaviour
     
     private void HighlightAvailableTiles()
     {
-        foreach (var availableMove in availableMoves)
+        foreach (var availableMove in _availableMoves)
         {
             Tile tileAt = _chessboardManager.GetTileAtPosition(availableMove);
             tileAt.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0.78f);
@@ -63,7 +65,7 @@ public class ChessPieceMovement: MonoBehaviour
 
     public void GetBackToNormal()
     {
-        foreach (var availableMove in availableMoves)
+        foreach (var availableMove in _availableMoves)
         {
             Tile tileAt = _chessboardManager.GetTileAtPosition(availableMove);
             tileAt.GetComponent<SpriteRenderer>().color = Color.white;

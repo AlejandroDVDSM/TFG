@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BoosterCard : MonoBehaviour
@@ -8,6 +9,12 @@ public class BoosterCard : MonoBehaviour
     
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name.Equals("TutorialScene"))
+        {
+            DisableButtonIfTutorial();
+            return;
+        }
+        
         _button.onClick.AddListener(CheckIfCanBuy);
     }
 
@@ -35,5 +42,11 @@ public class BoosterCard : MonoBehaviour
             AudioManager.Instance.Play("Error");
             Debug.Log("no money no booster my friend");
         }
+    }
+
+    private void DisableButtonIfTutorial()
+    {
+        Debug.Log("Disabling button as we are in the tutorial");
+        _button.interactable = false;
     }
 }

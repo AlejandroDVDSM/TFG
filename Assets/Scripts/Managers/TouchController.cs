@@ -60,7 +60,7 @@ public class TouchController : MonoBehaviour
                         }                        
                     }
                     else
-                    {
+                    { // Go back to normal if we have touch a different chesspiece
                         _selectedChessPiece.GetBackToNormal();
                         _selectedChessPiece.IsMoving = false;
                         

@@ -7,7 +7,7 @@ public enum GameState
     PlayerTurn,
     EnemyTurn,
     Pause,
-    End,
+    End
 }
 
 public class GameStateManager : MonoBehaviour
