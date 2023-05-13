@@ -1220,31 +1220,31 @@ MonoBehaviour:
   messages:
   - Message: Welcome! This is a game where you have to merge chesspieces
     TutorialState: 0
-  - Message: In the panel above you can see your current chesspiece
+  - Message: In the panel above you can see your current chess piece
     TutorialState: 0
-  - Message: By touching a tile you can place it
+  - Message: You can place a piece by touching it
     TutorialState: 0
   - Message: Let's see it!
     TutorialState: 0
-  - Message: Did you just see what happened?
+  - Message: Did you see what just happened?
     TutorialState: 1
-  - Message: Let's see if we add another one
+  - Message: Let's see what happens when we add another one
     TutorialState: 1
-  - Message: When you place together three or more chesspieces, they will be merged
+  - Message: If you place three or more chess pieces together, they will be merged
       and upgraded
     TutorialState: 2
-  - Message: Below your current chesspiece you can find how many points you have
+  - Message: Below your current chess piece you can see how many points you have
       earned.
     TutorialState: 2
-  - Message: Placing and merging chesspieces will add points
+  - Message: Placing and merging chesspieces will adds points
     TutorialState: 2
-  - Message: But be careful with certain chesspieces like the next
+  - Message: But be careful with certain chess pieces, such as the next one
     TutorialState: 2
-  - Message: This white pieces are obstacles that you can place
+  - Message: These white pieces are obstacles that you can place
     TutorialState: 3
-  - Message: You won't earn points and they will block one tile
+  - Message: You won't earn points by placing them and they will block one tile
     TutorialState: 3
-  - Message: But you can do one thing to get rid of it!
+  - Message: But there is one thing you can do to get rid of them!
     TutorialState: 3
   - Message: You can move your piece by touching it...
     TutorialState: 6
@@ -1252,9 +1252,9 @@ MonoBehaviour:
     TutorialState: 7
   - Message: Do you see that little button in the bottom right of the corner?
     TutorialState: 4
-  - Message: When you touch that button you will be able to buy boosters
+  - Message: If you touch it, you can buy boosters
     TutorialState: 4
-  - Message: Each booster is different and have different prices
+  - Message: Each booster is different and has a different price
     TutorialState: 5
   - Message: If you want to buy one, you will need to have enough steps
     TutorialState: 5
