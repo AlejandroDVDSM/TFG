@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoosterName: Rook
   Sprite: {fileID: 21300000, guid: 7b9c2d37cbaf54e47b5a52c1bd0100ee, type: 3}
-  Cost: 1500
+  Cost: 5000

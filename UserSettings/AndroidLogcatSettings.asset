@@ -1,25 +1,13 @@
 {
     "m_SelectedDeviceId": "2b55da55",
     "m_SelectedPackage": {
-        "deviceId": "2b55da55",
-        "name": "com.adsm.tfg",
-        "processId": 26255,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 2,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "2b55da55",
-            "name": "com.adsm.tfg",
-            "processId": 9769,
-            "exited": true
-        },
-        {
-            "deviceId": "2b55da55",
-            "name": "com.adsm.tfg",
-            "processId": 10527,
-            "exited": true
-        },
         {
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
@@ -30,7 +18,7 @@
             "deviceId": "2b55da55",
             "name": "com.miui.home",
             "processId": 2148,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "2b55da55",
@@ -42,7 +30,7 @@
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
             "processId": 26255,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "T8SK8TE6FQ6X6HEQ",

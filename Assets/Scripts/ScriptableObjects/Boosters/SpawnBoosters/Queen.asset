@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoosterName: Queen
   Sprite: {fileID: 21300000, guid: dbc282f88874cdc4b915a145abbc2079, type: 3}
-  Cost: 2250
+  Cost: 7500
