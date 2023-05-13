@@ -9,7 +9,7 @@ public class ChessPieceConnections : MonoBehaviour
     
     public List<ChessPieceConnections> connections;
 
-    public UnityEvent onChessPieceConnected = new UnityEvent();
+    public UnityEvent onChessPieceConnected = new();
 
     private void Start()
     {
@@ -23,22 +23,23 @@ public class ChessPieceConnections : MonoBehaviour
     
     public void ConnectPieces(ChessPieceConnections chessPieceConnectionsToConnect)
     {
-        if (!SameTypes(chessPieceConnectionsToConnect._type)) return;
+        if (!SameTypes(chessPieceConnectionsToConnect._type)) 
+            return;
         
         AddConnections(chessPieceConnectionsToConnect);
         chessPieceConnectionsToConnect.AddConnections(this);
         
         foreach (var piece in chessPieceConnectionsToConnect.connections.Where(piece => piece != this))
-        {
             piece.AddConnections(this);
-        }
         
         onChessPieceConnected.Invoke();
     }
 
     private void AddConnections(ChessPieceConnections chessPieceConnections)
     {
-        if (!connections.Contains(chessPieceConnections)) connections.Add(chessPieceConnections);
+        if (!connections.Contains(chessPieceConnections)) 
+            connections.Add(chessPieceConnections);
+        
         connections = connections.Union(chessPieceConnections.connections.Where(piece => piece != this)).ToList(); // Union() excludes duplicated elements.
     }
 
@@ -59,6 +60,7 @@ public class ChessPieceConnections : MonoBehaviour
 
     public void CheckIfMergeIsPossible()
     {
-        if (connections.Count >= 2) GetComponent<ChessPieceMerger>().MergePieces();
+        if (connections.Count >= 2 && _type != Type.King) 
+            GetComponent<ChessPieceMerger>().MergePieces();
     }
 }

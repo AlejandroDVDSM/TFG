@@ -58,12 +58,12 @@ public class Storage : MonoBehaviour
         
         if (File.Exists(localPath))
         { // Load
-            Debug.Log($"Found local sprite in '{localPath}'");
+            //Debug.Log($"Found local sprite in '{localPath}'");
             SpriteLoader.GetInstance().LoadSprite(localPath, target);
         }
         else
         { // Download
-            Debug.Log($"Didn't find local sprite in '{localPath}'. Preparing things to get it from Firebase Storage");
+            //Debug.Log($"Didn't find local sprite in '{localPath}'. Preparing things to get it from Firebase Storage");
             GetSpriteFromStorage(storagePath, target, _latestVersion);
         }
     }
@@ -88,7 +88,7 @@ public class Storage : MonoBehaviour
 
     private void RetryInitializeSprite(string storagePath, ITarget target, int version)
     {
-        Debug.Log($"Retrying initialize sprite with version: '{version}'");
+        //Debug.Log($"Retrying initialize sprite with version: '{version}'");
         if (version < 1)
             return;
         
@@ -96,12 +96,12 @@ public class Storage : MonoBehaviour
         
         if (File.Exists(localPath))
         { // Load
-            Debug.Log($"Found local sprite with older version in '{localPath}'");
+            //Debug.Log($"Found local sprite with older version in '{localPath}'");
             SpriteLoader.GetInstance().LoadSprite(localPath, target);
         }
         else
         { // Download
-            Debug.Log($"Didn't find local sprite with older version in '{localPath}'. Preparing things to get it from Firebase Storage");
+            //Debug.Log($"Didn't find local sprite with older version in '{localPath}'. Preparing things to get it from Firebase Storage");
             GetSpriteFromStorage(storagePath, target, version);
         }
     }

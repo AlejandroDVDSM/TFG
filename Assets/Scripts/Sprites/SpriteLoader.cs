@@ -3,7 +3,6 @@ using System.IO;
 using Firebase.Extensions;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 
 public class SpriteLoader
 {
@@ -19,7 +18,7 @@ public class SpriteLoader
     
     public void LoadSprite(string localPath, ITarget target)
     {
-        Debug.Log("Loading sprite...");
+        //Debug.Log("Loading sprite...");
         File.ReadAllBytesAsync(localPath).ContinueWithOnMainThread(task =>
         {
             if (task.IsCanceled || task.IsFaulted)
@@ -28,7 +27,7 @@ public class SpriteLoader
             }
             else
             {
-                Debug.Log("Load sprite successfully");
+                //Debug.Log("Load sprite successfully");
                 byte[] spriteData = task.Result;
                 Texture2D texture2D = CreateTextureFromBytes(spriteData);
                 Sprite sprite = CreateSpriteFromTexture2D(texture2D);
@@ -39,7 +38,7 @@ public class SpriteLoader
     
     public IEnumerator DownloadSprite(string referenceToStorage, string localPath, ITarget target)
     {
-        Debug.Log($"SpriteLoader - Downloading sprite in '{localPath}'...");
+        //Debug.Log($"SpriteLoader - Downloading sprite in '{localPath}'...");
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(referenceToStorage);
         yield return www.SendWebRequest();
 
@@ -58,7 +57,7 @@ public class SpriteLoader
                 
             File.WriteAllBytes(localPath, bytes);
             LoadSprite(localPath, target);
-            Debug.Log("Success while downloading sprite");
+            //Debug.Log("Success while downloading sprite");
         }
     }
 
