@@ -1,19 +1,19 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class TutorialManager : MonoBehaviour
+public class TutorialMessagesController : MonoBehaviour
 {
-    [SerializeField] private GameObject _tutorialPanel;
-    [SerializeField] private TutorialMessageDisplay _tutorialMessageDisplay;
+    //[SerializeField] private GameObject _tutorialPanel;
+    [SerializeField] private TutorialPanelDisplay tutorialPanelDisplay;
     [SerializeField] private GameObject _endTutorialPopUp;
 
     [SerializeField] private TutorialMessage[] messages;
     private int _currentMessageIndex;
 
-
     private void Start()
     {
-        _tutorialMessageDisplay.SetMessage(messages[0].Message);
+        tutorialPanelDisplay.SetMessage(messages[0].Message);
         TutorialStateManager.OnTutorialStateChanged += EndTutorial;
     }
 
@@ -24,40 +24,39 @@ public class TutorialManager : MonoBehaviour
 
     public void Next()
     {
-        /*if (_currentMessageIndex + 1 >= messages.Length)
-        {
-            EndTutorial();
-            return;
-        }*/
-        
-        _currentMessageIndex++;
+        //_currentMessageIndex++;
 
-        TutorialMessage currentMessage = messages[_currentMessageIndex]; 
-        TutorialMessage nextMessage = messages[_currentMessageIndex + 1]; 
+        TutorialMessage currentMessage = messages[_currentMessageIndex];
+        TutorialMessage nextMessage = messages[_currentMessageIndex + 1];
         
         if (currentMessage.TutorialState != nextMessage.TutorialState)
             TutorialStateManager.Instance.UpdateTutorialState(nextMessage.TutorialState);
         
-        string messageToShow = nextMessage.Message;
-        _tutorialMessageDisplay.SetMessage(messageToShow);
+        tutorialPanelDisplay.SetMessage(nextMessage.Message);
+        _currentMessageIndex++;
     }
 
-    /*public void Prev()
+    public void Prev()
     {
         if (_currentMessageIndex - 1 < 0)
             return;
         
+        TutorialMessage currentMessage = messages[_currentMessageIndex];
+        TutorialMessage prevMessage = messages[_currentMessageIndex - 1];
+        
+        if (prevMessage.TutorialState != currentMessage.TutorialState)
+            return;
+        
+        tutorialPanelDisplay.SetMessage(prevMessage.Message);
         _currentMessageIndex--;
-        string messageToShow = messages[_currentMessageIndex].Message;
-        _tutorialMessageDisplay.SetMessage(messageToShow);
-    }*/
+    }
 
     private void EndTutorial(TutorialState tutorialState)
     {
         if (tutorialState != TutorialState.End)
             return;
         
-        Destroy(_tutorialPanel);
+        Destroy(tutorialPanelDisplay.gameObject);
         Transform canvas = FindObjectOfType<Canvas>().transform;
         Instantiate(_endTutorialPopUp, canvas);
     }

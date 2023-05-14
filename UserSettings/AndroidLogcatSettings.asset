@@ -1,19 +1,13 @@
 {
     "m_SelectedDeviceId": "2b55da55",
     "m_SelectedPackage": {
-        "deviceId": "2b55da55",
-        "name": "com.adsm.tfg",
-        "processId": 31545,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 2,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "2b55da55",
-            "name": "com.adsm.tfg",
-            "processId": 27950,
-            "exited": true
-        },
         {
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
@@ -42,7 +36,7 @@
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
             "processId": 31545,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "T8SK8TE6FQ6X6HEQ",
