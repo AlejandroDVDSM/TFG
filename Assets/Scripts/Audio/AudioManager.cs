@@ -1,5 +1,7 @@
+using System;
 using System.Linq; 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -25,9 +27,17 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        //Scene.OnSceneLoaded += PlaySceneTheme;
+        SceneManager.sceneLoaded += PlaySceneTheme;
         _isMuted = PlayerPrefs.GetInt("muted") == 1;
         AudioListener.pause = _isMuted;
+        //StopAllThemes();
         Play("MainMenuTheme");
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded += PlaySceneTheme;
     }
 
     private void SetSounds()
@@ -64,6 +74,13 @@ public class AudioManager : MonoBehaviour
         sound.source.Stop();
     }
 
+    public void StopAllThemes()
+    {
+        var themeSounds = Sounds.Where(s => s.source.isPlaying && s.Name.Contains("Theme"));
+        foreach(var sound in themeSounds)
+            sound.source.Stop();
+    }
+
     private Sound GetSound(string name)
     {
         var sound = Sounds.FirstOrDefault(sound => sound.Name.Equals(name));
@@ -81,4 +98,13 @@ public class AudioManager : MonoBehaviour
         AudioListener.pause = _isMuted;
         PlayerPrefs.SetInt("muted", _isMuted ? 1 : 0);
     }
+    
+    private void PlaySceneTheme(UnityEngine.SceneManagement.Scene arg0, LoadSceneMode _)
+    {
+        if (!arg0.name.Equals("MainMenuScene"))
+            return;
+        
+        StopAllThemes();
+        Play("MainMenuTheme");
+    }    
 }

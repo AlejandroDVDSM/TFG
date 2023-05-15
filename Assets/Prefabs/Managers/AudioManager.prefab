@@ -48,13 +48,19 @@ MonoBehaviour:
   - Name: MainMenuTheme
     source: {fileID: 0}
     Clip: {fileID: 8300000, guid: ebcc81f3e7a9ecc42b42d07a5fbabb47, type: 3}
-    Volume: 0.297
+    Volume: 0.4
     Pitch: 1
     Loop: 1
   - Name: GameTheme
     source: {fileID: 0}
     Clip: {fileID: 8300000, guid: 7a8eefd34ee8cf846a51d0b443862ace, type: 3}
-    Volume: 0.439
+    Volume: 0.4
+    Pitch: 1
+    Loop: 1
+  - Name: TutorialTheme
+    source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 86a718b8690d7404783b0a2d91c64005, type: 3}
+    Volume: 0.3
     Pitch: 1
     Loop: 1
   - Name: Click

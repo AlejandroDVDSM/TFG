@@ -47,7 +47,8 @@ public class GameStateManager : MonoBehaviour
         {
             case GameState.Start:
                 // PENDING TO DO
-                AudioManager.Instance.Stop("MainMenuTheme");
+                //AudioManager.Instance.Stop("MainMenuTheme");
+                AudioManager.Instance.StopAllThemes();
                 AudioManager.Instance.Play("GameTheme");
                 UpdateGameState(GameState.PlayerTurn);
                 break;

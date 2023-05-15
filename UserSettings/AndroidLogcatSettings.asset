@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "2b55da55",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "2b55da55",
+        "name": "com.adsm.tfg",
+        "processId": 29245,
         "exited": false
     },
     "m_SelectedPriority": 2,
@@ -16,27 +16,33 @@
         },
         {
             "deviceId": "2b55da55",
-            "name": "com.adsm.tfg",
-            "processId": 23851,
+            "name": "com.google.android.gms.ui",
+            "processId": 25010,
             "exited": true
         },
         {
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
-            "processId": 24859,
+            "processId": 27567,
             "exited": true
         },
         {
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
-            "processId": 25507,
+            "processId": 28374,
             "exited": true
         },
         {
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
-            "processId": 25871,
+            "processId": 28838,
             "exited": true
+        },
+        {
+            "deviceId": "2b55da55",
+            "name": "com.adsm.tfg",
+            "processId": 29245,
+            "exited": false
         },
         {
             "deviceId": "T8SK8TE6FQ6X6HEQ",

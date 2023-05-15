@@ -26,7 +26,13 @@ public class TutorialStateManager : MonoBehaviour
     {
         Instance = this;
     }
-    
+
+    private void Start()
+    {
+        AudioManager.Instance.StopAllThemes();
+        AudioManager.Instance.Play("TutorialTheme");
+    }
+
     public void UpdateTutorialState(TutorialState newTutorialState)
     {
         Debug.Log($"Tutorial state updated from '{tutorialState}' to '{newTutorialState}'");
