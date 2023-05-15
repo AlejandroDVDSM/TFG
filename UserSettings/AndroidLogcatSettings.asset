@@ -10,12 +10,6 @@
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "2b55da55",
-            "name": "com.adsm.tfg",
-            "processId": 28596,
-            "exited": true
-        },
-        {
-            "deviceId": "2b55da55",
             "name": "com.miui.home",
             "processId": 2156,
             "exited": false
@@ -23,19 +17,25 @@
         {
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
-            "processId": 30364,
+            "processId": 23851,
             "exited": true
         },
         {
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
-            "processId": 31080,
+            "processId": 24859,
             "exited": true
         },
         {
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
-            "processId": 31545,
+            "processId": 25507,
+            "exited": true
+        },
+        {
+            "deviceId": "2b55da55",
+            "name": "com.adsm.tfg",
+            "processId": 25871,
             "exited": true
         },
         {

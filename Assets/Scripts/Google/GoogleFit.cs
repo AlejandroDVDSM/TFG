@@ -11,6 +11,7 @@ public class GoogleFit : MonoBehaviour
     private JSONHelper _jsonHelper;
     private static GoogleFit _instance;
 
+    public static bool AccountConnectedToGoogleFit;
     public static event Action OnStepsUpdated;
 
     private void Awake()
@@ -45,11 +46,12 @@ public class GoogleFit : MonoBehaviour
         string json = "{ 'aggregateBy': [{ 'dataTypeName': 'com.google.step_count.delta', 'dataSourceId': 'derived:com.google.step_count.delta:com.google.android.gms:merge_step_deltas'}],'bucketByTime': { 'durationMillis': 86400000 },'startTimeMillis': " + startTimeInEpochMillis + ",'endTimeMillis': " + endTimeInEpochMillis + "}";
         string accessToken = PlayerPrefs.GetString("accessToken");
         
-        _webRequestHelper.SendPostRequest(uri, accessToken, json, SetSteps); // Se llama al método SendPostRequest y su resultado se envía como parámetro al método SetSteps
+        _webRequestHelper.SendPostRequest(uri, accessToken, json, SetSteps, WarnUser);
     }
 
     private void SetSteps(string response)
     {
+        AccountConnectedToGoogleFit = true;
         int bucketChildren = _jsonHelper.GetToken(response, "$.bucket").Children().Count();
         
         for (int i = 0; i < bucketChildren; i++)
@@ -71,6 +73,17 @@ public class GoogleFit : MonoBehaviour
         FindObjectOfType<FirebaseDatabase>().UpdateStepsInDB(_steps);
         OnStepsUpdated?.Invoke();
     }
+    
+    private void WarnUser(string errorTypeCode)
+    {
+        Debug.Log($"Error type code: '{errorTypeCode}'");
+        if (errorTypeCode.Equals("Player has not connect its Google account to Google Fit"))
+        {
+            Debug.Log("equal");
+            PopUpManager.Instance.ShowPopUp("GoogleFitWarning");
+            AccountConnectedToGoogleFit = false;
+        }
+    }    
     
     public void SubtractSteps(int steps)
     {

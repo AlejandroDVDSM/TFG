@@ -19,6 +19,6 @@ public class StepsDisplay : MonoBehaviour
 
     private void PrintSteps()
     {
-        _stepsText.text = $"Your steps: {PlayerPrefs.GetString("steps")}";
+        _stepsText.text = GoogleFit.AccountConnectedToGoogleFit ? $"Your steps: {PlayerPrefs.GetString("steps")}" : "Please, connect your Google account to Google Fit";
     }
 }
