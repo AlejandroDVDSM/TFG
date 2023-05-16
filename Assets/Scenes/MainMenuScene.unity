@@ -631,6 +631,7 @@ GameObject:
   - component: {fileID: 331825794}
   - component: {fileID: 331825793}
   - component: {fileID: 331825795}
+  - component: {fileID: 331825796}
   m_Layer: 5
   m_Name: LeaderboardButton
   m_TagString: Untagged
@@ -656,8 +657,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 810.7628, y: -2052.0151}
-  m_SizeDelta: {x: 1594.4426, y: 493.9787}
+  m_AnchoredPosition: {x: 810.7628, y: -2067.068}
+  m_SizeDelta: {x: 1250, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &331825789
 MonoBehaviour:
@@ -719,6 +720,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ButtonSFX, Assembly-CSharp
         m_MethodName: ClickSFX
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 331825796}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -814,6 +827,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c3fedc2a8e63841b20cb5b06352cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &331825796
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331825787}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f63de0cba950b24b95cc6db6acabdc3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &686047451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,6 +1174,7 @@ GameObject:
   - component: {fileID: 747949730}
   - component: {fileID: 747949732}
   - component: {fileID: 747949733}
+  - component: {fileID: 747949734}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -1165,8 +1200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 810.7628, y: -764.0575}
-  m_SizeDelta: {x: 919.4795, y: 493.9787}
+  m_AnchoredPosition: {x: 810.7628, y: -767.0681}
+  m_SizeDelta: {x: 900, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &747949726
 MonoBehaviour:
@@ -1216,6 +1251,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ButtonSFX, Assembly-CSharp
         m_MethodName: ClickSFX
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 747949734}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1335,6 +1382,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d27f58b80196054ebbbd388892d304d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &747949734
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747949724}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc3971f2c2375b3458fc471738baa502, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &785653183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,7 +1703,7 @@ GameObject:
   - component: {fileID: 894602198}
   - component: {fileID: 894602200}
   m_Layer: 5
-  m_Name: ExitGame
+  m_Name: ExitGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2145,7 +2213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go to leaderboard
+  m_text: Leaderboard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e52d75c311c8e4443a6bd3f99c369a50, type: 2}
   m_sharedMaterial: {fileID: 4372942571569601127, guid: e52d75c311c8e4443a6bd3f99c369a50, type: 2}
@@ -2368,6 +2436,7 @@ GameObject:
   - component: {fileID: 1235954137}
   - component: {fileID: 1235954139}
   - component: {fileID: 1235954138}
+  - component: {fileID: 1235954140}
   m_Layer: 5
   m_Name: TopButtons
   m_TagString: Untagged
@@ -2437,6 +2506,27 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!95 &1235954140
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235954136}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96dcaa731abaccc4683ba5320701e2b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1422374001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2796,7 +2886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1607996823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2834,6 +2924,7 @@ GameObject:
   - component: {fileID: 1671262142}
   - component: {fileID: 1671262141}
   - component: {fileID: 1671262143}
+  - component: {fileID: 1671262144}
   m_Layer: 5
   m_Name: SignOutButton
   m_TagString: Untagged
@@ -2859,8 +2950,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 810.7628, y: -2695.9941}
-  m_SizeDelta: {x: 1026.3584, y: 493.9788}
+  m_AnchoredPosition: {x: 810.7628, y: -2717.068}
+  m_SizeDelta: {x: 900, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1671262137
 MonoBehaviour:
@@ -2922,6 +3013,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: SignInOutListeners, Assembly-CSharp
         m_MethodName: SignOut
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1671262144}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3017,6 +3120,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c3fedc2a8e63841b20cb5b06352cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1671262144
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671262135}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e55c1d930ea9b541a18910f9a9079e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1705306116
 GameObject:
   m_ObjectHideFlags: 0
@@ -3745,7 +3869,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -131}
-  m_SizeDelta: {x: 1621.5256, y: 2942.9834}
+  m_SizeDelta: {x: 1621.5256, y: 2967.068}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2077043218
 MonoBehaviour:
@@ -3803,6 +3927,7 @@ GameObject:
   - component: {fileID: 2117201435}
   - component: {fileID: 2117201434}
   - component: {fileID: 2117201436}
+  - component: {fileID: 2117201437}
   m_Layer: 5
   m_Name: SignInButton
   m_TagString: Untagged
@@ -3828,8 +3953,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.0000076293945}
-  m_SizeDelta: {x: 1715.9937, y: 493.9787}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1715, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2117201430
 MonoBehaviour:
@@ -3891,6 +4016,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: SignInOutListeners, Assembly-CSharp
         m_MethodName: SignIn
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2117201437}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3986,6 +4123,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c3fedc2a8e63841b20cb5b06352cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2117201437
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117201428}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 570456a9ee62f8c4582158869aa8ed2b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2130750846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4002,6 +4160,7 @@ GameObject:
   - component: {fileID: 2130750850}
   - component: {fileID: 2130750849}
   - component: {fileID: 2130750848}
+  - component: {fileID: 2130750855}
   m_Layer: 5
   m_Name: TutorialButton
   m_TagString: Untagged
@@ -4027,8 +4186,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 810.7628, y: -1408.0364}
-  m_SizeDelta: {x: 1265.246, y: 493.979}
+  m_AnchoredPosition: {x: 810.7628, y: -1417.0681}
+  m_SizeDelta: {x: 1250, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2130750848
 MonoBehaviour:
@@ -4135,6 +4294,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2130750855}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2130750851}
         m_TargetAssemblyTypeName: Scene, Assembly-CSharp
         m_MethodName: LoadScene
@@ -4185,6 +4356,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130750846}
   m_CullTransparentMesh: 1
+--- !u!95 &2130750855
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130750846}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9513f116cc2944c499dbda0502056426, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2144001910
 GameObject:
   m_ObjectHideFlags: 0

@@ -175,7 +175,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078898365}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1355,6 +1355,7 @@ GameObject:
   - component: {fileID: 4588997675440709858}
   - component: {fileID: 4588997675440709859}
   - component: {fileID: 119788064532293968}
+  - component: {fileID: 1501074428}
   m_Layer: 5
   m_Name: ShopPopUp
   m_TagString: Untagged
@@ -1433,6 +1434,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fefee49cf22494385d3ae04086f44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1501074428
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588997675440709869}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 62cd9b33dc08d3847ae25a6b3a90cc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4630984434646303756
 GameObject:
   m_ObjectHideFlags: 0

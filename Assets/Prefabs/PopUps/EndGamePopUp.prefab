@@ -742,6 +742,7 @@ GameObject:
   - component: {fileID: 5228290514870617665}
   - component: {fileID: 5228290514870617664}
   - component: {fileID: 8541192191892230131}
+  - component: {fileID: 7897199406146134651}
   m_Layer: 5
   m_Name: EndGamePopUp
   m_TagString: Untagged
@@ -820,6 +821,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fefee49cf22494385d3ae04086f44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7897199406146134651
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228290514870617678}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b581c9c497e5894abcd94ee916a5441, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5228290515015752599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f47708616334194baa24e507f97d056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointsText: {fileID: 0}
 --- !u!1 &7724541741439711073
 GameObject:
   m_ObjectHideFlags: 0
