@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6594841270214939085}
   - component: {fileID: 4893970567490459383}
   - component: {fileID: -1074833916532062669}
+  - component: {fileID: 4566959631150485210}
   m_Layer: 0
   m_Name: Pawn
   m_TagString: PlayerPiece
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3f365079668d55f4a9c4518376b99cd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &-9196051261447984329
@@ -208,3 +209,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1444a5e38561f4096e02bf4db203d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4566959631150485210
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002372659035174584}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a399f79feab3b6845a42ce39f37c33a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

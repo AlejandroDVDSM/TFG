@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 293808621388491156}
   - component: {fileID: -8434884061685842772}
   - component: {fileID: -8020223707936007551}
+  - component: {fileID: 2361046899032471548}
   m_Layer: 0
   m_Name: EnemyPawn
   m_TagString: EnemyPiece
@@ -138,3 +139,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chessPiece: {fileID: 11400000, guid: a1756351fc2e6cd40a724a871bdf881f, type: 2}
+--- !u!95 &2361046899032471548
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195334709842036198}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a399f79feab3b6845a42ce39f37c33a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

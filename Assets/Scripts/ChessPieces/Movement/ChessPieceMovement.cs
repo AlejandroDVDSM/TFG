@@ -49,6 +49,7 @@ public class ChessPieceMovement: MonoBehaviour
     public void MoveAndEat(Tile targetTile)
     {
         Destroy(targetTile.transform.GetChild(0).gameObject);
+        targetTile.IsFree = true;
         AudioManager.Instance.Play("ChesspieceEat");
         Move(targetTile);
     }

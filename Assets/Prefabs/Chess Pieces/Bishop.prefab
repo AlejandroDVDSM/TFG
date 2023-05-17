@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2254208730508169896}
   - component: {fileID: 1166872702374742043}
   - component: {fileID: 4855829335567912236}
+  - component: {fileID: 6344483427806280327}
   m_Layer: 0
   m_Name: Bishop
   m_TagString: PlayerPiece
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b7694ff631f61cd4e8d5c8fde225b75a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &457463513873694469
@@ -208,3 +209,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1444a5e38561f4096e02bf4db203d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6344483427806280327
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339159196022809705}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a399f79feab3b6845a42ce39f37c33a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

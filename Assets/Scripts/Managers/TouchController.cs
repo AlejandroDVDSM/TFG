@@ -36,6 +36,7 @@ public class TouchController : MonoBehaviour
         switch (hitCollider.tag)
         {
             case "Tile":
+                Debug.Log("Tag: Tile");
                 if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
                 {
                     Debug.Log("Player is moving a piece...");
@@ -48,19 +49,21 @@ public class TouchController : MonoBehaviour
                 break;
             
             case "PlayerPiece":
+                Debug.Log("Tag: PlayerPiece");
                 if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
                 {
+                    // Cancel movement with the selected chess piece
                     if (hitCollider.gameObject == _selectedChessPiece.gameObject)
                     {
                         if (_touch.tapCount == 2)
-                        {
+                        { // Go back to normal if we have tap two times in a row
                             _selectedChessPiece.GetBackToNormal();
                             _selectedChessPiece.IsMoving = false;
                             break;
                         }                        
                     }
                     else
-                    { // Go back to normal if we have touch a different chesspiece
+                    { // Go back to normal if we have touch a different chess piece
                         _selectedChessPiece.GetBackToNormal();
                         _selectedChessPiece.IsMoving = false;
                         
@@ -72,13 +75,16 @@ public class TouchController : MonoBehaviour
                 _selectedChessPiece.SetAllAvailableMoves();
                 break;
             
+            
             case "TileToMove":
+                Debug.Log("Tag: TileToMove");
                 Tile targetTile = hitCollider.gameObject.GetComponent<Tile>();
                 _selectedChessPiece.Move(targetTile);
                 _selectedChessPiece = null;
                 break;
             
             case "EnemyPiece":
+                Debug.Log("Tag: EnemyPiece");
                 if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
                 {
                     Tile targetTileWithEnemyPiece = hitCollider.transform.GetComponentInParent<Tile>();

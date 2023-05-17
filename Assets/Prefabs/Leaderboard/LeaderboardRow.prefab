@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3809940378172557941}
   - component: {fileID: 2561873274224268090}
   - component: {fileID: 8777755338503902910}
+  - component: {fileID: 169059043417637566}
   m_Layer: 5
   m_Name: LeaderboardRow
   m_TagString: Untagged
@@ -100,7 +101,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: -125
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -133,6 +134,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: UI/Panels/Panel.png
+--- !u!95 &169059043417637566
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809940378172557945}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7dc47aa0c99742b44ac6c13e3b91bdf4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3809940378259793550
 GameObject:
   m_ObjectHideFlags: 0

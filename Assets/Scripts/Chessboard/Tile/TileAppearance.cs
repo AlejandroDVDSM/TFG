@@ -13,7 +13,7 @@ public class TileAppearance : MonoBehaviour
 
         if (storage == null)
         {
-            Debug.LogError("TileAppearance - Couldn't find an object of type FirebaseStorage. Loading appearance with local sprites");
+            Debug.LogWarning("TileAppearance - Couldn't find an object of type FirebaseStorage. Loading appearance with local sprites");
             _spriteRenderer.sprite = isOffset ? _brownTileSprite : _whiteTileSprite;
             return;
         }

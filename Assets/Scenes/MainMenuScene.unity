@@ -837,7 +837,7 @@ Animator:
   m_GameObject: {fileID: 331825787}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6f63de0cba950b24b95cc6db6acabdc3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7e7688c8a2d526e45a7cc6b6e99afadb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1247,10 +1247,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 747949732}
-        m_TargetAssemblyTypeName: ButtonSFX, Assembly-CSharp
-        m_MethodName: ClickSFX
-        m_Mode: 1
+      - m_Target: {fileID: 747949734}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1259,10 +1259,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 747949734}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 747949732}
+        m_TargetAssemblyTypeName: ButtonSFX, Assembly-CSharp
+        m_MethodName: ClickSFX
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1392,7 +1392,7 @@ Animator:
   m_GameObject: {fileID: 747949724}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cc3971f2c2375b3458fc471738baa502, type: 2}
+  m_Controller: {fileID: 9100000, guid: 127ab5350a7710b4791f479c425a284e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3130,7 +3130,7 @@ Animator:
   m_GameObject: {fileID: 1671262135}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2e55c1d930ea9b541a18910f9a9079e4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 127ab5350a7710b4791f479c425a284e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4133,7 +4133,7 @@ Animator:
   m_GameObject: {fileID: 2117201428}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 570456a9ee62f8c4582158869aa8ed2b, type: 2}
+  m_Controller: {fileID: 9100000, guid: e3de5123a5c8af3499c4747c3806c606, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4366,7 +4366,7 @@ Animator:
   m_GameObject: {fileID: 2130750846}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9513f116cc2944c499dbda0502056426, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7e7688c8a2d526e45a7cc6b6e99afadb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4554,6 +4554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopUpManager
       objectReference: {fileID: 0}
+    - target: {fileID: 928376327020068459, guid: f2d8050e1b0df7041803bfb9eb167bc9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2d8050e1b0df7041803bfb9eb167bc9, type: 3}
 --- !u!1001 &7865912867002437823
@@ -4610,6 +4614,10 @@ PrefabInstance:
     - target: {fileID: 7865912866375140521, guid: 0ab8a19da2f9f4d46b3d266d7c029c5f, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865912866375140521, guid: 0ab8a19da2f9f4d46b3d266d7c029c5f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ab8a19da2f9f4d46b3d266d7c029c5f, type: 3}
