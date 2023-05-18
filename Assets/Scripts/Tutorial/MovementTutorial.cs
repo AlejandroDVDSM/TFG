@@ -25,7 +25,7 @@ public class MovementTutorial : MonoBehaviour
 
         _chessPieceMovement = FindObjectOfType<ChessPieceMovement>();
         _chessPieceMovement.IsMoving = true;
-        _chessPieceMovement.SetAllAvailableMoves();
+        _chessPieceMovement.StartMoving();
     }
 
     private void Eat(TutorialState tutorialState)

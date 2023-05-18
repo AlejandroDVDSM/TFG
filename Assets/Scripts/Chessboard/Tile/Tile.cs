@@ -153,4 +153,12 @@ public class Tile : MonoBehaviour
         
         return false;
     }
+
+    public ChessPieceData GetChessPiece()
+    {
+        if (IsFree)
+            return null;
+        
+        return transform.GetComponentInChildren<ChessPieceData>();
+    }
 }

@@ -1,12 +1,10 @@
+using System.Linq;
 using UnityEngine;
 
 public class TouchController : MonoBehaviour
 {
     private Touch _touch;
-    
     [SerializeField] private ChessPieceSpawner _spawner;
-
-    private ChessPieceMovement _selectedChessPiece;
     
     private void Update()
     {
@@ -30,76 +28,65 @@ public class TouchController : MonoBehaviour
             }
         }
     }
-    
+
     private void OnPlayerTouch(Collider2D hitCollider)
     {
         switch (hitCollider.tag)
         {
             case "Tile":
-                Debug.Log("Tag: Tile");
-                if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
-                {
-                    Debug.Log("Player is moving a piece...");
-                    AudioManager.Instance.Play("Error");
-                    break;
-                }
-                
-                Tile tileWhereToSpawn = hitCollider.gameObject.GetComponent<Tile>();
-                _spawner.SpawnChessPiece(tileWhereToSpawn);                
+                Tile tile = hitCollider.GetComponent<Tile>();
+                HandleTouchedTile(tile);
                 break;
-            
-            case "PlayerPiece":
-                Debug.Log("Tag: PlayerPiece");
-                if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
-                {
-                    // Cancel movement with the selected chess piece
-                    if (hitCollider.gameObject == _selectedChessPiece.gameObject)
-                    {
-                        if (_touch.tapCount == 2)
-                        { // Go back to normal if we have tap two times in a row
-                            _selectedChessPiece.GetBackToNormal();
-                            _selectedChessPiece.IsMoving = false;
-                            break;
-                        }                        
-                    }
-                    else
-                    { // Go back to normal if we have touch a different chess piece
-                        _selectedChessPiece.GetBackToNormal();
-                        _selectedChessPiece.IsMoving = false;
-                        
-                    }
-                }
-                
-                _selectedChessPiece = hitCollider.GetComponent<ChessPieceMovement>();
-                _selectedChessPiece.IsMoving = true;
-                _selectedChessPiece.SetAllAvailableMoves();
-                break;
-            
-            
-            case "TileToMove":
-                Debug.Log("Tag: TileToMove");
-                Tile targetTile = hitCollider.gameObject.GetComponent<Tile>();
-                _selectedChessPiece.Move(targetTile);
-                _selectedChessPiece = null;
-                break;
-            
-            case "EnemyPiece":
-                Debug.Log("Tag: EnemyPiece");
-                if (_selectedChessPiece != null && _selectedChessPiece.IsMoving)
-                {
-                    Tile targetTileWithEnemyPiece = hitCollider.transform.GetComponentInParent<Tile>();
 
-                    if (targetTileWithEnemyPiece.tag.Equals("TileToMove"))
-                    {
-                        _selectedChessPiece.MoveAndEat(targetTileWithEnemyPiece);
-                        _selectedChessPiece = null;
-                    }
-                }
-                break;
-            
-            default:
-                Debug.Log("Type mismatch");
+            case "TileToMove":
+                Tile targetTile = hitCollider.GetComponent<Tile>();
+                HandleTouchedTileToMove(targetTile);
                 break;
         }
+    }
+
+    private void HandleTouchedTile(Tile tile)
+    {
+        bool isThereAPieceMoving = FindObjectsOfType<ChessPieceMovement>().Any(cP => cP.IsMoving);
+
+        if (tile.IsFree && !isThereAPieceMoving)
+            _spawner.SpawnChessPiece(tile);
+        else
+        {
+            ChessPieceData chessPieceToMove = tile.GetChessPiece();
+
+            if (chessPieceToMove == null)
+                return;
+
+            if (chessPieceToMove.GetTeam() == Team.Black)
+            {
+                ChessPieceMovement chessPieceMovement = chessPieceToMove.GetComponent<ChessPieceMovement>();
+                if (!chessPieceMovement.IsMoving)
+                {
+                    var previousChessPieceMovement = FindObjectsOfType<ChessPieceMovement>()
+                        .Where(chessPiece => chessPiece.IsMoving).ToList();
+
+                    foreach (var previousChessPiece in previousChessPieceMovement)
+                        previousChessPiece.StopMoving();
+
+                    chessPieceMovement.StartMoving();
+                }
+                else
+                    chessPieceMovement.StopMoving();
+            }
+        }
+    }
+
+    private void HandleTouchedTileToMove(Tile targetTile)
+    {
+        var chessPieceMoving = FindObjectsOfType<ChessPieceMovement>().FirstOrDefault(cP => cP.IsMoving);
+
+        if (chessPieceMoving == null)
+            return;
+
+        if (!targetTile.IsFree)
+            chessPieceMoving.MoveAndEat(targetTile);
+        else
+            chessPieceMoving.Move(targetTile);
     }
 }

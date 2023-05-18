@@ -15,12 +15,11 @@ GameObject:
   - component: {fileID: 7764331152036975737}
   - component: {fileID: 3199578220815522867}
   - component: {fileID: 2254208730508169896}
-  - component: {fileID: 1166872702374742043}
   - component: {fileID: 4855829335567912236}
   - component: {fileID: 6344483427806280327}
   m_Layer: 0
   m_Name: Bishop
-  m_TagString: PlayerPiece
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,32 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7426e98fc12ede47bd6a484ff8d4f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &1166872702374742043
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339159196022809705}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: -0.3}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &4855829335567912236
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,14 +17,19 @@ public class ChessPieceMovement: MonoBehaviour
         _chessPieceGenerator = FindObjectOfType<ChessPieceSpawner>();
     }
 
-    public void SetAllAvailableMoves()
+    public void StartMoving()
     {
+        IsMoving = true;
+        
         _availableMoves = GetComponent<IMovement>().GetAllAvailableMoves();
 
         if (_availableMoves.Count > 0)
             HighlightAvailableTiles();
         else
+        {
+            AudioManager.Instance.Play("Error");
             IsMoving = false;
+        }
     }
     
     public void Move(Tile targetTile)
@@ -41,9 +46,7 @@ public class ChessPieceMovement: MonoBehaviour
         if (!SceneManager.GetActiveScene().name.Equals("TutorialScene"))
             _chessPieceGenerator.SetNextRandomChessPiece();
         
-        IsMoving = false;
-        GetBackToNormal();
-        _availableMoves.Clear();
+        StopMoving();
     }
 
     public void MoveAndEat(Tile targetTile)
@@ -64,7 +67,7 @@ public class ChessPieceMovement: MonoBehaviour
         }
     }
 
-    public void GetBackToNormal()
+    public void StopMoving()
     {
         foreach (var availableMove in _availableMoves)
         {
@@ -72,5 +75,8 @@ public class ChessPieceMovement: MonoBehaviour
             tileAt.GetComponent<SpriteRenderer>().color = Color.white;
             tileAt.tag = "Tile";
         }
+
+        IsMoving = false;
+        _availableMoves.Clear();
     }
 }
