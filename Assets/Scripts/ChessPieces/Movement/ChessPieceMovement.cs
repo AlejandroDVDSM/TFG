@@ -11,6 +11,8 @@ public class ChessPieceMovement: MonoBehaviour
     public bool IsMoving = false;
     private ChessPieceSpawner _chessPieceGenerator;
 
+    [SerializeField] private Animator _animator;
+
     private void Start()
     {
         _chessboardManager = FindObjectOfType<ChessboardManager>();
@@ -20,7 +22,7 @@ public class ChessPieceMovement: MonoBehaviour
     public void StartMoving()
     {
         IsMoving = true;
-        
+        _animator.SetBool("IsMoving", IsMoving);
         _availableMoves = GetComponent<IMovement>().GetAllAvailableMoves();
 
         if (_availableMoves.Count > 0)
@@ -29,6 +31,7 @@ public class ChessPieceMovement: MonoBehaviour
         {
             AudioManager.Instance.Play("Error");
             IsMoving = false;
+            _animator.SetBool("IsMoving", IsMoving);
         }
     }
     
@@ -77,6 +80,7 @@ public class ChessPieceMovement: MonoBehaviour
         }
 
         IsMoving = false;
+        _animator.SetBool("IsMoving", IsMoving);
         _availableMoves.Clear();
     }
 }

@@ -24,7 +24,6 @@ public class MovementTutorial : MonoBehaviour
             return;
 
         _chessPieceMovement = FindObjectOfType<ChessPieceMovement>();
-        _chessPieceMovement.IsMoving = true;
         _chessPieceMovement.StartMoving();
     }
 

@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMoving: 0
+  _animator: {fileID: 5535544424726962555}
 --- !u!114 &2070678400674226991
 MonoBehaviour:
   m_ObjectHideFlags: 0

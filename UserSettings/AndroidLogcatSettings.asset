@@ -17,25 +17,25 @@
         {
             "deviceId": "2b55da55",
             "name": "com.adsm.tfg",
-            "processId": 2772,
-            "exited": true
-        },
-        {
-            "deviceId": "2b55da55",
-            "name": "com.miui.securitycenter",
-            "processId": 8122,
-            "exited": true
-        },
-        {
-            "deviceId": "2b55da55",
-            "name": "com.adsm.tfg",
-            "processId": 8742,
-            "exited": true
-        },
-        {
-            "deviceId": "2b55da55",
-            "name": "com.adsm.tfg",
             "processId": 10219,
+            "exited": true
+        },
+        {
+            "deviceId": "2b55da55",
+            "name": "com.adsm.tfg",
+            "processId": 16617,
+            "exited": true
+        },
+        {
+            "deviceId": "2b55da55",
+            "name": "com.adsm.tfg",
+            "processId": 19294,
+            "exited": true
+        },
+        {
+            "deviceId": "2b55da55",
+            "name": "com.adsm.tfg",
+            "processId": 20943,
             "exited": true
         },
         {
