@@ -77,13 +77,13 @@ public class GoogleFit : MonoBehaviour
     private void WarnUser(string errorTypeCode)
     {
         Debug.Log($"Error type code: '{errorTypeCode}'");
-        if (errorTypeCode.Equals("Player has not connect its Google account to Google Fit"))
+        if (errorTypeCode.Equals(/*"Player has not connect its Google account to Google Fit"*/"400"))
         {
             Debug.Log("equal");
             PopUpManager.Instance.ShowPopUp("GoogleFitWarning");
             AccountConnectedToGoogleFit = false;
         }
-    }    
+    }
     
     public void SubtractSteps(int steps)
     {
