@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 118824163}
   - component: {fileID: 118824162}
   - component: {fileID: 118824160}
+  - component: {fileID: 118824168}
   m_Layer: 5
   m_Name: ShopButton
   m_TagString: Untagged
@@ -294,6 +295,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118824158}
   m_CullTransparentMesh: 1
+--- !u!114 &118824168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118824158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815882fec7270b649a705d78c3873676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shopPanelTutorialPrefab: {fileID: 855018221333971104, guid: 2cde6da1cea242b42a9e2cd35c359d3b, type: 3}
+  _canvasTransform: {fileID: 1889854390}
+  _tutorialPanel: {fileID: 2941203063159549567}
 --- !u!1 &288756678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,7 +2011,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1628111832}
-  - component: {fileID: 1628111831}
+  - component: {fileID: 1628111833}
   m_Layer: 0
   m_Name: MovementTutorial
   m_TagString: Untagged
@@ -2003,18 +2019,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1628111831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628111830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85217a1adeb26614590072f17f99b2b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1628111832
 Transform:
   m_ObjectHideFlags: 0
@@ -2030,6 +2034,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1628111833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628111830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85217a1adeb26614590072f17f99b2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1700438041
 GameObject:
   m_ObjectHideFlags: 0
